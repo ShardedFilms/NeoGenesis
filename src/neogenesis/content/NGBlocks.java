@@ -1,4 +1,4 @@
-package alphaplus.content;
+package neogenesis.content;
 
 import arc.graphics.*;
 import arc.graphics.g2d.*;
@@ -28,7 +28,7 @@ import mindustry.world.meta.*;
 import static mindustry.Vars.*;
 import static mindustry.type.ItemStack.*;
 
-public class AlphaplusBlocks{
+public class NGBlocks{
 	//list of blocks and environment
 	public static Block oven, waterTurbine;
 	
