@@ -18,7 +18,7 @@ import mindustry.maps.*;
 import mindustry.mod.*;
 import mindustry.net.*;
 import mindustry.ui.*;
-import alphaplus.content.*;
+import neogenesis.content.*;
 
 import static arc.Core.*;
 import static mindustry.Vars.*;
