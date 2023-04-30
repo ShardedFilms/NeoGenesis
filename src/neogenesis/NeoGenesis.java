@@ -25,7 +25,7 @@ import static mindustry.Vars.*;
 
 public class NeoGenesis extends Mod{
 	
-	public AlphaPlus(){
+	public NeoGenesis(){
         Log.info("Loaded Alpha-Plus mod constructor.");
     }
 
