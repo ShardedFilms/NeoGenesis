@@ -1,0 +1,7 @@
+name : "shd-nge"
+displayName : "Alpha plus"
+main : "alphaplus.AlphaPlus"
+author : "[accent]Sharded[] With Multi-Corprations"
+description : "just a testing java mod - early build"
+version : "0.1.0"
+minGameVersion : 140
