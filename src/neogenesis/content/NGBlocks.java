@@ -30,7 +30,7 @@ import static mindustry.type.ItemStack.*;
 
 public class NGBlocks{
 	//list of blocks and environment
-	public static Block oven, waterTurbine;
+	public static Block oven, waterTurbine, largeRadar;
 	
 	/**
 	 * 
@@ -63,5 +63,9 @@ public class NGBlocks{
 			researchCost = with(Items.silicon, 70, Items.graphite, 70);
 
 			consumePower(1f);
+	}};
+
 	}
-		}
+}
+	
+		
