@@ -57,11 +57,12 @@ public class NGBlocks{
 			consumeLiquid(Liquids.water,0.2f);
 		}};
 		largeRadar = new Radar("0-d-1-large-radar"){{
-			requirements(Category.effect, BuildVisibility.fogOnly, with(Items.silicon, 60, Items.graphite, 50, Items.beryllium, 10));
+			requirements(Category.effect, BuildVisibility.fogOnly, with(Items.silicon, 80, Items.graphite, 100, Items.tungsten, 40, Items.oxide , 20));
 			outlineColor = Color.valueOf("4a4b53");
-			fogRadius = 72;
-			researchCost = with(Items.silicon, 70, Items.graphite, 70);
-
+			fogRadius = 48;
+			scaledHealth = 60;
+			size = 2;
+			researchCost = with(Items.silicon, 320, Items.tungsten, 120,Items.beryllium, 150);
 			consumePower(1f);
 	}};
 
