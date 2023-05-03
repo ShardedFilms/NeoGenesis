@@ -62,7 +62,6 @@ public class NGBlocks{
 			fogRadius = 48;
 			scaledHealth = 60;
 			size = 2;
-			parent = (Blocks.radar);
 			researchCost = with(Items.silicon, 320, Items.tungsten, 120,Items.beryllium, 150);
 			consumePower(1f);
 	}};
