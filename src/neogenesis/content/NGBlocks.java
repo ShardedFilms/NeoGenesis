@@ -55,13 +55,13 @@ public class NGBlocks{
 			size = 2;
 			
 			consumeLiquid(Liquids.water,0.2f);
-	        LargeRadar = new Radar("0-d-1-large-radar"){{
-				requirements(Category.effect, BuildVisibility.fogOnly, with(Items.silicon, 60, Items.graphite, 50, Items.beryllium, 10));
-				outlineColor = Color.valueOf("4a4b53");
-				fogRadius = 34;
-				researchCost = with(Items.silicon, 70, Items.graphite, 70);
-	
-				consumePower(0.6f);
 		}};
+		largeRadar = new Radar("0-d-1-large-radar"){{
+			requirements(Category.effect, BuildVisibility.fogOnly, with(Items.silicon, 60, Items.graphite, 50, Items.beryllium, 10));
+			outlineColor = Color.valueOf("4a4b53");
+			fogRadius = 72;
+			researchCost = with(Items.silicon, 70, Items.graphite, 70);
+
+			consumePower(1f);
 	}
-}
+		}
