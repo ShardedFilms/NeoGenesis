@@ -30,37 +30,18 @@ import static mindustry.type.ItemStack.*;
 
 public class NGBlocks{
 	//list of blocks and environment
-	public static Block oven, waterTurbine, largeRadar;
+	public static Block largeRadar;
 	
 	/**
 	 * 
 	 */
 	public static void load() {
-		oven = new GenericCrafter("oven"){{
-			requirements(Category.crafting, with(Items.lead, 45, Items.graphite, 30,Items.silicon,20));
-            craftEffect = Fx.fireSmoke;
-            outputItem = new ItemStack(Items.graphite, 1);
-            craftTime = 90f;
-            size = 2;
-            hasItems = true;
-            drawer = new DrawMulti(new DrawDefault(), new DrawFlame(Color.valueOf("ffef99")));
-
-            consumeItems(with(Items.coal, 2));
-		}};
-		waterTurbine = new ConsumeGenerator("water turbine"){{
-			requirements(Category.power, with(Items.lead, 45, Items.graphite, 30,Items.silicon,20));
-			liquidCapacity = 5f;
-			powerProduction = 5f;
-			hasLiquids = true;
-			size = 2;
-			
-			consumeLiquid(Liquids.water,0.2f);
-		}};
 		largeRadar = new Radar("0-d-1-large-radar"){{
 			requirements(Category.effect, BuildVisibility.fogOnly, with(Items.silicon, 80, Items.graphite, 100, Items.tungsten, 40, Items.oxide , 20));
 			outlineColor = Color.valueOf("4a4b53");
 			fogRadius = 48;
 			scaledHealth = 60;
+			discoveryTime = 60f * 12f;
 			size = 2;
 			researchCost = with(Items.silicon, 320, Items.tungsten, 120,Items.beryllium, 150);
 			consumePower(1f);

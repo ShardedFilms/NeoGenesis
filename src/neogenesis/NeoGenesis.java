@@ -31,8 +31,12 @@ public class NeoGenesis extends Mod{
 
     @Override
     public void loadContent(){
-    	new NGBlocks().load();
-        Log.info("Loading some example content.");
+        Log.info("Loading disintegration content.");
+    	NGBlocks.load();
+        NGColor.load();
+        NGFx.load();
+
+        // Log.info("Loading some example content.");
     }
     
 }
