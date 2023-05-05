@@ -26,7 +26,7 @@ import static mindustry.Vars.*;
 public class NeoGenesis extends Mod{
 	
 	public NeoGenesis(){
-        Log.info("");
+        Log.info("Loads Constructor");
     }
 
     @Override

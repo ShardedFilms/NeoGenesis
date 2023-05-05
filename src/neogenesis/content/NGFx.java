@@ -28,7 +28,7 @@ public class NGFx{
 
     none = new Effect(0, 0f, e -> {}),
 
-    star = new Effect(20f, 100f, e -> {
+    astral0 = new Effect(20f, 100f, e -> {
         color(NGColor.genesux2);
         stroke(e.fout() * 4f);
         Lines.circle(e.x, e.y, 4f + e.finpow() * 20f);
@@ -41,8 +41,6 @@ public class NGFx{
         for(int i = 0; i < 4; i++){
             Drawf.tri(e.x, e.y, 3f, 30f * e.fout(), i*90);
         }
-
-        Drawf.light(e.x, e.y, 150f, NGColor.genesux2, 0.9f * e.fout());
     });
 
 	public static void load() {
