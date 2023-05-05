@@ -34,13 +34,19 @@ public class NGFx{
         Lines.circle(e.x, e.y, 4f + e.finpow() * 20f);
 
         for(int i = 0; i < 4; i++){
-            Drawf.tri(e.x, e.y, 1.5f, 16f * e.fout(), i*90);
+            Drawf.tri(e.x, e.y, 2f, 16f * e.fout(), i*90);
         }
 
         color();
         for(int i = 0; i < 4; i++){
             Drawf.tri(e.x, e.y, 1f, 8f * e.fout(), i*90);
         }
+        color(NGColor.graphite);
+
+        e.scaled(6, i -> {
+            stroke(2f * i.fout());
+            Lines.circle(e.x, e.y, 3f + i.fin() * 20f);
+        });
     }),
 
     astral2 = new Effect(20f, 100f, e -> {
@@ -58,7 +64,7 @@ public class NGFx{
         }
 
         color(NGColor.genesux1);
-        e.scaled(12, i -> {
+        e.scaled(10, i -> {
             stroke(2f * i.fout());
             Lines.circle(e.x, e.y, 3f + i.fin() * 32f);
         });

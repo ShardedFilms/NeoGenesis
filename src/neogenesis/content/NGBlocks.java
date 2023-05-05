@@ -56,7 +56,7 @@ public class NGBlocks{
             requirements(Category.turret, with(Items.copper,30, Items.lead,50));
 			ammo(
                 Items.graphite,  new BasicBulletType(8f, 10){{
-                    width = 7f;
+                    width = 9f;
                     height = 9f;
                     lifetime = 13f;
 					absorbable = true;
@@ -66,21 +66,42 @@ public class NGBlocks{
 					trailParam= 2f;
 					trailLength= 8;
 					trailWidth= 2f;
-					trailColor= backColor = (NGColor.graphite);
+					trailColor= backColor = hitColor = (NGColor.graphite);
 					frontColor= (Color.white);
 					hitEffect=(NGFx.astral1);
 					shrinkY = shrinkX =0;
+					despawnEffect = (Fx.none);
+					shootEffect= (Fx.shootSmallColor);
+                }},
+				Items.titanium,  new BasicBulletType(8f, 15){{
+                    width = 9f;
+                    height = 9f;
+                    lifetime = 13f;
+					absorbable = true;
+                    ammoMultiplier = 2;
+					reloadMultiplier= 1.5f;
+					despawnHit=true;
+					trailParam= 2f;
+					trailLength= 8;
+					trailWidth= 2f;
+					trailColor= backColor = hitColor = (NGColor.graphite);
+					frontColor= (Color.white);
+					hitEffect=(NGFx.astral1);
+					shrinkY = shrinkX =0;
+					despawnEffect = (Fx.none);
+					shootEffect= (Fx.shootSmallColor);
                 }}
             );
             shootY = 3f;
-            reload = 35f;
+            reload = 40f;
             range = 100;
 			maxAmmo=10;
             shootCone = 15f;
             ammoUseEffect = Fx.casing1;
-            inaccuracy = 2f;
+            inaccuracy = 0f;
             rotateSpeed = 10f;
             coolant = consumeCoolant(0.2f);
+			coolantMultiplier *= 0.5f;
             researchCostMultiplier = 0.1f;
 			recoil = 0.7f;
 			shootSound = (Sounds.bang);
