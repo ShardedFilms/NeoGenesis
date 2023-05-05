@@ -34,6 +34,7 @@ public class NeoGenesis extends Mod{
         Log.info("Activating Plugin.");
     	NGBlocks.load();
         NGColor.load();
+        NGItems.load();
         NGFx.load();
 ;    }
     

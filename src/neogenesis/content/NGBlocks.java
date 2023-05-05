@@ -40,7 +40,7 @@ public class NGBlocks{
 		largeRadar = new Radar("0-d-1-large-radar"){{
 			requirements(Category.effect, BuildVisibility.fogOnly, with(Items.silicon, 80, Items.graphite, 100, Items.tungsten, 40, Items.oxide , 20));
 			outlineColor = Color.valueOf("4a4b53");
-			fogRadius = 48;
+			fogRadius = 50;
 			scaledHealth = 60;
 			discoveryTime = 60f * 12f;
 			size = 2;
@@ -48,7 +48,7 @@ public class NGBlocks{
 			consumePower(1f);
 	}};
 
-	        test = new ItemTurret("z-z-z-astral"){{
+	        test = new ItemTurret("z-z-z-test"){{
             requirements(Category.turret, with(Items.copper,99));
 			ammo(
                 Items.copper,  new BasicBulletType(2.5f, 9){{
@@ -57,7 +57,7 @@ public class NGBlocks{
                     lifetime = 60f;
                     ammoMultiplier = 2;
 					despawnHit=true;
-					hitEffect=(NGFx.astral0);
+					hitEffect=(NGFx.astral1);
                 }}
             );
 
