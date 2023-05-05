@@ -28,21 +28,24 @@ public class NGFx{
 
     none = new Effect(0, 0f, e -> {}),
 
-    instBomb = new Effect(15f, 100f, e -> {
-        color(Pal.bulletYellowBack);
+    star = new Effect(20f, 100f, e -> {
+        color(NGColor.genesux2);
         stroke(e.fout() * 4f);
         Lines.circle(e.x, e.y, 4f + e.finpow() * 20f);
 
         for(int i = 0; i < 4; i++){
-            Drawf.tri(e.x, e.y, 6f, 80f * e.fout(), i*90 + 45);
+            Drawf.tri(e.x, e.y, 6f, 80f * e.fout(), i*90);
         }
 
         color();
         for(int i = 0; i < 4; i++){
-            Drawf.tri(e.x, e.y, 3f, 30f * e.fout(), i*90 + 45);
+            Drawf.tri(e.x, e.y, 3f, 30f * e.fout(), i*90);
         }
 
-        Drawf.light(e.x, e.y, 150f, Pal.bulletYellowBack, 0.9f * e.fout());
+        Drawf.light(e.x, e.y, 150f, NGColor.genesux2, 0.9f * e.fout());
     });
+
+	public static void load() {
+	}
 
 }

@@ -7,6 +7,7 @@ import arc.struct.*;
 import arc.util.*;
 import mindustry.*;
 import mindustry.content.*;
+import mindustry.entities.bullet.*;
 import mindustry.entities.effect.*;
 import mindustry.entities.pattern.*;
 import mindustry.game.*;
@@ -30,7 +31,7 @@ import static mindustry.type.ItemStack.*;
 
 public class NGBlocks{
 	//list of blocks and environment
-	public static Block largeRadar;
+	public static Block largeRadar , test;
 	
 	/**
 	 * 
@@ -46,6 +47,37 @@ public class NGBlocks{
 			researchCost = with(Items.silicon, 320, Items.tungsten, 120,Items.beryllium, 150);
 			consumePower(1f);
 	}};
+
+	        test = new ItemTurret("z-z-z-astral"){{
+            requirements(Category.turret, with(Items.copper,99));
+			ammo(
+                Items.copper,  new BasicBulletType(2.5f, 9){{
+                    width = 7f;
+                    height = 9f;
+                    lifetime = 60f;
+                    ammoMultiplier = 2;
+					despawnHit=true;
+					hitEffect=(NGFx.astral0);
+                }}
+            );
+
+            shoot = new ShootAlternate(3.5f);
+
+            shootY = 3f;
+            reload = 20f;
+            range = 110;
+            shootCone = 15f;
+            ammoUseEffect = Fx.casing1;
+            health = 250;
+            inaccuracy = 2f;
+            rotateSpeed = 10f;
+            coolant = consumeCoolant(0.1f);
+            researchCostMultiplier = 0.05f;
+			scaledHealth=160;
+			size=2;
+
+            limitRange();
+        }};
 
 	}
 }

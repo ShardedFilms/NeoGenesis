@@ -26,17 +26,15 @@ import static mindustry.Vars.*;
 public class NeoGenesis extends Mod{
 	
 	public NeoGenesis(){
-        Log.info("Loaded Alpha-Plus mod constructor.");
+        Log.info("");
     }
 
     @Override
     public void loadContent(){
-        Log.info("Loading disintegration content.");
+        Log.info("Activating Plugin.");
     	NGBlocks.load();
         NGColor.load();
         NGFx.load();
-
-        // Log.info("Loading some example content.");
-    }
+;    }
     
 }
