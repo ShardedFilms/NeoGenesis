@@ -70,6 +70,23 @@ public class NGBlocks{
 					frontColor= (Color.white);
 					hitEffect=(NGFx.astral1);
 					shrinkY = shrinkX =0;
+                }},
+				NGItems.astrolite,  new BasicBulletType(8f, 15){{
+                    width = 10f;
+                    height = 10f;
+                    lifetime = 13f;
+					absorbable = true;
+                    ammoMultiplier = 2;
+					despawnHit=true;
+					trailParam= 2f;
+					trailLength= 8;
+					trailWidth= 2f;
+					status= (StatusEffects.freezing);
+					statusDuration= 6 * 60;
+					trailColor= backColor = (NGColor.genesux1);
+					frontColor= (Color.white);
+					hitEffect=(NGFx.astral2);
+					shrinkY = shrinkX =0;
                 }}
             );
             shootY = 3f;
