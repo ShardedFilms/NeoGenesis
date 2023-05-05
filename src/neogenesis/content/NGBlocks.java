@@ -55,37 +55,20 @@ public class NGBlocks{
 		        astral = new ItemTurret("1-t-01-astral"){{
             requirements(Category.turret, with(Items.copper,30, Items.lead,50));
 			ammo(
-//                Items.graphite,  new BasicBulletType(8f, 10){{
-//                    width = 7f;
-//                    height = 9f;
-//                    lifetime = 13f;
-//					absorbable = true;
-//                  ammoMultiplier = 2;
-//					reloadMultiplier= 1.5f;
-//					despawnHit=true;
-//					trailParam= 2f;
-//					trailLength= 8;
-//					trailWidth= 2f;
-//					trailColor= backColor = (NGColor.graphite);
-//					frontColor= (Color.white;
-//					hitEffect=(NGFx.astral1);
-//   					shrinkY = shrinkX =0;
-//                }},
-				NGItems.astrolite,  new BasicBulletType(8f, 15){{
-                    width = 10f;
-                    height = 10f;
+                Items.graphite,  new BasicBulletType(8f, 10){{
+                    width = 7f;
+                    height = 9f;
                     lifetime = 13f;
 					absorbable = true;
                     ammoMultiplier = 2;
+					reloadMultiplier= 1.5f;
 					despawnHit=true;
 					trailParam= 2f;
 					trailLength= 8;
 					trailWidth= 2f;
-					status= (StatusEffects.freezing);
-					statusDuration= 6 * 60;
-					trailColor= backColor = (NGColor.genesux1);
+					trailColor= backColor = (NGColor.graphite);
 					frontColor= (Color.white);
-					hitEffect=(NGFx.astral2);
+					hitEffect=(NGFx.astral1);
 					shrinkY = shrinkX =0;
                 }}
             );
