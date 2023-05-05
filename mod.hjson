@@ -1,7 +1,7 @@
 name : "shd-nge"
-displayName : "Alpha plus"
+displayName : "Neogenesis"
 main : "neogenesis.NeoGenesis"
 author : "[accent]Sharded[] With Multi-Corprations"
-description : "just a testing java mod - early build"
-version : "WIP-6"
+description : "Currently WIP"
+version : "WIP-10"
 minGameVersion : 140
