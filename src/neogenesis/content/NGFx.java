@@ -28,21 +28,19 @@ public class NGFx{
 
     blank = new Effect(0, 0f, e -> {}),
 
-    astral1 = new Effect(20f, 100f, e -> {
+    astral1 = new Effect(10f, 100f, e -> {
         color(NGColor.graphite);
         stroke(e.fout() * 4f);
         Lines.circle(e.x, e.y, 4f + e.finpow() * 20f);
 
         for(int i = 0; i < 4; i++){
-            Drawf.tri(e.x, e.y, 4f, 40f * e.fout(), i*90);
+            Drawf.tri(e.x, e.y, 1.5f, 16f * e.fout(), i*90);
         }
 
         color();
         for(int i = 0; i < 4; i++){
-            Drawf.tri(e.x, e.y, 1.5f, 20f * e.fout(), i*90);
+            Drawf.tri(e.x, e.y, 1f, 8f * e.fout(), i*90);
         }
-
-        Drawf.light(e.x, e.y, 60f, NGColor.graphite, 0.9f * e.fout());
     }),
 
     astral2 = new Effect(20f, 100f, e -> {
@@ -51,16 +49,21 @@ public class NGFx{
         Lines.circle(e.x, e.y, 4f + e.finpow() * 20f);
 
         for(int i = 0; i < 4; i++){
-            Drawf.tri(e.x, e.y, 4f, 40f * e.fout(), i*90);
+            Drawf.tri(e.x, e.y, 2f, 24f * e.fout(), i*90);
         }
 
         color();
         for(int i = 0; i < 4; i++){
-            Drawf.tri(e.x, e.y, 1.5f, 20f * e.fout(), i*90);
+            Drawf.tri(e.x, e.y, 1f, 12f * e.fout(), i*90);
         }
 
-        Drawf.light(e.x, e.y, 60f, NGColor.genesux1, 0.9f * e.fout());
+        color(NGColor.genesux1);
+        e.scaled(12, i -> {
+            stroke(2f * i.fout());
+            Lines.circle(e.x, e.y, 3f + i.fin() * 32f);
+        });
     });
+
 
 	public static void load() {
 	}

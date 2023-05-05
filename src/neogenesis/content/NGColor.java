@@ -16,6 +16,7 @@ public class NGColor {
     // Factional
 
     genesux1 = Color.valueOf("A9D8FF"),
+    genesux3 = Color.valueOf("66b1ff"),
     genesux2 = Color.valueOf("6B77A1");
 
 
@@ -25,7 +26,7 @@ public class NGColor {
         // Those are made by Aureus Himself.
         // The usage are most used in effects.
         // the goods is to learn Whats Anuke Told about.
-        
+
     }
 
     

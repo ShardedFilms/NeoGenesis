@@ -11,6 +11,7 @@ import mindustry.entities.bullet.*;
 import mindustry.entities.effect.*;
 import mindustry.entities.pattern.*;
 import mindustry.game.*;
+import mindustry.gen.*;
 import mindustry.graphics.*;
 import mindustry.type.*;
 import mindustry.world.*;
@@ -31,11 +32,15 @@ import static mindustry.type.ItemStack.*;
 
 public class NGBlocks{
 	//list of blocks and environment
-	public static Block largeRadar , test;
+	public static Block largeRadar ,
+
+	//genesux
+	astral, 
 	
-	/**
-	 * 
-	 */
+	// do not sort
+	test;
+	
+
 	public static void load() {
 		largeRadar = new Radar("0-d-1-large-radar"){{
 			requirements(Category.effect, BuildVisibility.fogOnly, with(Items.silicon, 80, Items.graphite, 100, Items.tungsten, 40, Items.oxide , 20));
@@ -47,6 +52,42 @@ public class NGBlocks{
 			researchCost = with(Items.silicon, 320, Items.tungsten, 120,Items.beryllium, 150);
 			consumePower(1f);
 	}};
+		        astral = new ItemTurret("1-t-01-astral"){{
+            requirements(Category.turret, with(Items.copper,30, Items.lead,50));
+			ammo(
+                Items.graphite,  new BasicBulletType(8f, 10){{
+                    width = 7f;
+                    height = 9f;
+                    lifetime = 13f;
+					absorbable = true;
+                    ammoMultiplier = 2;
+					reloadMultiplier= 1.5f;
+					despawnHit=true;
+					trailParam= 2f;
+					trailLength= 8;
+					trailWidth= 2f;
+					trailColor= backColor = (NGColor.graphite);
+					frontColor= (Color.white);
+					hitEffect=(NGFx.astral1);
+					shrinkY = shrinkX =0;
+                }}
+            );
+            shootY = 3f;
+            reload = 35f;
+            range = 100;
+			maxAmmo=10;
+            shootCone = 15f;
+            ammoUseEffect = Fx.casing1;
+            inaccuracy = 2f;
+            rotateSpeed = 10f;
+            coolant = consumeCoolant(0.2f);
+            researchCostMultiplier = 0.1f;
+			recoil = 0.7f;
+			shootSound = (Sounds.bang);
+			scaledHealth=200;
+			size=1;
+        }};
+
 
 	        test = new ItemTurret("z-z-z-test"){{
             requirements(Category.turret, with(Items.copper,99));
