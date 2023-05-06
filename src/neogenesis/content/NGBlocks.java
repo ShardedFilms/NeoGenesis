@@ -73,13 +73,12 @@ public class NGBlocks{
 					despawnEffect = (Fx.none);
 					shootEffect= (Fx.shootSmallColor);
                 }},
-				Items.titanium,  new BasicBulletType(8f, 15){{
+				Items.titanium,  new BasicBulletType(8f, 20){{
                     width = 9f;
                     height = 9f;
                     lifetime = 13f;
 					absorbable = true;
                     ammoMultiplier = 2;
-					reloadMultiplier= 1.5f;
 					despawnHit=true;
 					trailParam= 2f;
 					trailLength= 8;
@@ -88,6 +87,7 @@ public class NGBlocks{
 					frontColor= (Color.white);
 					hitEffect=(NGFx.astral1);
 					shrinkY = shrinkX =0;
+					sprite = "plasma";
 					despawnEffect = (Fx.none);
 					shootEffect= (Fx.shootSmallColor);
                 }}
