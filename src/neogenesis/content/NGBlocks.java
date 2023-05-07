@@ -44,7 +44,7 @@ public class NGBlocks{
 	public static void load() {
 		largeRadar = new Radar("0-d-1-large-radar"){{
 			requirements(Category.effect, BuildVisibility.fogOnly, with(Items.silicon, 80, Items.graphite, 100, Items.tungsten, 40, Items.oxide , 20));
-			outlineColor = Color.valueOf("4a4b53");
+			outlineColor = Pal.darkOutline;
 			fogRadius = 50;
 			scaledHealth = 60;
 			discoveryTime = 60f * 12f;
@@ -73,7 +73,7 @@ public class NGBlocks{
 					despawnEffect = (Fx.none);
 					shootEffect= (Fx.shootSmallColor);
                 }},
-				NGItems.astrolite,  new BasicBulletType(8f, 20){{
+				Items.silicon,  new BasicBulletType(8f, 20){{
                     width = 9f;
                     height = 9f;
                     lifetime = 15f;

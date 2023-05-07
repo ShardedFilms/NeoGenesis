@@ -53,12 +53,12 @@ public class NGFx{
         stroke(e.fout() * 4f);
 
         for(int i = 0; i < 4; i++){
-            Drawf.tri(e.x, e.y, 2f, 24f * e.fout(), i*90);
+            Drawf.tri(e.x, e.y, 2f * e.fout(), 24f * e.fout(), i*90);
         }
 
         color(NGColor.genesux2);
         for(int i = 0; i < 4; i++){
-            Drawf.tri(e.x, e.y, 1f, 12f * e.fout(), i*90);
+            Drawf.tri(e.x, e.y, 1f * e.fout(), 12f * e.fout(), i*90);
         }
 
         color(Color.white, NGColor.genesux3, e.fin());
