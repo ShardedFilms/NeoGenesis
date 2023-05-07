@@ -111,7 +111,7 @@ public class NGBlocks{
 
 
 	        test = new ItemTurret("z-z-z-test"){{
-            requirements(Category.turret, with(Items.copper,99));
+            requirements(Category.turret, with(NGItems.scalar,100));
 			ammo(
                 Items.copper,  new BasicBulletType(2.5f, 9){{
                     width = 7f;
@@ -137,6 +137,8 @@ public class NGBlocks{
             researchCostMultiplier = 0.05f;
 			scaledHealth=160;
 			size=2;
+
+			buildVisibility= BuildVisibility.sandboxOnly ;
 
             limitRange();
         }};
