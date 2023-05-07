@@ -76,17 +76,18 @@ public class NGBlocks{
 				NGItems.astrolite,  new BasicBulletType(8f, 20){{
                     width = 9f;
                     height = 9f;
-                    lifetime = 13f;
+                    lifetime = 15f;
 					absorbable = true;
                     ammoMultiplier = 2;
+					rangeChange = 16;
 					despawnHit=true;
 					trailParam= 2f;
 					trailLength= 8;
 					trailWidth= 2f;
-					trailColor= backColor = hitColor = (NGColor.graphite1);
+					trailColor= backColor = hitColor = (NGColor.genesux3);
 					frontColor= (Color.white);
 					hitEffect=(NGFx.astral2);
-					shrinkY = shrinkX =0;
+					shrinkY = shrinkX = 0;
 					sprite = "shd-nge-plasma";
 					despawnEffect = (Fx.none);
 					shootEffect= (Fx.shootSmallColor);
@@ -97,7 +98,7 @@ public class NGBlocks{
             range = 100;
 			maxAmmo=10;
             shootCone = 15f;
-            ammoUseEffect = Fx.casing1;
+            ammoUseEffect = Fx.none;
             inaccuracy = 0f;
             rotateSpeed = 10f;
             coolant = consumeCoolant(0.2f);
@@ -138,9 +139,7 @@ public class NGBlocks{
 			scaledHealth=160;
 			size=2;
 
-			buildVisibility= BuildVisibility.sandboxOnly ;
-
-            limitRange();
+			buildVisibility = (BuildVisibility.sandboxOnly);
         }};
 
 	}
