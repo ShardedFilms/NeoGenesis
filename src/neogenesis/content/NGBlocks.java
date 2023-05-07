@@ -66,14 +66,14 @@ public class NGBlocks{
 					trailParam= 2f;
 					trailLength= 8;
 					trailWidth= 2f;
-					trailColor= backColor = hitColor = (NGColor.graphite);
+					trailColor= backColor = hitColor = (NGColor.graphite1);
 					frontColor= (Color.white);
 					hitEffect=(NGFx.astral1);
 					shrinkY = shrinkX =0;
 					despawnEffect = (Fx.none);
 					shootEffect= (Fx.shootSmallColor);
                 }},
-				Items.titanium,  new BasicBulletType(8f, 20){{
+				NGItems.astrolite,  new BasicBulletType(8f, 20){{
                     width = 9f;
                     height = 9f;
                     lifetime = 13f;
@@ -83,11 +83,11 @@ public class NGBlocks{
 					trailParam= 2f;
 					trailLength= 8;
 					trailWidth= 2f;
-					trailColor= backColor = hitColor = (NGColor.graphite);
+					trailColor= backColor = hitColor = (NGColor.graphite1);
 					frontColor= (Color.white);
-					hitEffect=(NGFx.astral1);
+					hitEffect=(NGFx.astral2);
 					shrinkY = shrinkX =0;
-					sprite = "plasma";
+					sprite = "shd-nge-plasma";
 					despawnEffect = (Fx.none);
 					shootEffect= (Fx.shootSmallColor);
                 }}

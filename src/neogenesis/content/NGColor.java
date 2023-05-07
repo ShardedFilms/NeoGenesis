@@ -11,13 +11,18 @@ public class NGColor {
 
     // Item
 
-    graphite = Color.valueOf("95ABD9"),
+    graphite1 = Color.valueOf("6b77a1"),
+    graphite2 = Color.valueOf("95abd9"),
 
     // Factional
 
-    genesux1 = Color.valueOf("A9D8FF"),
-    genesux3 = Color.valueOf("66b1ff"),
-    genesux2 = Color.valueOf("6B77A1");
+    genesux1 = Color.valueOf("66b1ff"),
+    genesux3 = Color.valueOf("74c2e8"),
+    genesux2 = Color.valueOf("99f8ff"),
+
+    // End
+
+    endOfLine = Color.valueOf("00000000");
 
 
     public static void load() {
