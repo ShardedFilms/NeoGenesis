@@ -72,25 +72,6 @@ public class NGBlocks{
 					shrinkY = shrinkX =0;
 					despawnEffect = (Fx.none);
 					shootEffect= (Fx.shootSmallColor);
-                }},
-				Items.silicon,  new BasicBulletType(8f, 20){{
-                    width = 9f;
-                    height = 9f;
-                    lifetime = 15f;
-					absorbable = true;
-                    ammoMultiplier = 2;
-					rangeChange = 16;
-					despawnHit=true;
-					trailParam= 2f;
-					trailLength= 8;
-					trailWidth= 2f;
-					trailColor= backColor = hitColor = (NGColor.genesux3);
-					frontColor= (Color.white);
-					hitEffect=(NGFx.astral2);
-					shrinkY = shrinkX = 0;
-					sprite = "shd-nge-plasma";
-					despawnEffect = (Fx.none);
-					shootEffect= (Fx.shootSmallColor);
                 }}
             );
             shootY = 3f;
