@@ -35,7 +35,6 @@ public class NeoGenesis extends Mod{
 
         // First
         NGItems.load();
-        NGBullets.load();
         NGColor.load();
         NGFx.load();
 
