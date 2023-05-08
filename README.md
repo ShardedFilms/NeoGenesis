@@ -1,3 +1,3 @@
-# mindustry-java-mod
-For practice first
+# Neogenesis
+Stilling copen.
 
