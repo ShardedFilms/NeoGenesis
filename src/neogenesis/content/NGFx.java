@@ -48,7 +48,7 @@ public class NGFx{
         });
     }),
 
-    astral2 = new Effect(20f, 100f, e -> {
+    astral2 = new Effect(40f, 100f, e -> {
         color(NGColor.genesux3);
         stroke(e.fout() * 4f);
 
@@ -63,7 +63,7 @@ public class NGFx{
 
         color(Color.white, NGColor.genesux3, e.fin());
 
-        e.scaled(144f, s -> {
+        e.scaled(30f, s -> {
             stroke(2f + s.fout());
             Lines.circle(e.x, e.y, 4f + s.fin() * 24f);
         });
@@ -81,12 +81,12 @@ public class NGFx{
         float intensity = 1.5f;
 
         color(NGColor.genesux3, 0.7f);
-        for(int i = 0; i < 4; i++){
+        for(int i = 0; i < 8; i++){
             rand.setSeed(b.id*2 + i);
             float lenScl = rand.random(0.5f, 1f);
             int fi = i;
             b.scaled(b.lifetime * lenScl, e -> {
-                randLenVectors(e.id + fi - 1, e.fin(Interp.pow10Out), (int)(0.9f * intensity), 11f * intensity, (x, y, in, out) -> {
+                randLenVectors(e.id + fi - 1, e.fin(Interp.pow10Out), (int)(0.9f * intensity), 14f * intensity, (x, y, in, out) -> {
                     float fout = e.fout(Interp.pow5Out) * rand.random(0.5f, 1f);
                     float rad = fout * ((1f + intensity) * 2.35f);
 
@@ -99,13 +99,13 @@ public class NGFx{
         }
     }),
 
-    cosmosSpark = new Effect(70f, e -> {
+    cosmosSpark = new Effect(35f, e -> {
         rand.setSeed(e.id);
         for(int i = 0; i < 13; i++){
             float a = e.rotation + rand.range(30f);
             v.trns(a, rand.random(e.finpow() * 50f));
             e.scaled(e.lifetime * rand.random(0.3f, 1f), b -> {
-                color(e.color);
+                color(NGColor.genesux3, NGColor.genesux1, e.lifetime);
                 Lines.stroke(b.fout() * 3f + 0.5f);
                 Lines.lineAngle(e.x + v.x, e.y + v.y, a, b.fout() * 8f + 0.4f);
             });
