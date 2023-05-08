@@ -111,7 +111,7 @@ public class NGBlocks{
 
 
 	        test = new ItemTurret("z-z-z-test"){{
-            requirements(Category.turret, with(NGItems.scalar,100));
+            requirements(Category.turret, with( NGItems.scalar, 100 ));
 			ammo(
                 Items.copper,  new BasicBulletType(2.5f, 9){{
                     width = 7f;
@@ -119,7 +119,7 @@ public class NGBlocks{
                     lifetime = 60f;
                     ammoMultiplier = 2;
 					despawnHit=true;
-					hitEffect=(NGFx.astral1);
+					hitEffect=(NGFx.cosmosBlast);
                 }}
             );
 
