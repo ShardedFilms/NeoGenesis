@@ -92,6 +92,9 @@ public class NGBlocks{
 					sprite= "shd-nge-plasma";
 					despawnEffect = (Fx.none);
 					shootEffect= (Fx.shootSmallColor);
+					
+					status = (StatusEffects.freezing);
+					statusDuration = 4 * 60;
 				}}
             );
             shootY = 3f;
