@@ -66,7 +66,7 @@ public class NGBlocks{
 					trailParam= 2f;
 					trailLength= 8;
 					trailWidth= 2f;
-					trailColor= backColor = hitColor = (NGColor.graphite1);
+					trailColor= backColor = hitColor = (NGColor.graphite2);
 					frontColor= (Color.white);
 					hitEffect=(NGFx.astral1);
 					shrinkY = shrinkX =0;
@@ -84,7 +84,7 @@ public class NGBlocks{
 					despawnHit=true;
 					trailParam= 2f;
 					trailLength= 8;
-					trailWidth= 2f;
+					trailWidth= 2.5f;
 					trailColor= backColor = hitColor = (NGColor.genesux3);
 					frontColor= (Color.white);
 					hitEffect=(NGFx.astral2);

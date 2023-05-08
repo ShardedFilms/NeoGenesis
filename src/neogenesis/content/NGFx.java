@@ -33,12 +33,12 @@ public class NGFx{
         stroke(e.fout() * 4f);
 
         for(int i = 0; i < 4; i++){
-            Drawf.tri(e.x, e.y, 2f, 16f * e.fout(), i*90);
+            Drawf.tri(e.x, e.y, 2f * e.fout(), 16f * e.fout(), i*90);
         }
 
         color(NGColor.graphite1);
         for(int i = 0; i < 4; i++){
-            Drawf.tri(e.x, e.y, 1f, 8f * e.fout(), i*90);
+            Drawf.tri(e.x, e.y, 1f * e.fout(), 8f * e.fout(), i*90);
         }
         color(NGColor.graphite2);
 
@@ -63,7 +63,7 @@ public class NGFx{
 
         color(Color.white, NGColor.genesux3, e.fin());
 
-        e.scaled(7f, s -> {
+        e.scaled(144f, s -> {
             stroke(2f + s.fout());
             Lines.circle(e.x, e.y, 4f + s.fin() * 24f);
         });
@@ -71,8 +71,7 @@ public class NGFx{
         stroke(0.5f + e.fout());
 
         randLenVectors(e.id, 7, e.fin() * 20f, (x, y) -> {
-            float ang = Mathf.angle(x, y);
-            Fill.square(e.x + x, e.y + y, e.fout() * 3.2f, ang);
+            Fill.square(e.x + x, e.y + y, e.fout() * 3.2f, 45);
         });
 
         Drawf.light(e.x, e.y, 30f, e.color, 0.6f * e.fout());
