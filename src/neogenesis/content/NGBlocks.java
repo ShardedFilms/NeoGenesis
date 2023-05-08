@@ -73,7 +73,7 @@ public class NGBlocks{
 					despawnEffect = (Fx.none);
 					shootEffect= (Fx.shootSmallColor);
                 }},
-				Items.titanium,  new BasicBulletType(8f, 10){{
+				NGItems.astrolite,  new BasicBulletType(8f, 10){{
                     width = 9f;
                     height = 9f;
                     lifetime = 13f;
@@ -86,7 +86,7 @@ public class NGBlocks{
 					trailWidth= 2f;
 					trailColor= backColor = hitColor = (NGColor.graphite1);
 					frontColor= (Color.white);
-					hitEffect=(NGFx.astral1);
+					hitEffect=(NGFx.astral2);
 					shrinkY = shrinkX =0;
 					despawnEffect = (Fx.none);
 					shootEffect= (Fx.shootSmallColor);
@@ -111,7 +111,7 @@ public class NGBlocks{
 
 
 	        test = new ItemTurret("z-z-z-test"){{
-            requirements(Category.turret, with( NGItems.scalar, 120 ));
+            requirements(Category.turret, with( NGItems.scalar, 120 ,Items.copper, 120));
 			ammo(
                 Items.copper,  new BasicBulletType(2.5f, 9){{
                     width = 7f;
@@ -119,7 +119,7 @@ public class NGBlocks{
                     lifetime = 60f;
                     ammoMultiplier = 2;
 					despawnHit=true;
-					hitEffect=(NGFx.cosmosBlast);
+					hitEffect=(NGFx.cosmosSpark);
                 }}
             );
 
