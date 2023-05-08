@@ -55,14 +55,13 @@ public class NGBlocks{
 		        astral = new ItemTurret("1-t-01-astral"){{
             requirements(Category.turret, with(Items.copper,30, Items.lead,50));
 			ammo(
-				NGItems.astrolite,  NGBullets.astral2,
 				Items.graphite, NGBullets.astral1,
 				Items.silicon,  NGBullets.astral2
             );
             shootY = 3f;
             reload = 40f;
             range = 100;
-			maxAmmo=10;
+			maxAmmo=12;
             shootCone = 15f;
             ammoUseEffect = Fx.none;
             inaccuracy = 0f;
@@ -70,7 +69,7 @@ public class NGBlocks{
             coolant = consumeCoolant(0.2f);
 			coolantMultiplier *= 0.5f;
             researchCostMultiplier = 0.1f;
-			recoil = 0.7f;
+			recoil = 1f;
 			shootSound = (Sounds.bang);
 			scaledHealth=200;
 			size=1;
