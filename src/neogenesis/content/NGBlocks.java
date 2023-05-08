@@ -124,7 +124,8 @@ public class NGBlocks{
                     width = height = 11f;
                     collidesTiles = false;
                     splashDamageRadius = 25f * 0.75f;
-                    splashDamage = 33f;
+                    splashDamage = 44f;
+					hitEffect= new MultiEffect(NGFx.cosmosBlast, NGFx.cosmosSpark);
                 }}
             );
 

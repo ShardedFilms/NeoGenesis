@@ -77,18 +77,18 @@ public class NGFx{
         Drawf.light(e.x, e.y, 30f, e.color, 0.6f * e.fout());
     }),
 
-    cosmosBlast = new Effect(300f, 300f, b -> {
-        float intensity = 3f;
+    cosmosBlast = new Effect(60f, 60f, b -> {
+        float intensity = 1.5f;
 
-        color(b.color, 0.7f);
+        color(NGColor.genesux3, 0.7f);
         for(int i = 0; i < 4; i++){
             rand.setSeed(b.id*2 + i);
             float lenScl = rand.random(0.5f, 1f);
             int fi = i;
             b.scaled(b.lifetime * lenScl, e -> {
-                randLenVectors(e.id + fi - 1, e.fin(Interp.pow10Out), (int)(2.9f * intensity), 22f * intensity, (x, y, in, out) -> {
+                randLenVectors(e.id + fi - 1, e.fin(Interp.pow10Out), (int)(0.9f * intensity), 11f * intensity, (x, y, in, out) -> {
                     float fout = e.fout(Interp.pow5Out) * rand.random(0.5f, 1f);
-                    float rad = fout * ((2f + intensity) * 2.35f);
+                    float rad = fout * ((1f + intensity) * 2.35f);
 
                     Fill.circle(e.x + x, e.y + y, rad);
                     Drawf.light(e.x + x, e.y + y, rad * 2.5f, b.color, 0.5f);

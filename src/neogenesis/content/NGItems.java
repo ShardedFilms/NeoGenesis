@@ -17,7 +17,7 @@ public class NGItems{
             charge = 0.1f;
         }};
         scalar = new Item("y-i-0-scalar", Color.valueOf("00e676")){{
-            hardness = 20;
+            hardness = 30;
             cost = 1f;
         }};
 
