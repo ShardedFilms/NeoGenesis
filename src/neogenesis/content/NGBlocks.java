@@ -55,8 +55,9 @@ public class NGBlocks{
 		        astral = new ItemTurret("1-t-01-astral"){{
             requirements(Category.turret, with(Items.copper,30, Items.lead,50));
 			ammo(
-                Items.graphite, NGBullets.astral1,
-				NGItems.astrolite,  NGBullets.astral2
+				NGItems.astrolite,  NGBullets.astral2,
+				Items.graphite, NGBullets.astral1,
+				Items.silicon,  NGBullets.astral2
             );
             shootY = 3f;
             reload = 40f;
