@@ -111,7 +111,7 @@ public class NGBlocks{
 
 
 	        test = new ItemTurret("z-z-z-test"){{
-            requirements(Category.turret, with( NGItems.scalar, 100 ));
+            requirements(Category.turret, with( NGItems.scalar, 120 ));
 			ammo(
                 Items.copper,  new BasicBulletType(2.5f, 9){{
                     width = 7f;
