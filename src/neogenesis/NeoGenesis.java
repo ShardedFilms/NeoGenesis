@@ -57,7 +57,7 @@ public class NeoGenesis extends Mod{
         // All content is ordered alphabeticial
         // You must sort it yourself.
     ){
-        Log.info("Loads Constructor");
+        Log.info("Loads Constructor.");
     }
 
     @Override
@@ -71,6 +71,6 @@ public class NeoGenesis extends Mod{
 
         // Second
     	NGBlocks.load();
-;    }
+    }
     
 }

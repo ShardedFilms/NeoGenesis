@@ -102,7 +102,7 @@ public class NGFx{
     cosmosSpark = new Effect(35f, e -> {
         rand.setSeed(e.id);
         for(int i = 0; i < 13; i++){
-            float a = e.rotation + rand.range(30f);
+            float a = e.rotation + rand.range(40f);
             v.trns(a, rand.random(e.finpow() * 50f));
             e.scaled(e.lifetime * rand.random(0.3f, 1f), b -> {
                 color(NGColor.genesux3, NGColor.genesux1, e.lifetime);

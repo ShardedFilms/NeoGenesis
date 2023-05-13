@@ -6,7 +6,7 @@ import mindustry.type.*;
 
 public class NGItems{
     public static Item
-    astrolite , scalar;
+    astrolite , scalar, vector,matrix;
 
 //    public static final Seq<Item> serpuloItems = new Seq<>(), erekirItems = new Seq<>(), erekirOnlyItems = new Seq<>();
 
@@ -19,6 +19,14 @@ public class NGItems{
         scalar = new Item("y-i-0-scalar", Color.valueOf("00e676")){{
             hardness = 30;
             cost = 1f;
+        }};
+        vector = new Item("y-i-1-vector", Color.valueOf("3d5afe")){{
+            hardness = 40;
+            cost = 2f;
+        }};
+        matrix = new Item("y-i-2-matrix", Color.valueOf("8c4dff")){{
+            hardness = 50;
+            cost = 3f;
         }};
 
     }
