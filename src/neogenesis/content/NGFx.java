@@ -77,16 +77,16 @@ public class NGFx{
         Drawf.light(e.x, e.y, 30f, e.color, 0.6f * e.fout());
     }),
 
-    cosmosBlast = new Effect(60f, 60f, b -> {
+    cosmosBlast = new Effect(90f, 60f, b -> {
         float intensity = 1.5f;
 
         color(NGColor.genesux3, 0.7f);
-        for(int i = 0; i < 8; i++){
+        for(int i = 0; i < 12; i++){
             rand.setSeed(b.id*2 + i);
             float lenScl = rand.random(0.5f, 1f);
             int fi = i;
             b.scaled(b.lifetime * lenScl, e -> {
-                randLenVectors(e.id + fi - 1, e.fin(Interp.pow10Out), (int)(0.9f * intensity), 14f * intensity, (x, y, in, out) -> {
+                randLenVectors(e.id + fi - 1, e.fin(Interp.pow10Out), (int)(0.9f * intensity), 24f * intensity, (x, y, in, out) -> {
                     float fout = e.fout(Interp.pow5Out) * rand.random(0.5f, 1f);
                     float rad = fout * ((1f + intensity) * 2.35f);
 
@@ -105,7 +105,7 @@ public class NGFx{
             float a = e.rotation + rand.range(40f);
             v.trns(a, rand.random(e.finpow() * 50f));
             e.scaled(e.lifetime * rand.random(0.3f, 1f), b -> {
-                color(NGColor.genesux3, NGColor.genesux1, e.lifetime);
+                color(NGColor.genesux3);
                 Lines.stroke(b.fout() * 3f + 0.5f);
                 Lines.lineAngle(e.x + v.x, e.y + v.y, a, b.fout() * 8f + 0.4f);
             });
