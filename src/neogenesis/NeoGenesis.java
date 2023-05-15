@@ -61,7 +61,8 @@ public class NeoGenesis extends Mod{
     }
 
     @Override
-    public void loadContent(){
+    public void loadContent(
+    ){
         Log.info("Activating Plugin.");
 
         // First
@@ -71,6 +72,42 @@ public class NeoGenesis extends Mod{
 
         // Second
     	NGBlocks.load();
+        NGPlanets.load();
+
+
     }
     
 }
+
+// Concept Terms Is Complex!
+//
+// Firstly- ?
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+// At the end you will make "Everything" accessible.
