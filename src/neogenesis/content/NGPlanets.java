@@ -32,16 +32,18 @@ public class NGPlanets {
 
     ){
 
-        siravax = new Planet("1-pt-0-siravax", Planets.sun, 400f){{
+        siravax = new Planet("1-pt-0-siravax", Planets.sun, 3f){{
             bloom = true;
             accessible = true;
 
             meshLoader = () -> new SunMesh(
-                this, 6,
+                this, 8,
                 5, 0.3, 1.7, 1.2, 1,
                 1.1f,
                 NGColor.genesux1,
+                NGColor.genesux1.lerp(NGColor.genesux2, 0.5f),
                 NGColor.genesux2,
+                NGColor.genesux2.lerp(NGColor.genesux2, 0.5f),
                 NGColor.genesux3
             );
         }};
