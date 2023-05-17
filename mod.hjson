@@ -1,4 +1,4 @@
-name : "shd-nge"
+name : "nge"
 displayName : "Neogenesis"
 main : "neogenesis.NeoGenesis"
 author : "[accent]Sharded[] With Multi-Corprations"

@@ -112,9 +112,9 @@ public class NGFx{
         }
     }),
     blister1 = new Effect(44f, 120f, e -> {
-        color(Pal.lightPyraFlame, Pal.darkPyraFlame, Color.clear.cpy().a(0.01f), e.fin());
+        color(Pal.lightPyraFlame, Pal.darkPyraFlame, Color.gray, e.fin());
 
-        randLenVectors(e.id, 24, e.finpow() * 128f, e.rotation, 20f, (x, y) -> {
+        randLenVectors(e.id, 28, e.finpow() * 128f, e.rotation, 20f, (x, y) -> {
             Fill.circle(e.x + x, e.y + y, 0.65f + e.fout() * 2.4f);
         });
     });
