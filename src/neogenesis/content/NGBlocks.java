@@ -1,31 +1,41 @@
 package neogenesis.content;
 
 import arc.graphics.*;
-import arc.graphics.g2d.*;
 import arc.math.*;
 import arc.struct.*;
-import arc.util.*;
 import mindustry.*;
-import mindustry.content.*;
+import mindustry.entities.*;
+import mindustry.entities.abilities.*;
 import mindustry.entities.bullet.*;
 import mindustry.entities.effect.*;
+import mindustry.entities.part.DrawPart.*;
+import mindustry.entities.part.*;
 import mindustry.entities.pattern.*;
-import mindustry.game.*;
 import mindustry.gen.*;
 import mindustry.graphics.*;
 import mindustry.type.*;
+import mindustry.type.unit.*;
 import mindustry.world.*;
+import mindustry.world.blocks.*;
+import mindustry.world.blocks.campaign.*;
 import mindustry.world.blocks.defense.*;
 import mindustry.world.blocks.defense.turrets.*;
+import mindustry.world.blocks.distribution.*;
 import mindustry.world.blocks.environment.*;
+import mindustry.world.blocks.heat.*;
+import mindustry.world.blocks.legacy.*;
+import mindustry.world.blocks.liquid.*;
 import mindustry.world.blocks.logic.*;
 import mindustry.world.blocks.payloads.*;
 import mindustry.world.blocks.power.*;
 import mindustry.world.blocks.production.*;
+import mindustry.world.blocks.sandbox.*;
 import mindustry.world.blocks.storage.*;
+import mindustry.world.blocks.units.*;
 import mindustry.world.consumers.*;
 import mindustry.world.draw.*;
 import mindustry.world.meta.*;
+import mindustry.content.*;
 
 import static mindustry.Vars.*;
 import static mindustry.type.ItemStack.*;
@@ -37,6 +47,7 @@ public class NGBlocks{
 	//genesux
 //	astral, 
 	
+	blister,
 	// do not sort
 	test;
 	
@@ -51,6 +62,42 @@ public class NGBlocks{
 			size = 2;
 			researchCost = with(Items.silicon, 320, Items.tungsten, 120,Items.beryllium, 150);
 			consumePower(1f);
+	}};
+	blister = new ItemTurret("a-t-04-01-blister"){{
+		requirements(Category.turret, with(Items.copper, 25, Items.graphite, 22,Items.silicon,10));
+		ammo(
+			Items.pyratite, new BulletType(8f, 80f){{
+				ammoMultiplier = 6f;
+				hitSize = 7f;
+				lifetime = 18f;
+				pierce = true;
+				collidesAir = false;
+				statusDuration = 60f * 10;
+				shootEffect = Fx.shootPyraFlame;
+				hitEffect = Fx.hitFlameSmall;
+				despawnEffect = Fx.none;
+				status = StatusEffects.burning;
+				hittable = false;
+			}}
+		);
+		recoil = 1f;
+		drawer = new DrawTurret(){{
+			parts.add(new RegionPart("-barrel"){{
+				progress = PartProgress.recoil.delay(0.6f); //Since recoil is 1-0, cut from the start instead of the end.
+				under = true;
+				turretHeatLayer = Layer.turret - 0.0001f;
+				moveY = -1.5f;
+			}});
+		}};
+		reload = 6f;
+		coolantMultiplier = 1.5f;
+		range = 120f;
+		shootCone = 50f;
+		targetAir = false;
+		ammoUseEffect = Fx.none;
+		scaledHealth = 150;
+		size =3;
+		shootSound = Sounds.flame;
 	}};
 
 	        test = new ItemTurret("z-z-z-test"){{

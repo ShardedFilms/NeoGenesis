@@ -37,8 +37,8 @@ public class NGPlanets {
             accessible = true;
 
             meshLoader = () -> new SunMesh(
-                this, 8,
-                5, 0.3, 1.7, 1.2, 1,
+                this, 6,
+                5, 0.3, 0.1, 1.2, 1,
                 1.1f,
                 NGColor.genesux1,
                 NGColor.genesux1.lerp(NGColor.genesux2, 0.5f),
@@ -47,9 +47,9 @@ public class NGPlanets {
                 NGColor.genesux3
             );
         }};
-        siratla = new Planet("z-pt-z", siravax , 1f, 3){{
-            generator = new SerpuloPlanetGenerator();
-            meshLoader = () -> new HexMesh(this, 8);
+        siratla = new Planet("z-pt-z", siravax , 1f, 2){{
+            generator = new SiratlaPlanetGenerator();
+            meshLoader = () -> new HexMesh(this, 6);
 //            cloudMeshLoader = () -> new MultiMesh(
 //                new HexSkyMesh(this, 11, 0.15f, 0.13f, 5, new Color().set(Pal.spore).mul(0.9f).a(0.75f), 2, 0.45f, 0.9f, 0.38f),
 //                new HexSkyMesh(this, 1, 0.6f, 0.16f, 5, Color.white.cpy().lerp(Pal.spore, 0.55f).a(0.75f), 2, 0.45f, 1f, 0.41f)
@@ -76,7 +76,7 @@ public class NGPlanets {
             atmosphereRadOut = 0.3f;
             startSector = 2;
             alwaysUnlocked = true;
-            landCloudColor = NGColor.genesux3.lerp(Color.white, 0.5f).cpy().a(0.5f);
+            landCloudColor = NGColor.genesux3.cpy().a(0.5f);
         }};
 
  
