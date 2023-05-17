@@ -67,7 +67,7 @@ public class NGBlocks{
 		requirements(Category.turret, with(Items.copper, 25, Items.graphite, 22,Items.silicon,10));
 		ammo(
 			Items.pyratite, new BulletType(8f, 80f){{
-				ammoMultiplier = 6f;
+				ammoMultiplier = 4f;
 				hitSize = 7f;
 				lifetime = 18f;
 				pierce = true;
@@ -85,11 +85,12 @@ public class NGBlocks{
 			parts.add(new RegionPart("-barrel"){{
 				progress = PartProgress.recoil.delay(0.6f); //Since recoil is 1-0, cut from the start instead of the end.
 				under = true;
-				turretHeatLayer = Layer.turret - 0.0001f;
+				turretHeatLayer = Layer.turret + 0.0001f;
 				moveY = -1.5f;
 			}});
 		}};
 		reload = 6f;
+		maxAmmo*=1.5f;
 		coolantMultiplier = 1.5f;
 		range = 120f;
 		shootCone = 50f;
