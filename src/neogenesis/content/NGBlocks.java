@@ -73,7 +73,7 @@ public class NGBlocks{
 				pierce = true;
 				collidesAir = false;
 				statusDuration = 60f * 10;
-				shootEffect = Fx.shootPyraFlame;
+				shootEffect = NGFx.blister1;
 				hitEffect = Fx.hitFlameSmall;
 				despawnEffect = Fx.none;
 				status = StatusEffects.burning;

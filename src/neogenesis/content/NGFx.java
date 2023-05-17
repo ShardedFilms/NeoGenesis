@@ -110,6 +110,13 @@ public class NGFx{
                 Lines.lineAngle(e.x + v.x, e.y + v.y, a, b.fout() * 8f + 0.4f);
             });
         }
+    }),
+    blister1 = new Effect(44f, 120f, e -> {
+        color(Pal.lightPyraFlame, Pal.darkPyraFlame, Color.clear, e.fin());
+
+        randLenVectors(e.id, 24, e.finpow() * 70f, e.rotation, 20f, (x, y) -> {
+            Fill.circle(e.x + x, e.y + y, 0.65f + e.fout() * 2.4f);
+        });
     });
 
 
