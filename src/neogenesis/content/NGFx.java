@@ -115,7 +115,7 @@ public class NGFx{
         color(Pal.lightPyraFlame, Pal.darkPyraFlame, Color.gray, e.fin());
 
         randLenVectors(e.id, 28, e.finpow() * 128f, e.rotation, 20f, (x, y) -> {
-            Fill.circle(e.x + x, e.y + y, 0.65f + e.fout() * 2.4f);
+            Fill.circle(e.x + x, e.y + y, 0.0f + e.fout() * 2.4f);
         });
     });
 

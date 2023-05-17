@@ -64,17 +64,20 @@ public class NGBlocks{
 			consumePower(1f);
 	}};
 	blister = new ItemTurret("a-t-04-01-blister"){{
-		requirements(Category.turret, with(Items.copper, 25, Items.graphite, 22,Items.silicon,10));
+		requirements(Category.turret, with(Items.copper, 80, Items.graphite, 60,Items.silicon,40,Items.titanium,40));
+		recoilTime*=2f;
 		ammo(
-			Items.pyratite, new BulletType(8f, 80f){{
+			Items.pyratite, new BulletType(8f, 100f){{
 				ammoMultiplier = 4f;
 				hitSize = 7f;
 				lifetime = 18f;
 				pierce = true;
-				collidesAir = false;
-				statusDuration = 60f * 10;
+				collidesAir = true;
+				statusDuration = 60f * 13;
 				shootEffect = NGFx.blister1;
 				hitEffect = Fx.hitFlameSmall;
+				splashDamageRadius= 12;
+				splashDamage= damage/5f;
 				despawnEffect = Fx.none;
 				status = StatusEffects.burning;
 				hittable = false;
@@ -84,17 +87,17 @@ public class NGBlocks{
 		drawer = new DrawTurret(){{
 			parts.add(new RegionPart("-barrel"){{
 				progress = PartProgress.recoil.delay(0.6f); //Since recoil is 1-0, cut from the start instead of the end.
-				under = false;
-				turretHeatLayer = Layer.turret - 0.0001f;
+//				under = false;
+				turretHeatLayer = Layer.turret + 0.0001f;
 				moveY = -1.5f;
 			}});
 		}};
-		reload = 6f;
+		reload = 5f;
 		maxAmmo*=1.5f;
 		coolantMultiplier = 1.5f;
 		range = 120f;
 		shootCone = 50f;
-		targetAir = false;
+		targetAir = true;
 		ammoUseEffect = Fx.none;
 		scaledHealth = 150;
 		size =3;
