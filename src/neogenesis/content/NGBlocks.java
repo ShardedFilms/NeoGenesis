@@ -101,6 +101,7 @@ public class NGBlocks{
 		scaledHealth = 150;
 		size =3;
 		shootSound = Sounds.flame;
+		rotateSpeed*= 0.7f; 
 		recoilTime*=4f;
 	}};
 
