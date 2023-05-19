@@ -80,6 +80,21 @@ public class NGBlocks{
 				despawnEffect = Fx.none;
 				status = StatusEffects.burning;
 				hittable = false;
+			}},
+			Items.titanium, new BulletType(8f, 120f){{
+				ammoMultiplier = 4f;
+				hitSize = 7f;
+				lifetime = 15f;
+				pierce = true;
+				collidesAir = true;
+				statusDuration = 60f * 13;
+				shootEffect = NGFx.blister2;
+				hitEffect = NGFx.blister2h;
+				splashDamageRadius= 24;
+				splashDamage= damage/5f;
+				despawnEffect = Fx.none;
+				status = StatusEffects.freezing;
+				hittable = false;
 			}}
 		);
 		recoil = 1f;

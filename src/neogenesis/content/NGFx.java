@@ -7,6 +7,7 @@ import arc.math.*;
 import arc.math.geom.*;
 import arc.struct.*;
 import arc.util.*;
+import mindustry.content.Liquids;
 import mindustry.entities.*;
 import mindustry.gen.*;
 import mindustry.graphics.*;
@@ -117,7 +118,25 @@ public class NGFx{
         randLenVectors(e.id, 28, e.finpow() * 128f, e.rotation, 20f, (x, y) -> {
             Fill.circle(e.x + x, e.y + y, 0.0f + e.fout() * 2.4f);
         });
-    });
+    }),
+    blister2 = new Effect(44f, 120f, e -> {
+        color(Liquids.cryofluid.gasColor, Liquids.cryofluid.color, Color.gray, e.fin());
+
+        randLenVectors(e.id, 28, e.finpow() * 128f, e.rotation, 20f, (x, y) -> {
+            Fill.circle(e.x + x, e.y + y, 0.0f + e.fout() * 2.4f);
+        });
+    }),
+    blister2h = new Effect(14, e -> {
+        color(Liquids.cryofluid.gasColor, Liquids.cryofluid.color, e.fin());
+        stroke(0.5f + e.fout());
+
+        randLenVectors(e.id, 2, 1f + e.fin() * 15f, e.rotation, 50f, (x, y) -> {
+            float ang = Mathf.angle(x, y);
+            lineAngle(e.x + x, e.y + y, ang, e.fout() * 3 + 1f);
+        });
+    }),
+
+    end = new Effect(0, 0f, e -> {});
 
 
 	public static void load() {
