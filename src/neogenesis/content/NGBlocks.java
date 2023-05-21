@@ -117,7 +117,7 @@ public class NGBlocks{
 		size =3;
 		shootSound = Sounds.flame;
 		rotateSpeed*= 0.7f; 
-		recoilTime*=4f;
+		recoilTime*=2f;
 	}};
 
 	        test = new ItemTurret("z-z-z-test"){{
