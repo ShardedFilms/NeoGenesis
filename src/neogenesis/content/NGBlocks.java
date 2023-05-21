@@ -108,12 +108,11 @@ public class NGBlocks{
 		}};
 		reload = 5f;
 		maxAmmo*=1.5f;
-		coolantMultiplier = 1.5f;
 		range = 120f;
 		shootCone = 50f;
 		targetAir = true;
 		ammoUseEffect = Fx.none;
-		scaledHealth = 150;
+		scaledHealth = 180;
 		size =3;
 		shootSound = Sounds.flame;
 		rotateSpeed*= 0.7f; 
