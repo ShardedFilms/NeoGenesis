@@ -139,7 +139,7 @@ public class NGBlocks{
             reload = 20f;
             range = 80 * 3.15f;
             shootCone = 15f;
-            ammoUseEffect = Fx.casing1;
+            ammoUseEffect = Fx.none;
             health = 250;
             inaccuracy = 2f;
             rotateSpeed = 10f;
