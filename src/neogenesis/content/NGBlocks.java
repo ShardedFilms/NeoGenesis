@@ -81,7 +81,7 @@ public class NGBlocks{
 				status = StatusEffects.burning;
 				hittable = false;
 			}},
-			Items.titanium, new BulletType(8f, 120f){{
+			NGItems.vector, new BulletType(8f, 120f){{
 				ammoMultiplier = 4f;
 				hitSize = 7f;
 				lifetime = 15f;

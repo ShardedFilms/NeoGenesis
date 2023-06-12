@@ -102,7 +102,7 @@ public class NGFx{
 
     cosmosSpark = new Effect(35f, e -> {
         rand.setSeed(e.id);
-        for(int i = 0; i < 13; i++){
+        for(int i = 0; i < 12; i++){
             float a = e.rotation + rand.range(40f);
             v.trns(a, rand.random(e.finpow() * 50f));
             e.scaled(e.lifetime * rand.random(0.3f, 1f), b -> {
@@ -140,6 +140,9 @@ public class NGFx{
 
 
 	public static void load() {
+//
+//            Particle is only needed Region.
+//
 	}
 
 }

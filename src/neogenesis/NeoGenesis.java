@@ -35,10 +35,13 @@ public class NeoGenesis extends Mod{
         // 3 = Quantra
         // 4 = Elecian
         // 5 = Purtuxe
-        // 6 = Hexalia
-        // 7 = Nexolare
-        // 8 = Transentium
-        // 9 = Etherna
+        // 6 = impirion
+        // 7 = vyrtian
+        // 8 = Nebulon
+        // 9 = Thethia
+        // 10 = Zetaium
+        // 11 = Omega 
+        // 12 = Devine
         // a = Serpulo(Special)
         // b = Gemini
         // c = lyra 
@@ -52,6 +55,8 @@ public class NeoGenesis extends Mod{
         // k = Lightblue
         // l = accent
         //
+        // z = Undeeded
+        // 
         // Base > Category > index > Content
         //
         // All content is ordered alphabeticial
