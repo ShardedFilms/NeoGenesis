@@ -122,7 +122,7 @@ public class NGBlocks{
 	}};
 
 	        test = new ItemTurret("z-z-z-test"){{
-            requirements(Category.turret, with( NGItems.matrix , 200, NGItems.tensor,300 ));
+            requirements( Category.turret, with( NGItems.matrix , 200 , NGItems.tensor, 300 ));
 			ammo(
                 Items.copper,  new ArtilleryBulletType(3f, 20){{
                     knockback = 0.8f;
