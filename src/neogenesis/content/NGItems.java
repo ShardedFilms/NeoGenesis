@@ -31,7 +31,7 @@ public class NGItems{
         matrix = new Item("y-i-2-matrix", Color.valueOf("8c4dff")){{
             cost = 12f;
         }};
-        matrix = new Item("y-i-3-tensor", Color.valueOf("ffc400")){{
+        tensors = new Item("y-i-3-tensor", Color.valueOf("ffc400")){{
             cost = 15f;
         }};
 
