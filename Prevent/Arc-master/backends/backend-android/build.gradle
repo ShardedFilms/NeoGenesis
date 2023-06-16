@@ -1,3 +1,0 @@
-dependencies{
-   compileOnly fileTree(dir: 'libs', include: ['*.jar'])
-}
