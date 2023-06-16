@@ -40,6 +40,8 @@ import mindustry.content.*;
 import static mindustry.Vars.*;
 import static mindustry.type.ItemStack.*;
 
+import java.util.Locale.Category;
+
 public class NGBlocks{
 	//list of blocks and environment
 	public static Block largeRadar ,
@@ -130,7 +132,63 @@ public class NGBlocks{
                     splashDamageRadius = 25f * 0.75f;
                     splashDamage = 44f;
 					hitEffect= new MultiEffect(NGFx.cosmosBlast, NGFx.cosmosSpark);
+					
+                }},
+				NGItems.tensor,  new ArtilleryBulletType(3f, 20){{
+                    knockback = 0.8f;
+                    lifetime = 80f;
+                    width = height = 11f;
+                    collidesTiles = false;
+                    splashDamageRadius = 25f * 0.75f;
+                    splashDamage = 44f;
+					hitEffect= new MultiEffect(Fx.mineImpact.wrap(NGItems.tensor.color));
+					
+                    int count = 9;
+                    for(int j = 0; j < count; j++){
+                        int s = j;
+                        for(int i : Mathf.signs){
+                            float fin = 0.05f + (j + 1) / (float)count;
+                            float spd = speed;
+                            float life = lifetime / Mathf.lerp(fin, 1f, 0.5f);
+                            spawnBullets.add(new BasicBulletType(spd * fin, 60){{
+                                drag = 0.002f;
+                                width = 12f;
+                                height = 11f;
+                                lifetime = life + 5f;
+                                weaveRandom = false;
+                                hitSize = 5f;
+                                pierceCap = 2;
+                                pierce = true;
+                                pierceBuilding = true;
+                                hitColor = backColor = trailColor = NGItems.tensor.color;
+                                frontColor = Color.white;
+                                trailWidth = 2.5f;
+                                trailLength = 7;
+                                weaveScale = (3f + s/2f) / 1.2f;
+                                weaveMag = i * (4f - fin * 2f);
+
+                                splashDamage = 65f;
+                                splashDamageRadius = 30f;
+                                despawnEffect = new ExplosionEffect(){{
+                                    lifetime = 30f;
+                                    waveStroke = 4f;
+                                    waveColor = sparkColor = trailColor;
+                                    waveRad = 30f;
+                                    smokeSize = 7f;
+                                    smokes = 6;
+                                    smokeSizeBase = 0f;
+                                    smokeColor = trailColor;
+                                    sparks = 5;
+                                    sparkRad = 30f;
+                                    sparkLen = 3f;
+                                    sparkStroke = 1.5f;
+                                }};
+                            }});
+                        }
+                    }
+					
                 }}
+				
             );
 
             shootY = 3f;
