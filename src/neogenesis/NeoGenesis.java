@@ -55,6 +55,7 @@ public class NeoGenesis extends Mod{
         // k = Lightblue
         // l = accent
         //
+        // y = Sandbox and Persona
         // z = Undeeded
         // 
         // Base > Category > index > Content

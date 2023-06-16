@@ -119,7 +119,7 @@ public class NGBlocks{
 		recoilTime*=2f;
 	}};
 
-	        test = new WallItemTurret("z-z-z-test"){{
+	        test = new ItemTurret("z-z-z-test"){{
             requirements(Category.turret, with( NGItems.matrix , 200, NGItems.tensor,300 ));
 			ammo(
                 Items.copper,  new ArtilleryBulletType(3f, 20){{
@@ -133,11 +133,9 @@ public class NGBlocks{
                 }}
             );
 
-            shoot = new ShootAlternate(3.5f);
-
             shootY = 3f;
             reload = 20f;
-            range = 80 * 3.15f;
+            range = 100 * 3f;
             shootCone = 15f;
             ammoUseEffect = Fx.none;
             health = 250;
