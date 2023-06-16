@@ -1,4 +1,4 @@
-![Logo](assets/title.png)
+![Title](assets/title.png)
 
 ---
 # NeoGenesis
