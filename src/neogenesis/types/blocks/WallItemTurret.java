@@ -11,7 +11,7 @@ import mindustry.gen.*;
 import mindustry.graphics.*;
 import mindustry.world.*;
 import mindustry.world.meta.*;
-import mindustry.world.blocks.defense;
+import mindustry.world.blocks.defense.turrets.*;
 
 import static mindustry.Vars.*;
 
