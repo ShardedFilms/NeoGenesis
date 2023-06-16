@@ -1,0 +1,82 @@
+ext{
+    versions = [:]
+    libraries = [:]
+}
+
+versions.robovm = "2.3.19"
+versions.junit = "4.11"
+versions.jnigen = "28dd11fa4c33a7ae9e58897912b52ba7d53d54fe"
+
+libraries.robovm = [
+    "com.mobidevelop.robovm:robovm-rt:${versions.robovm}",
+    "com.mobidevelop.robovm:robovm-objc:${versions.robovm}",
+    "com.mobidevelop.robovm:robovm-cocoatouch:${versions.robovm}"
+]
+
+libraries.junit = [
+    "junit:junit:${versions.junit}"
+]
+
+libraries.jnigen = [
+    "com.github.libgdx.gdx-jnigen:gdx-jnigen:$versions.jnigen"
+]
+
+allprojects{
+    apply plugin: 'maven-publish'
+    group = 'com.github.Anuken'
+    version = '1.0'
+
+    buildscript{
+        repositories{
+            mavenCentral()
+            google()
+            maven{ url 'https://jitpack.io' }
+        }
+
+        dependencies{
+            classpath "com.github.libgdx.gdx-jnigen:gdx-jnigen-gradle:dffc32eecbf77aad264991ea44f1767a58cbee9d"
+        }
+    }
+
+    repositories{
+        mavenCentral()
+        google()
+        maven{ url 'https://jitpack.io' }
+    }
+
+    ext.aproj = { String module ->
+        if(findProject(module) != null){
+            return project(module)
+        }else{
+            return project(":Arc" + module)
+        }
+    }
+
+    tasks.withType(JavaCompile){
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+        options.encoding = "UTF-8"
+    }
+}
+
+subprojects{
+    apply plugin: "java-library"
+
+    compileJava{
+        options.fork = true
+        options.incremental = true
+    }
+
+    java{
+        withJavadocJar()
+        withSourcesJar()
+    }
+
+    publishing{
+        publications{
+            maven(MavenPublication){
+                from components.java
+            }
+        }
+    }
+}
