@@ -119,8 +119,8 @@ public class NGBlocks{
 		recoilTime*=2f;
 	}};
 
-	        test = new ItemTurret("z-z-z-test"){{
-            requirements(Category.turret, with( NGItems.scalar, 140 ,NGItems.vector, 120));
+	        test = new WallItemTurret("z-z-z-test"){{
+            requirements(Category.turret, with( NGItems.matrix , 200, NGItems.tensor,300 ));
 			ammo(
                 Items.copper,  new ArtilleryBulletType(3f, 20){{
                     knockback = 0.8f;
@@ -147,6 +147,8 @@ public class NGBlocks{
             researchCostMultiplier = 0.05f;
 			scaledHealth=160;
 			size=2;
+			absorbLasers = true;
+			lightningChance = 1;
 
 			buildVisibility = (BuildVisibility.sandboxOnly);
         }};
