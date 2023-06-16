@@ -204,7 +204,6 @@ public class NGBlocks{
 			scaledHealth=160;
 			size=2;
 			absorbLasers = true;
-			lightningChance = 1;
 
 			buildVisibility = (BuildVisibility.sandboxOnly);
         }};
