@@ -40,19 +40,17 @@ import mindustry.content.*;
 import static mindustry.Vars.*;
 import static mindustry.type.ItemStack.*;
 
-import java.util.Locale.Category;
-
 public class NGBlocks{
 	//list of blocks and environment
 	public static Block largeRadar ,
 
 	//genesux
-//	astral, 
-	
+//	astral,
+
 	blister,
 	// do not sort
 	test;
-	
+
 
 	public static void load() {
 		largeRadar = new Radar("0-d-1-large-radar"){{
@@ -64,151 +62,97 @@ public class NGBlocks{
 			size = 2;
 			researchCost = with(Items.silicon, 320, Items.tungsten, 120,Items.beryllium, 150);
 			consumePower(1f);
-	}};
-	blister = new ItemTurret("a-t-04-01-blister"){{
-		requirements(Category.turret, with(Items.copper, 80, Items.graphite, 60,Items.silicon,40,Items.titanium,40));
-		ammo(
-			Items.pyratite, new BulletType(8f, 100f){{
-				ammoMultiplier = 4f;
-				hitSize = 7f;
-				lifetime = 15f;
-				pierce = true;
-				collidesAir = true;
-				statusDuration = 60f * 13;
-				shootEffect = NGFx.blister1;
-				hitEffect = Fx.hitFlameSmall;
-				splashDamageRadius= 24;
-				splashDamage= damage/5f;
-				despawnEffect = Fx.none;
-				status = StatusEffects.burning;
-				hittable = false;
-			}},
-			NGItems.vector, new BulletType(8f, 120f){{
-				ammoMultiplier = 4f;
-				hitSize = 7f;
-				lifetime = 15f;
-				pierce = true;
-				collidesAir = true;
-				statusDuration = 60f * 13;
-				shootEffect = NGFx.blister2;
-				hitEffect = NGFx.blister2h;
-				splashDamageRadius= 24;
-				splashDamage= damage/5f;
-				despawnEffect = Fx.none;
-				status = StatusEffects.freezing;
-				hittable = false;
-			}}
-		);
-		recoil = 1f;
-		drawer = new DrawTurret(){{
-			parts.add(new RegionPart("-barrel"){{
-				progress = PartProgress.recoil.delay(1f); //Since recoil is 1-0, cut from the start instead of the end.
-//				under = false;
-				turretHeatLayer = Layer.turret + 0.0001f;
-				moveY = -1.5f;
-			}});
 		}};
-		reload = 5f;
-		maxAmmo*=1.5f;
-		range = 120f;
-		shootCone = 50f;
-		targetAir = true;
-		ammoUseEffect = Fx.none;
-		scaledHealth = 180;
-		size =3;
-		shootSound = Sounds.flame;
-		rotateSpeed*= 0.7f; 
-		recoilTime*=2f;
-	}};
-
-	        test = new ItemTurret("z-z-z-test"){{
-            requirements( Category.turret, with( NGItems.matrix , 200 , NGItems.tensor, 300 ));
+		blister = new ItemTurret("a-t-04-01-blister"){{
+			requirements(Category.turret, with(Items.copper, 80, Items.graphite, 60,Items.silicon,40,Items.titanium,40));
 			ammo(
-                Items.copper,  new ArtilleryBulletType(3f, 20){{
-                    knockback = 0.8f;
-                    lifetime = 80f;
-                    width = height = 11f;
-                    collidesTiles = false;
-                    splashDamageRadius = 25f * 0.75f;
-                    splashDamage = 44f;
-					hitEffect= new MultiEffect(NGFx.cosmosBlast, NGFx.cosmosSpark);
-					
-                }},
-				NGItems.tensor,  new ArtilleryBulletType(3f, 20){{
-                    knockback = 0.8f;
-                    lifetime = 80f;
-                    width = height = 11f;
-                    collidesTiles = false;
-                    splashDamageRadius = 25f * 0.75f;
-                    splashDamage = 44f;
-					hitEffect= new MultiEffect(Fx.mineImpact.wrap(NGItems.tensor.color));
-					
-                    int count = 9;
-                    for(int j = 0; j < count; j++){
-                        int s = j;
-                        for(int i : Mathf.signs){
-                            float fin = 0.05f + (j + 1) / (float)count;
-                            float spd = speed;
-                            float life = lifetime / Mathf.lerp(fin, 1f, 0.5f);
-                            spawnBullets.add(new BasicBulletType(spd * fin, 60){{
-                                drag = 0.002f;
-                                width = 12f;
-                                height = 11f;
-                                lifetime = life + 5f;
-                                weaveRandom = false;
-                                hitSize = 5f;
-                                pierceCap = 2;
-                                pierce = true;
-                                pierceBuilding = true;
-                                hitColor = backColor = trailColor = NGItems.tensor.color;
-                                frontColor = Color.white;
-                                trailWidth = 2.5f;
-                                trailLength = 7;
-                                weaveScale = (3f + s/2f) / 1.2f;
-                                weaveMag = i * (4f - fin * 2f);
+					Items.pyratite, new BulletType(8f, 100f){{
+						ammoMultiplier = 4f;
+						hitSize = 7f;
+						lifetime = 15f;
+						pierce = true;
+						collidesAir = true;
+						statusDuration = 60f * 13;
+						shootEffect = NGFx.blister1;
+						hitEffect = Fx.hitFlameSmall;
+						splashDamageRadius= 24;
+						splashDamage= damage/5f;
+						despawnEffect = Fx.none;
+						status = StatusEffects.burning;
+						hittable = false;
+					}},
+					NGItems.vector, new BulletType(8f, 120f){{
+						ammoMultiplier = 4f;
+						hitSize = 7f;
+						lifetime = 15f;
+						pierce = true;
+						collidesAir = true;
+						statusDuration = 60f * 13;
+						shootEffect = NGFx.blister2;
+						hitEffect = NGFx.blister2h;
+						splashDamageRadius= 24;
+						splashDamage= damage/5f;
+						despawnEffect = Fx.none;
+						status = StatusEffects.freezing;
+						hittable = false;
+					}}
+			);
+			recoil = 1f;
+			drawer = new DrawTurret(){{
+				parts.add(new RegionPart("-barrel"){{
+					progress = PartProgress.recoil.delay(1f); //Since recoil is 1-0, cut from the start instead of the end.
+//				under = false;
+					turretHeatLayer = Layer.turret + 0.0001f;
+					moveY = -1.5f;
+				}});
+			}};
+			reload = 5f;
+			maxAmmo*=1.5f;
+			range = 120f;
+			shootCone = 50f;
+			targetAir = true;
+			ammoUseEffect = Fx.none;
+			scaledHealth = 180;
+			size =3;
+			shootSound = Sounds.flame;
+			rotateSpeed*= 0.7f;
+			recoilTime*=2f;
+		}};
 
-                                splashDamage = 65f;
-                                splashDamageRadius = 30f;
-                                despawnEffect = new ExplosionEffect(){{
-                                    lifetime = 30f;
-                                    waveStroke = 4f;
-                                    waveColor = sparkColor = trailColor;
-                                    waveRad = 30f;
-                                    smokeSize = 7f;
-                                    smokes = 6;
-                                    smokeSizeBase = 0f;
-                                    smokeColor = trailColor;
-                                    sparks = 5;
-                                    sparkRad = 30f;
-                                    sparkLen = 3f;
-                                    sparkStroke = 1.5f;
-                                }};
-                            }});
-                        }
-                    }
-					
-                }}
-				
-            );
+		test = new ItemTurret("z-z-z-test"){{
+			requirements(Category.turret, with( NGItems.scalar, 140 ,NGItems.vector, 120));
+			ammo(
+					Items.copper,  new ArtilleryBulletType(3f, 20){{
+						knockback = 0.8f;
+						lifetime = 80f;
+						width = height = 11f;
+						collidesTiles = false;
+						splashDamageRadius = 25f * 0.75f;
+						splashDamage = 44f;
+						hitEffect= new MultiEffect(NGFx.cosmosBlast, NGFx.cosmosSpark);
+					}}
+			);
 
-            shootY = 3f;
-            reload = 20f;
-            range = 100 * 3f;
-            shootCone = 15f;
-            ammoUseEffect = Fx.none;
-            health = 250;
-            inaccuracy = 2f;
-            rotateSpeed = 10f;
-            coolant = consumeCoolant(0.1f);
-            researchCostMultiplier = 0.05f;
+			shoot = new ShootAlternate(3.5f);
+
+			shootY = 3f;
+			reload = 20f;
+			range = 80 * 3.15f;
+			shootCone = 15f;
+			ammoUseEffect = Fx.none;
+			health = 250;
+			inaccuracy = 2f;
+			rotateSpeed = 10f;
+			coolant = consumeCoolant(0.1f);
+			researchCostMultiplier = 0.05f;
 			scaledHealth=160;
 			size=2;
-			absorbLasers = true;
 
 			buildVisibility = (BuildVisibility.sandboxOnly);
-        }};
+		}};
 
 	}
 }
-	
+
+
 		
