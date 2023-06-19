@@ -100,7 +100,7 @@ public class NGBlocks{
 			recoil = 1f;
 			drawer = new DrawTurret(){{
 				parts.add(new RegionPart("-barrel"){{
-					progress = PartProgress.recoil.delay(1f); //Since recoil is 1-0, cut from the start instead of the end.
+					progress = PartProgress.recoil; //Since recoil is 1-0, cut from the start instead of the end.
 //				under = false;
 					turretHeatLayer = Layer.turret + 0.0001f;
 					moveY = -1.5f;
@@ -130,6 +130,43 @@ public class NGBlocks{
 						splashDamageRadius = 25f * 0.75f;
 						splashDamage = 44f;
 						hitEffect= new MultiEffect(NGFx.cosmosBlast, NGFx.cosmosSpark);
+					}},
+					NGItems.tensor,  new BasicBulletType(16f, 20){{
+						knockback = 0.8f;
+						lifetime = 20f;
+						width = 10f;
+						height = 15f;
+						splashDamageRadius = 3 * 8;
+						splashDamage = 66f;
+						hitEffect= Fx.blastExplosion;
+
+						int count = 10;
+						for(int j = 0; j < count; j++){
+							int s = j;
+							for(int i : Mathf.signs){
+								float fin = 0.05f + (j + 1) / (float)count;
+								float spd = speed;
+								float life = lifetime / Mathf.lerp(fin, 1f, 0.5f);
+								spawnBullets.add(new BasicBulletType(spd * fin, 60){{
+									drag = 0.002f;
+									width = 12f;
+									height = 11f;
+									lifetime = life + 5f;
+									weaveRandom = false;
+									hitSize = 5f;
+									pierceCap = 2;
+									pierce = true;
+									pierceBuilding = true;
+									frontColor = Color.white;
+									trailWidth = 2.5f;
+									trailLength = 7;
+
+									splashDamage = 33f;
+									splashDamageRadius = 30f;
+									despawnEffect = (Fx.mineImpactWave.wrap(Pal.redLight));
+								}});
+							}
+						}
 					}}
 			);
 
