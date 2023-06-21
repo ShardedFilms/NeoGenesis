@@ -80,7 +80,7 @@ jar{
 task deploy(type: Jar){
     dependsOn jarAndroid
     dependsOn jar
-    archiveFileName = "${project.archivesBaseName}.jar"
+    archiveFileName = "NeogenesisPowered.jar"
 
     from{ [zipTree("$buildDir/libs/${project.archivesBaseName}Desktop.jar"), zipTree("$buildDir/libs/${project.archivesBaseName}Android.jar")] }
 
@@ -91,3 +91,4 @@ task deploy(type: Jar){
         }
     }
 }
+// ${project.archivesBaseName}

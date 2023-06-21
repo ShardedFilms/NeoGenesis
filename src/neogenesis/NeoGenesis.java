@@ -79,7 +79,7 @@ public class NeoGenesis extends Mod{
         // Second
     	NGBlocks.load();
         NGUnitTypes.load();
-//        NGPlanets.load();
+        NGPlanets.load();
 
 
     }
