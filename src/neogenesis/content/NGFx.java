@@ -49,6 +49,8 @@ public class NGFx{
         });
     }),
 
+
+
     astral2 = new Effect(40f, 100f, e -> {
         color(NGColor.genesux3);
         stroke(e.fout() * 4f);
@@ -135,6 +137,23 @@ public class NGFx{
             lineAngle(e.x + x, e.y + y, ang, e.fout() * 3 + 1f);
         });
     }),
+            decade1 = new Effect(10, e -> {
+                color(NGColor.purtuxe2, NGColor.purtuxe1, e.fin());
+                float w = 1f + 5 * e.fout();
+                Drawf.tri(e.x, e.y, w, 16f * e.fout(), e.rotation);
+                Drawf.tri(e.x, e.y, w, 4f * e.fout(), e.rotation + 180f);
+            }),
+
+    decade1sm = new Effect(25f, e -> {
+        color(NGColor.purtuxe2, NGColor.purtuxe1, Color.gray, e.fin());
+
+        randLenVectors(e.id, 7, e.finpow() * 8f, e.rotation, 30f, (x, y) -> {
+            Fill.circle(e.x + x, e.y + y, e.fout() * 1.75f);
+        });
+    }),
+
+
+
 
     end = new Effect(0, 0f, e -> {});
 

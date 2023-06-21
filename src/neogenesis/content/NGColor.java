@@ -20,6 +20,9 @@ public class NGColor {
     genesux3 = Color.valueOf("74c2e8"),
     genesux2 = Color.valueOf("99f8ff"),
 
+    purtuxe1 = Color.valueOf("774ACFFF"),
+    purtuxe2 = Color.valueOf("A170F4FF"),
+
     // End
 
     endOfLine = Color.valueOf("00000000");
