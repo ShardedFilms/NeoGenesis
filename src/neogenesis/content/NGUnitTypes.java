@@ -9,6 +9,9 @@ import arc.util.*;
 import mindustry.ai.*;
 import mindustry.ai.types.*;
 import mindustry.content.Fx;
+import mindustry.content.Items;
+import mindustry.content.Liquids;
+import mindustry.content.StatusEffects;
 import mindustry.entities.*;
 import mindustry.entities.abilities.*;
 import mindustry.entities.bullet.*;
@@ -23,47 +26,54 @@ import mindustry.type.unit.*;
 import mindustry.type.weapons.*;
 import mindustry.world.meta.*;
 
-import neogenesis.content.*;
-
 import static arc.graphics.g2d.Draw.*;
 import static arc.graphics.g2d.Lines.*;
 import static arc.math.Angles.*;
 import static mindustry.Vars.*;
 
-public class NGUnitTypes {
-        // 1
+public class NGUnitTypes{
+    //region standard
 
-        // 2
+    //mech
+    public static UnitType decade;
+    //mech, legacy
 
-        // 3
+    //endregion
 
-        // 4
+    public static void load(){
+        //region ground attack
 
-        // 5
-    public static UnitType decade ;
-        // 6
-        public static void load(){
+        decade = new UnitType("5-a-01-decade"){{
+            speed = 0.5f;
+            hitSize = 8f;
+            health = 150;
+            canDrown = true;
+            mechStepParticles = false;
+            stepShake = 0;
+            mechFrontSway = 0.2f;
+            mechSideSway = 0.1f;
+            singleTarget = false;
+            rotateSpeed = 10f;
+            ammoType = new PowerAmmoType(400);
+            weapons.add(new Weapon("large-weapon"){{
+                reload = 45f;
+                x = 0f;
+                y = 0f;
+                top = false;
+                mirror=false;
+                shoot= new ShootHelix(){{
+                    scl =2f;
+                    mag=2f;
+                    offset=0;
+                }};
+                bullet = new BasicBulletType(6f, 12){{
+                    width = 7f;
+                    height = 9f;
+                    lifetime = 20f;
+                }};
+            }});
+        }};
 
-            decade = new UnitType("5-a-01-decade"){{
-                speed = 5f*8f/60;
-                hitSize = 10f;
-                health = 240;
-                weapons.add(new Weapon("weapon"){{
-                    reload = 45f;
-                    top = false;
-                    alternate=false;
-                    mirror=false;
-//                    ejectEffect = Fx.casing1;
-                    shootSound = Sounds.blaster;
-                    bullet = new BasicBulletType(6f, 15){{
-                        width = 7f;
-                        height = 9f;
-                        frontColor = Color.white;
-                        backColor = NGColor.purtuxe1;
-                        lifetime = 20f;
-                        shootEffect=new MultiEffect (NGFx.decade1, NGFx.decade1sm);
-                    }};
-                }});
-            }};
-        }
+        //endregion
+    }
 }

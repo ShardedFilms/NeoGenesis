@@ -44,9 +44,9 @@ public class NeoGenesis extends Mod{
         // 12 = Devine
         // a = Serpulo(Special)
         // b = Gemini
-        // c = lyra 
+        // c = lyra
         // d = taurus
-        // e = Electra
+        // e = Electra + aqua
         // f = Erekir(Special)
         // g = Assertion
         // h = Pink
