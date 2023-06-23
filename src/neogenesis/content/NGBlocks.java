@@ -99,13 +99,13 @@ public class NGBlocks{
 						hittable = false;
 					}}
 			);
-			recoil = 10f;
+			recoil = 2f;
 			drawer = new DrawTurret(){{
 				parts.add(new RegionPart("-barrel"){{
 					progress = PartProgress.recoil; //Since recoil is 1-0, cut from the start instead of the end.
 //				under = false;
 					turretHeatLayer = Layer.turret + 0.0001f;
-					moveY = -1.5f;
+					moveY = -2f;
 				}});
 			}};
 			reload = 5f;

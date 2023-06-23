@@ -51,9 +51,9 @@ public class NGUnitTypes{
         //region ground attack
 
         decade = new UnitType("5-a-01-decade"){{
-            speed = 0.5f;
-            hitSize = 8f;
-            health = 150;
+            speed = 0.4f;
+            hitSize = 10f;
+            health = 230;
             constructor = MechUnit::create;
             canDrown = true;
             mechStepParticles = false;
@@ -61,16 +61,24 @@ public class NGUnitTypes{
             mechFrontSway = 0.2f;
             mechSideSway = 0.1f;
             singleTarget = false;
-            rotateSpeed = 10f;
-            ammoType = new PowerAmmoType(400);
-            weapons.add(new Weapon("large-weapon"){{
+            rotateSpeed = 8f;
+            ammoType = new PowerAmmoType(800);
+            parts.add(new ShapePart(){{
+                sides = 4;
+                progress = PartProgress.warmup.delay(1 * 0.2f);
+                radius = 0;
+                radiusTo = 2;
+                y =-6;
+            }});
+            weapons.add(new Weapon("weapon"){{
                 reload = 45f;
                 x = 0f;
                 y = 0f;
                 top = false;
                 mirror=false;
+                shootSound= (Sounds.blaster);
                 shoot= new ShootHelix(){{
-                    scl =2f;
+                    scl =1f;
                     mag=2f;
                     offset=0;
                 }};
@@ -78,6 +86,11 @@ public class NGUnitTypes{
                     width = 7f;
                     height = 9f;
                     lifetime = 20f;
+                    shootEffect = NGFx.decade1;
+                    smokeEffect= NGFx.decade1sm;
+                    hitColor = backColor = trailColor = NGColor.purtuxe2;
+                    trailLength = 6;
+                    despawnEffect = Fx.hitBulletColor;
                 }};
             }});
         }};
