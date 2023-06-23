@@ -48,7 +48,6 @@ public class NGUnitTypes{
             *
             * Remember!, Every Units must have Constructor to make a type of unit! */
     ){
-        //region ground attack
 
         decade = new UnitType("5-a-01-decade"){{
             speed = 0.4f;
@@ -92,11 +91,11 @@ public class NGUnitTypes{
                     smokeEffect= NGFx.decade1sm;
                     hitColor = backColor = trailColor = NGColor.purtuxe2;
                     trailLength = 6;
+                    trailWidth = 2.5f;
                     despawnEffect = Fx.hitBulletColor;
                 }};
             }});
         }};
 
-        //endregion
     }
 }
