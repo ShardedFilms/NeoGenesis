@@ -65,9 +65,11 @@ public class NGUnitTypes{
             ammoType = new PowerAmmoType(800);
             parts.add(new ShapePart(){{
                 sides = 4;
-                progress = PartProgress.warmup.delay(1 * 0.2f);
+                progress = PartProgress.warmup;
                 radius = 0;
                 radiusTo = 2;
+                layer= Layer.bullet;
+                color=NGColor.purtuxe2;
                 y =-6;
             }});
             weapons.add(new Weapon("weapon"){{
