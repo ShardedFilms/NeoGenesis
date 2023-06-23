@@ -40,13 +40,21 @@ public class NGUnitTypes{
 
     //endregion
 
-    public static void load(){
+    public static void load(
+            /* Used to be my personality as my own use. awe.
+            * With The power of code and intelligence to perform creation.
+            * However... One step goes wrong. because we founded
+            * the Missing Constructor.
+            *
+            * Remember!, Every Units must have Constructor to make a type of unit! */
+    ){
         //region ground attack
 
         decade = new UnitType("5-a-01-decade"){{
             speed = 0.5f;
             hitSize = 8f;
             health = 150;
+            constructor = MechUnit::create;
             canDrown = true;
             mechStepParticles = false;
             stepShake = 0;

@@ -64,6 +64,7 @@ public class NeoGenesis extends Mod{
         // You must sort it yourself.
     ){
         Log.info("Loads Constructor.");
+
     }
 
     @Override
@@ -78,8 +79,8 @@ public class NeoGenesis extends Mod{
 
         // Second
     	NGBlocks.load();
-        NGUnitTypes.load();
         NGPlanets.load();
+        NGUnitTypes.load();
 
 
     }
