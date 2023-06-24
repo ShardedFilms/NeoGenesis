@@ -93,6 +93,7 @@ public class NGUnitTypes{
                     trailLength = 6;
                     trailWidth = 1f;
                     despawnEffect = Fx.hitBulletColor;
+                    hitEffect = Fx.hitSquaresColor;
                 }};
             }});
         }};
