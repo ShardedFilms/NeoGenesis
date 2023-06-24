@@ -140,10 +140,9 @@ public class NGBlocks{
 						splashDamageRadius = 3 * 8;
 						splashDamage = 66f;
 						hitEffect= Fx.blastExplosion;
+						reloadMultiplier =2f;
 					}}
 			);
-
-			shoot = new ShootAlternate(3.5f);
 
 			shootY = 3f;
 			reload = 20f;

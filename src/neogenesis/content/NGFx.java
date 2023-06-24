@@ -147,7 +147,7 @@ public class NGFx{
     decade1sm = new Effect(25f, e -> {
         color(NGColor.purtuxe2, NGColor.purtuxe1, Color.gray, e.fin());
 
-        randLenVectors(e.id, 7, e.finpow() * 8f, e.rotation, 30f, (x, y) -> {
+        randLenVectors(e.id, 7, e.finpow() * 10f, e.rotation, 45f, (x, y) -> {
             Fill.circle(e.x + x, e.y + y, e.fout() * 1.75f);
         });
     }),

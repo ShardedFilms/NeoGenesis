@@ -25,7 +25,7 @@ public class NGPlanets {
     public static void load(
 
     // Planetor's Section
-    // We gonna make Newtron Star...
+    // We will make Newtron Star...
     // ???
     // ???
     // Planets.

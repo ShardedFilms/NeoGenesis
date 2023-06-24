@@ -52,7 +52,7 @@ public class NGUnitTypes{
         decade = new UnitType("5-a-01-decade"){{
             speed = 0.4f;
             hitSize = 10f;
-            health = 230;
+            health = 250;
             constructor = MechUnit::create;
             canDrown = true;
             mechStepParticles = false;
@@ -60,7 +60,7 @@ public class NGUnitTypes{
             mechFrontSway = 0.2f;
             mechSideSway = 0.1f;
             singleTarget = false;
-            rotateSpeed = 8f;
+            rotateSpeed = 4f;
             ammoType = new PowerAmmoType(800);
             parts.add(new ShapePart(){{
                 sides = 4;
@@ -71,19 +71,19 @@ public class NGUnitTypes{
                 color=NGColor.purtuxe2;
                 y =-6;
             }});
-            weapons.add(new Weapon("weapon"){{
-                reload = 45f;
+            weapons.add(new Weapon("purp"){{
+                reload = 36f;
                 x = 0f;
                 y = 0f;
                 top = false;
                 mirror=false;
                 shootSound= (Sounds.blaster);
                 shoot= new ShootHelix(){{
-                    scl =1f;
-                    mag=2f;
-                    offset=0;
+                    scl =2f;
+                    mag=1.5f;
+                    offset = Mathf.PI * 1.25f;
                 }};
-                bullet = new BasicBulletType(6f, 12){{
+                bullet = new BasicBulletType(8f, 18){{
                     width = 7f;
                     height = 9f;
                     lifetime = 20f;
@@ -91,7 +91,7 @@ public class NGUnitTypes{
                     smokeEffect= NGFx.decade1sm;
                     hitColor = backColor = trailColor = NGColor.purtuxe2;
                     trailLength = 6;
-                    trailWidth = 2.5f;
+                    trailWidth = 1f;
                     despawnEffect = Fx.hitBulletColor;
                 }};
             }});
