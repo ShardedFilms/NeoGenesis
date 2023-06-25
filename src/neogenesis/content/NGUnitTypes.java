@@ -211,7 +211,7 @@ public class NGUnitTypes{
                                         new ShootSpread(){{
                                             shots = 8;
                                             spread= 22.5f;
-                                        }}
+                                        }},new ShootPattern()
                                 );
                         bullet = new LaserBulletType(){{
                             length = 600f;
@@ -255,7 +255,7 @@ public class NGUnitTypes{
                                 new ShootSpread(){{
                                     shots = 8;
                                     spread= 22.5f;
-                                }}
+                                }},new ShootPattern()
                         );
                 bullet = new BombBulletType(0f, 0f){{
                     width = 10f;
