@@ -98,29 +98,44 @@ public class NGUnitTypes{
             }});
         }};
         personal = new UnitType("y-a-01-personal"){{
-            speed = 4f;
-            hitSize = 10f;
+            speed = 8f;
+            hitSize = 24f;
             accel = 0.05f;
             drag = 0.1f;
-            health = 10*310;
+            health = 10/0; // Devision by zero.
             lifetime = 3600;
             constructor = TimedKillUnit::create;
+            outlineRadius=0;
             flying = true;
             engineSize=0;
             singleTarget = false;
             rotateSpeed = 20f;
             ammoType = new PowerAmmoType(800);
             for(int j = 0; j < 3; j++){
-                int i = j*2;
+                int i = j;
                 parts.add(new ShapePart(){{
                     hollow=true;
                     x = 0f;
-                    rotateSpeed = 3+i;
+                    rotateSpeed = -3-i;
                     color = Liquids.cryofluid.color.cpy().a(0.5f);
                     strokeTo = stroke = 5;
                     radius=radiusTo=36;
                     layer = 110;
                             circle=false;
+                    sides=6;
+                }});
+            };
+            for(int j2 = 0; j2 < 2; j2++){
+                int i2 = j2;
+                parts.add(new ShapePart(){{
+                    hollow=true;
+                    x = 0f;
+                    rotateSpeed = -2-i2;
+                    color = Liquids.ozone.color.cpy().a(0.5f);
+                    strokeTo = stroke = 6;
+                    radius=radiusTo=40;
+                    layer = 110;
+                    circle=false;
                     sides=6;
                 }});
             }
@@ -131,6 +146,7 @@ public class NGUnitTypes{
                 top = false;
                 mirror=false;
                 shootSound= (Sounds.none);
+                aimDst=99999;
                 shoot = new ShootMulti
                         (
                                 new ShootPattern(){{
@@ -146,18 +162,17 @@ public class NGUnitTypes{
                 }}
                 );
                 bullet = new BasicBulletType(16f, 1000){{
-                    width = 7f;
-                    height = 9f;
+                    width = 14f;
+                    height = 36f;
                     lifetime = 50f;
-                    shootEffect = NGFx.decade1;
-                    smokeEffect= NGFx.decade1sm;
+                    shootEffect = NGFx.end;
+                    smokeEffect= NGFx.end;
                     hitColor = backColor = trailColor = Liquids.cryofluid.color;
-                    trailLength = 6;
                     trailWidth = 1f;
                     despawnEffect = Fx.hitBulletColor;
                     hitEffect = Fx.hitSquaresColor;
-                    sprite = "large-missile";
-                    shrinkY=1;
+                    sprite = "missile-large";
+                    shrinkY=0;
                 }};
             }},
                     new Weapon("shootdeath"){{
@@ -174,7 +189,7 @@ public class NGUnitTypes{
                                 (
                                         new ShootSpread(){{
                                             shots = 8;
-                                            spread= 45f;
+                                            spread= 22.5f;
                                         }},new ShootBarrel(){{
                                     barrels = new float[]{
                                             0f, 0f, 22.5f,
@@ -188,9 +203,9 @@ public class NGUnitTypes{
 
                             lifetime = 50f;
 
-                            lightningSpacing = 24f;
+                            lightningSpacing = 16f;
                             lightningLength = 2;
-                            lightningDelay = 0.5f;
+                            lightningDelay = 0.2f;
                             lightningLengthRand = 0;
                             lightningDamage = 33;
                             lightningType = new ExplosionBulletType(675f, 40f){{
@@ -200,6 +215,8 @@ public class NGUnitTypes{
                             lightningAngleRand = 0f;
                             largeHit = true;
                             lightColor = lightningColor = Pal.redLight;
+                            splashDamage = 2675;
+                            splashDamageRadius=60;
                             sideAngle = 15f;
                             sideWidth = 0f;
                             sideLength = 0f;
