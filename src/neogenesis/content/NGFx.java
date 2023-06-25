@@ -157,7 +157,7 @@ public class NGFx{
     hlaserxplosion = new Effect(20f, 160f, e -> {
         color(e.color);
         stroke(e.fout() * 5f);
-        float circleRad = 6f + e.finpow() * 80f;
+        float circleRad = 6f + e.finpow() * 60f;
         Lines.circle(e.x, e.y, circleRad);
 
         color(e.color, e.foutpow());

@@ -121,7 +121,7 @@ public class NGUnitTypes{
             hitSize = 24f;
             accel = 0.05f;
             drag = 0.1f;
-            health = 2147483648f*2147483648f; // Devision by zero.
+            health = 2147483648f*2147483648f;
             lifetime = 3600;
             constructor = TimedKillUnit::create;
             outlineRadius=0;
@@ -211,10 +211,7 @@ public class NGUnitTypes{
                                         new ShootSpread(){{
                                             shots = 8;
                                             spread= 22.5f;
-                                        }},new ShootBarrel(){{
-                                    barrels = new float[]{
-                                    };
-                                }}
+                                        }}
                                 );
                         bullet = new LaserBulletType(){{
                             length = 600f;
@@ -258,10 +255,7 @@ public class NGUnitTypes{
                                 new ShootSpread(){{
                                     shots = 8;
                                     spread= 22.5f;
-                                }},new ShootBarrel(){{
-                            barrels = new float[]{
-                            };
-                        }}
+                                }}
                         );
                 bullet = new BombBulletType(0f, 0f){{
                     width = 10f;
