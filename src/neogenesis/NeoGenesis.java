@@ -28,7 +28,7 @@ public class NeoGenesis extends Mod{
 	public NeoGenesis(
 
         // Base Category.
-        // 0 = Devlopment
+        // 0 = Development
         //
         // 1 = Genesux
         // 2 = Solran
