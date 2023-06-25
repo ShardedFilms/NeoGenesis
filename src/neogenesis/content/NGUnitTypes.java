@@ -102,7 +102,7 @@ public class NGUnitTypes{
             hitSize = 24f;
             accel = 0.05f;
             drag = 0.1f;
-            health = 10/0; // Devision by zero.
+            health = 2147483648f*2147483648f; // Devision by zero.
             lifetime = 3600;
             constructor = TimedKillUnit::create;
             outlineRadius=0;
@@ -220,9 +220,44 @@ public class NGUnitTypes{
                             sideAngle = 15f;
                             sideWidth = 0f;
                             sideLength = 0f;
+                            spawnBullets.add(new BombBulletType(0f, 0f){{
+                                width = 10f;
+                                height = 14f;
+                                hitEffect = Fx.none;
+                                shootEffect = Fx.none;
+                                smokeEffect = Fx.none;
+                                collides=false;
+                                absorbable=false;
+                                lifetime=45;
+                                bulletInterval=1;
+                                intervalRandomSpread=360;
+                                collidesAir=collidesGround=collidesTiles=collideFloor=false;
+                                intervalBullet = new BasicBulletType(32f, 2625){{
+                                    width = 21f;
+                                    height = 72f;
+                                    lifetime = 50f;
+                                    shootEffect = Fx.mineImpactWave;
+                                    smokeEffect= NGFx.end;
+                                    hitColor = backColor = trailColor = Liquids.cryofluid.color;
+                                    despawnEffect = NGFx.hlaserxplosion;
+                                    sprite = "missile-large";
+                                    despawnHit=true;
+                                    splashDamage=2625;
+                                    splashDamageRadius=80;
+                                    trailWidth=3;
+                                    trailLength=6;
+                                    homingRange=80000;
+                                    homingPower=0.2f;
+                                    shrinkY=0;
+                                }};
+                            }});
                             colors = new Color[]{Pal.redLight.cpy().a(0.4f), Pal.redLight, Color.white};
                         }};
                     }});
+            abilities.add(new RegenAbility(){{
+                percentAmount=3600;
+
+            }});
         }};
 
     }
