@@ -106,6 +106,7 @@ public class NGUnitTypes{
             lifetime = 3600;
             constructor = TimedKillUnit::create;
             flying = true;
+            engineSize=0;
             singleTarget = false;
             rotateSpeed = 20f;
             ammoType = new PowerAmmoType(800);
