@@ -133,7 +133,7 @@ public class NGUnitTypes{
                     rotateSpeed = -2-i2;
                     color = Liquids.ozone.color.cpy().a(0.5f);
                     strokeTo = stroke = 6;
-                    radius=radiusTo=40;
+                    radius=radiusTo=36;
                     layer = 110;
                     circle=false;
                     sides=6;
@@ -198,14 +198,14 @@ public class NGUnitTypes{
                                 );
                         bullet = new LaserBulletType(){{
                             length = 600f;
-                            damage = 2675f;
+                            damage = 2625f;
                             width = 80f;
 
                             lifetime = 50f;
 
-                            lightningSpacing = 16f;
+                            lightningSpacing = 8f;
                             lightningLength = 2;
-                            lightningDelay = 0.2f;
+                            lightningDelay = 0.1f;
                             lightningLengthRand = 0;
                             lightningDamage = 33;
                             lightningType = new ExplosionBulletType(675f, 40f){{
@@ -215,7 +215,7 @@ public class NGUnitTypes{
                             lightningAngleRand = 0f;
                             largeHit = true;
                             lightColor = lightningColor = Pal.redLight;
-                            splashDamage = 2675;
+                            splashDamage = 2625;
                             splashDamageRadius=60;
                             sideAngle = 15f;
                             sideWidth = 0f;
