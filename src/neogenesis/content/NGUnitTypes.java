@@ -98,6 +98,25 @@ public class NGUnitTypes{
             }});
         }};
         personal = new UnitType("y-a-01-personal"){{
+            BulletType ex = new BasicBulletType(32f, 2625){{
+                width = 21f;
+                height = 72f;
+                lifetime = 50f;
+                shootEffect = Fx.mineImpactWave;
+                smokeEffect= NGFx.end;
+                frontColor=Color.white;
+                hitColor = backColor = trailColor = Liquids.cryofluid.color;
+                despawnEffect = NGFx.hlaserxplosion;
+                sprite = "missile-large";
+                despawnHit=true;
+                splashDamage=2625;
+                splashDamageRadius=80;
+                trailWidth=3;
+                trailLength=6;
+                homingRange=80000;
+                homingPower=0.2f;
+                shrinkY=0;
+            }};
             speed = 8f;
             hitSize = 24f;
             accel = 0.05f;
@@ -132,6 +151,7 @@ public class NGUnitTypes{
                     x = 0f;
                     rotateSpeed = -2-i2;
                     color = Liquids.ozone.color.cpy().a(0.5f);
+                    rotation=30;
                     strokeTo = stroke = 6;
                     radius=radiusTo=36;
                     layer = 110;
@@ -168,6 +188,7 @@ public class NGUnitTypes{
                     shootEffect = NGFx.end;
                     smokeEffect= NGFx.end;
                     hitColor = backColor = trailColor = Liquids.cryofluid.color;
+                    frontColor=Color.white;
                     trailWidth = 1f;
                     despawnEffect = Fx.hitBulletColor;
                     hitEffect = Fx.hitSquaresColor;
@@ -192,7 +213,6 @@ public class NGUnitTypes{
                                             spread= 22.5f;
                                         }},new ShootBarrel(){{
                                     barrels = new float[]{
-                                            0f, 0f, 22.5f,
                                     };
                                 }}
                                 );
@@ -220,40 +240,49 @@ public class NGUnitTypes{
                             sideAngle = 15f;
                             sideWidth = 0f;
                             sideLength = 0f;
-                            spawnBullets.add(new BombBulletType(0f, 0f){{
-                                width = 10f;
-                                height = 14f;
-                                hitEffect = Fx.none;
-                                shootEffect = Fx.none;
-                                smokeEffect = Fx.none;
-                                collides=false;
-                                absorbable=false;
-                                lifetime=45;
-                                bulletInterval=1;
-                                intervalRandomSpread=360;
-                                collidesAir=collidesGround=collidesTiles=collideFloor=false;
-                                intervalBullet = new BasicBulletType(32f, 2625){{
-                                    width = 21f;
-                                    height = 72f;
-                                    lifetime = 50f;
-                                    shootEffect = Fx.mineImpactWave;
-                                    smokeEffect= NGFx.end;
-                                    hitColor = backColor = trailColor = Liquids.cryofluid.color;
-                                    despawnEffect = NGFx.hlaserxplosion;
-                                    sprite = "missile-large";
-                                    despawnHit=true;
-                                    splashDamage=2625;
-                                    splashDamageRadius=80;
-                                    trailWidth=3;
-                                    trailLength=6;
-                                    homingRange=80000;
-                                    homingPower=0.2f;
-                                    shrinkY=0;
-                                }};
-                            }});
                             colors = new Color[]{Pal.redLight.cpy().a(0.4f), Pal.redLight, Color.white};
                         }};
-                    }});
+                    }},
+            new Weapon("shootdeath"){{
+                reload = 100f;
+                x = 0f;
+                y = 0f;
+                top = false;
+                mirror=false;
+                controllable=false;
+                shootOnDeath=true;
+                shootCone=360;
+                shootSound= (Sounds.laserbig);
+                shoot = new ShootMulti
+                        (
+                                new ShootSpread(){{
+                                    shots = 8;
+                                    spread= 22.5f;
+                                }},new ShootBarrel(){{
+                            barrels = new float[]{
+                            };
+                        }}
+                        );
+                bullet = new BombBulletType(0f, 0f){{
+                    width = 10f;
+                    height = 14f;
+                    speed = 0.2f;
+                    hitEffect = Fx.none;
+                    shootEffect = Fx.none;
+                    smokeEffect = Fx.none;
+                    collides=false;
+                    absorbable=false;
+                    lifetime=50;
+                    bulletInterval=1;
+                    intervalRandomSpread=360;
+                    collidesAir=collidesGround=collidesTiles=collideFloor=false;
+                    intervalBullet = ex;
+                    fragBullet=ex;
+                    fragBullets=36;
+                    fragSpread=10;
+                    fragRandomSpread=0;
+                }};
+            }});
             abilities.add(new RegenAbility(){{
                 percentAmount=3600;
 
