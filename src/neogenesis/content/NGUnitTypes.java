@@ -101,9 +101,9 @@ public class NGUnitTypes{
             BulletType ex = new BasicBulletType(32f, 2625){{
                 width = 21f;
                 height = 72f;
-                lifetime = 50f;
+                lifetime = 100f;
                 shootEffect = Fx.mineImpactWave;
-                smokeEffect= NGFx.end;
+                smokeEffect= Fx.mineImpactWave;
                 frontColor=Color.white;
                 hitColor = backColor = trailColor = Liquids.cryofluid.color;
                 despawnEffect = NGFx.hlaserxplosion;
@@ -261,7 +261,7 @@ public class NGUnitTypes{
                     width = 10f;
                     height = 14f;
                     speed = 0.2f;
-                    hitEffect = Fx.none;
+                    hitEffect = Fx.mineImpactWave;
                     shootEffect = Fx.none;
                     smokeEffect = Fx.none;
                     collides=false;
@@ -271,6 +271,8 @@ public class NGUnitTypes{
                     intervalRandomSpread=360;
                     collidesAir=collidesGround=collidesTiles=collideFloor=false;
                     intervalBullet = ex;
+                    fragVelocityMin=1;
+                    fragVelocityMax=1.2f;
                     fragBullet=ex;
                     fragBullets=36;
                     fragSpread=10;
