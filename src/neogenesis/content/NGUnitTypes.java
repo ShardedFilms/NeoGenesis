@@ -123,6 +123,7 @@ public class NGUnitTypes{
 
             envDisabled = Env.none;
             createScorch = false;
+            fogRadius *=2;
 
             speed = 10f;
             hitSize = 24f;
@@ -216,20 +217,16 @@ public class NGUnitTypes{
                         shootSound= (Sounds.laserbig);
                         shoot = new ShootMulti
                                 (
-                                        new ShootBarrel(){{
-                                            barrels = new float[]{
-                                                    0f,0f,22.5f};
-                                        }},
                                         new ShootSpread(){{
                                             shots = 8;
                                             spread= 22.5f;
                                         }},new ShootPattern()
                                 );
                         bullet = new LaserBulletType(){{
-                            length = 800f;
+                            length = 1000f;
                             damage = 2625f;
                             width = 160f;
-                            layer = 110;
+                            layer = 109;
 
                             lifetime = 70f;
 
@@ -265,10 +262,6 @@ public class NGUnitTypes{
                         shootSound= (Sounds.laserbig);
                         shoot = new ShootMulti
                                 (
-                                        new ShootBarrel(){{
-                                            barrels = new float[]{
-                                                    0f,0f,22.5f};
-                                        }},
                                         new ShootSpread(){{
                                             shots = 8;
                                             spread= 22.5f;
@@ -278,10 +271,11 @@ public class NGUnitTypes{
                             damage = 675f;
                             damageInterval =1;
                             width = 36;
-                            length = 800f;
+                            length = 1000f;
+                            layer = 110;
                             hitEffect = Fx.scatheSlash;
                             drawSize = 420f;
-                            lifetime = 100f;
+                            lifetime = 240f;
                             fadeTime = 20f;
                             shake = 4f;
                             despawnEffect = Fx.none;
@@ -294,7 +288,8 @@ public class NGUnitTypes{
                             incendSpread = 0f;
                             incendAmount = 0;
                             colors = new Color[]{Pal.redLight.cpy().a(0.4f),Pal.redLight.cpy().a(0.8f), Pal.redLight, Color.white};
-                            oscScl*=2;
+                            oscScl=0.6f;
+                            oscMag=3f;
 
 
                         }
@@ -303,7 +298,7 @@ public class NGUnitTypes{
                             public void update(Bullet b) {
                                 super.update(b);
                                 if(b.timer.get(1)){
-                                    Lightning.create(b.team, Pal.sapBullet, damage*2, b.x, b.y, b.rotation() + (6 - Mathf.range(12)), (int)(length/10));};
+                                    Lightning.create(b.team, Pal.redLight, damage*2, b.x, b.y, b.rotation() + (6 - Mathf.range(12)), (int)(length/10));};
                         }};
                     }},
             new Weapon("shootdeath"){{
@@ -334,15 +329,15 @@ public class NGUnitTypes{
                     splashDamageRadius= 400;
                     collides=false;
                     absorbable=false;
-                    lifetime=120;
+                    lifetime=240;
                     hitColor = Liquids.cryofluid.color;
                     bulletInterval=1;
                     intervalRandomSpread=360;
                     collidesAir=collidesGround=collidesTiles=collideFloor=false;
                     intervalBullet = ex;
-                    fragVelocityMin=2f;
-                    fragVelocityMax=2f;
-                    fragLifeMax = fragLifeMin = 1.2f;
+                    fragVelocityMin=1.2f;
+                    fragVelocityMax=1.2f;
+                    fragLifeMax = fragLifeMin = 2f;
                     fragBullet=ex;
                     fragBullets=72;
                     fragSpread=5;
