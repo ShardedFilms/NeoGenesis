@@ -193,6 +193,14 @@ public class NGFx{
                     });
                 }
             }),
+            massiveShockwave = new Effect(30f, 80f, e -> {
+                for(int i = 0; i < 10; i++){
+                    float radi = i*20;
+                    color(Color.white, Color.lightGray, e.fin());
+                    stroke(e.fout() * 9f);
+                    Lines.circle(e.x, e.y, e.fin() * 500f+radi);
+                }
+            }),
     end = new Effect(0, 0f, e -> {});
 
 

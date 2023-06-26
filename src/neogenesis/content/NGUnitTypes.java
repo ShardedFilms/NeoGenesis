@@ -115,10 +115,15 @@ public class NGUnitTypes{
                 splashDamageRadius=120;
                 trailWidth=6;
                 trailLength=6;
-                homingRange=80000;
+                homingRange=1600;
+                homingDelay=3;
                 homingPower=0.2f;
                 shrinkY=0;
             }};
+
+            envDisabled = Env.none;
+            createScorch = false;
+
             speed = 10f;
             hitSize = 24f;
             accel = 0.1f;
@@ -131,7 +136,7 @@ public class NGUnitTypes{
             engineSize=0;
             singleTarget = false;
             rotateSpeed = 20f;
-            deathExplosionEffect= Fx.none;
+            deathExplosionEffect= NGFx.massiveShockwave;
             ammoType = new PowerAmmoType(800);
             for(int j = 0; j < 3; j++){
                 int i = j;
@@ -139,7 +144,7 @@ public class NGUnitTypes{
                     hollow=true;
                     x = 0f;
                     rotateSpeed = -4-i*0.9f;
-                    color = Liquids.cryofluid.color.cpy().a(0.5f);
+                    color = Liquids.cryofluid.color.cpy().a(0.4f);
                     strokeTo = stroke = 5;
                     radius=radiusTo=36;
                     layer = 110;
@@ -211,6 +216,10 @@ public class NGUnitTypes{
                         shootSound= (Sounds.laserbig);
                         shoot = new ShootMulti
                                 (
+                                        new ShootBarrel(){{
+                                            barrels = new float[]{
+                                                    0f,0f,22.5f};
+                                        }},
                                         new ShootSpread(){{
                                             shots = 8;
                                             spread= 22.5f;
@@ -220,10 +229,11 @@ public class NGUnitTypes{
                             length = 800f;
                             damage = 2625f;
                             width = 160f;
+                            layer = 110;
 
                             lifetime = 70f;
 
-                            lightningSpacing = 8f;
+                            lightningSpacing = 12f;
                             lightningLength = 2;
                             lightningDelay = 0.1f;
                             lightningLengthRand = 0;
@@ -241,6 +251,59 @@ public class NGUnitTypes{
                             sideWidth = 0f;
                             sideLength = 0f;
                             colors = new Color[]{Pal.redLight.cpy().a(0.4f), Pal.redLight, Color.white};
+                        }};
+                    }},
+                    new Weapon("shootdeath"){{
+                        reload = 100f;
+                        x = 0f;
+                        y = 0f;
+                        top = false;
+                        mirror=false;
+                        controllable=false;
+                        shootOnDeath=true;
+                        shootCone=360;
+                        shootSound= (Sounds.laserbig);
+                        shoot = new ShootMulti
+                                (
+                                        new ShootBarrel(){{
+                                            barrels = new float[]{
+                                                    0f,0f,22.5f};
+                                        }},
+                                        new ShootSpread(){{
+                                            shots = 8;
+                                            spread= 22.5f;
+                                        }},new ShootPattern()
+                                );
+                        bullet = new ContinuousLaserBulletType(){{
+                            damage = 675f;
+                            damageInterval =1;
+                            width = 36;
+                            length = 800f;
+                            hitEffect = Fx.scatheSlash;
+                            drawSize = 420f;
+                            lifetime = 100f;
+                            fadeTime = 20f;
+                            shake = 4f;
+                            despawnEffect = Fx.none;
+                            smokeEffect = Fx.none;
+
+                            chargeEffect = Fx.none;
+                            hitColor = Pal.redLight;
+
+                            incendChance = 0f;
+                            incendSpread = 0f;
+                            incendAmount = 0;
+                            colors = new Color[]{Pal.redLight.cpy().a(0.4f),Pal.redLight.cpy().a(0.8f), Pal.redLight, Color.white};
+                            oscScl*=2;
+
+
+                        }
+                            // Creates Lightning during its fire.
+                            @Override
+                            public void update(Bullet b) {
+                                super.update(b);
+                                if(b.timer.get(1)){
+                                    Lightning.create(b.team, Pal.sapBullet, damage*2, b.x, b.y, b.rotation() + (6 - Mathf.range(12)), (int)(length/10));};
                         }};
                     }},
             new Weapon("shootdeath"){{
@@ -267,9 +330,11 @@ public class NGUnitTypes{
                     hitEffect = Fx.mineImpactWave;
                     shootEffect = Fx.none;
                     smokeEffect = Fx.none;
+                    splashDamage = 2625*1000000;
+                    splashDamageRadius= 400;
                     collides=false;
                     absorbable=false;
-                    lifetime=70;
+                    lifetime=120;
                     hitColor = Liquids.cryofluid.color;
                     bulletInterval=1;
                     intervalRandomSpread=360;
