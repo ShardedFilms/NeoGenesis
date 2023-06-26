@@ -119,9 +119,9 @@ public class NGUnitTypes{
             }};
             speed = 8f;
             hitSize = 24f;
-            accel = 0.05f;
-            drag = 0.1f;
-            health = 2147483648f*2147483648f;
+            accel = 0.1f;
+            drag = 0.05f;
+            health = 2147483647;
             lifetime = 3600;
             constructor = TimedKillUnit::create;
             outlineRadius=0;
@@ -253,8 +253,8 @@ public class NGUnitTypes{
                 shoot = new ShootMulti
                         (
                                 new ShootSpread(){{
-                                    shots = 8;
-                                    spread= 22.5f;
+                                    shots = 4;
+                                    spread= 45;
                                 }},new ShootPattern()
                         );
                 bullet = new BombBulletType(0f, 0f){{
@@ -272,10 +272,10 @@ public class NGUnitTypes{
                     collidesAir=collidesGround=collidesTiles=collideFloor=false;
                     intervalBullet = ex;
                     fragVelocityMin=1;
-                    fragVelocityMax=1.2f;
+                    fragVelocityMax=1f;
                     fragBullet=ex;
-                    fragBullets=36;
-                    fragSpread=10;
+                    fragBullets=72;
+                    fragSpread=5;
                     fragRandomSpread=0;
                 }};
             }});
