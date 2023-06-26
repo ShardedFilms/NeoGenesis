@@ -154,17 +154,17 @@ public class NGFx{
 
 
 
-    hlaserxplosion = new Effect(20f, 160f, e -> {
+    hlaserxplosion = new Effect(30f, 160f, e -> {
         color(e.color);
         stroke(e.fout() * 5f);
-        float circleRad = 6f + e.finpow() * 60f;
+        float circleRad = 6f + e.finpow() * 120f;
         Lines.circle(e.x, e.y, circleRad);
 
         color(e.color, e.foutpow());
         Fill.circle(e.x, e.y, circleRad);
 
         rand.setSeed(e.id);
-        for(int i = 0; i < 24; i++){
+        for(int i = 0; i < 32; i++){
             float angle = rand.random(360f);
             float lenRand = rand.random(0.5f, 3f);
             Tmp.v1.trns(angle, circleRad);

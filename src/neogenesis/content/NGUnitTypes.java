@@ -101,7 +101,7 @@ public class NGUnitTypes{
             BulletType ex = new BasicBulletType(32f, 2625){{
                 width = 21f;
                 height = 72f;
-                lifetime = 100f;
+                lifetime = 100;
                 shootEffect = Fx.mineImpactWave;
                 smokeEffect= Fx.mineImpactWave;
                 frontColor=Color.white;
@@ -110,8 +110,8 @@ public class NGUnitTypes{
                 sprite = "missile-large";
                 despawnHit=true;
                 splashDamage=2625;
-                splashDamageRadius=80;
-                trailWidth=3;
+                splashDamageRadius=120;
+                trailWidth=6;
                 trailLength=6;
                 homingRange=80000;
                 homingPower=0.2f;
@@ -214,18 +214,18 @@ public class NGUnitTypes{
                                         }},new ShootPattern()
                                 );
                         bullet = new LaserBulletType(){{
-                            length = 600f;
+                            length = 800f;
                             damage = 2625f;
-                            width = 80f;
+                            width = 160f;
 
-                            lifetime = 50f;
+                            lifetime = 70f;
 
                             lightningSpacing = 8f;
                             lightningLength = 2;
                             lightningDelay = 0.1f;
                             lightningLengthRand = 0;
                             lightningDamage = 33;
-                            lightningType = new ExplosionBulletType(675f, 40f){{
+                            lightningType = new ExplosionBulletType(2625f, 80f){{
                                 collidesAir = true;
                                 shootEffect = Fx.blastExplosion;
                             }};
@@ -233,7 +233,7 @@ public class NGUnitTypes{
                             largeHit = true;
                             lightColor = lightningColor = Pal.redLight;
                             splashDamage = 2625;
-                            splashDamageRadius=60;
+                            splashDamageRadius=80;
                             sideAngle = 15f;
                             sideWidth = 0f;
                             sideLength = 0f;
@@ -253,26 +253,26 @@ public class NGUnitTypes{
                 shoot = new ShootMulti
                         (
                                 new ShootSpread(){{
-                                    shots = 4;
-                                    spread= 45;
+                                    shots = 6;
+                                    spread= 30;
                                 }},new ShootPattern()
                         );
                 bullet = new BombBulletType(0f, 0f){{
                     width = 10f;
                     height = 14f;
-                    speed = 0.2f;
+                    speed = 0.4f;
                     hitEffect = Fx.mineImpactWave;
                     shootEffect = Fx.none;
                     smokeEffect = Fx.none;
                     collides=false;
                     absorbable=false;
-                    lifetime=50;
+                    lifetime=70;
                     bulletInterval=1;
                     intervalRandomSpread=360;
                     collidesAir=collidesGround=collidesTiles=collideFloor=false;
                     intervalBullet = ex;
-                    fragVelocityMin=1;
-                    fragVelocityMax=1f;
+                    fragVelocityMin=2f;
+                    fragVelocityMax=2f;
                     fragBullet=ex;
                     fragBullets=72;
                     fragSpread=5;
