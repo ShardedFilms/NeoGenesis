@@ -46,7 +46,7 @@ public class NGUnitTypes{
             * However... One step goes wrong. because we founded
             * the Missing Constructor.
             *
-            * Remember!, Every Units must have Constructor to make a type of unit! */
+            * Remember!, Every Unit must have Constructor to make a type of unit! */
     ){
 
         decade = new UnitType("5-a-01-decade"){{
@@ -105,8 +105,10 @@ public class NGUnitTypes{
                 shootEffect = Fx.mineImpactWave;
                 smokeEffect= Fx.mineImpactWave;
                 frontColor=Color.white;
+                damage = 2625*3f;
                 hitColor = backColor = trailColor = Liquids.cryofluid.color;
                 despawnEffect = NGFx.hlaserxplosion;
+                hitEffect= Fx.none;
                 sprite = "missile-large";
                 despawnHit=true;
                 splashDamage=2625;
@@ -117,7 +119,7 @@ public class NGUnitTypes{
                 homingPower=0.2f;
                 shrinkY=0;
             }};
-            speed = 8f;
+            speed = 10f;
             hitSize = 24f;
             accel = 0.1f;
             drag = 0.05f;
@@ -129,13 +131,14 @@ public class NGUnitTypes{
             engineSize=0;
             singleTarget = false;
             rotateSpeed = 20f;
+            deathExplosionEffect= Fx.none;
             ammoType = new PowerAmmoType(800);
             for(int j = 0; j < 3; j++){
                 int i = j;
                 parts.add(new ShapePart(){{
                     hollow=true;
                     x = 0f;
-                    rotateSpeed = -3-i;
+                    rotateSpeed = -4-i*0.9f;
                     color = Liquids.cryofluid.color.cpy().a(0.5f);
                     strokeTo = stroke = 5;
                     radius=radiusTo=36;
@@ -149,7 +152,7 @@ public class NGUnitTypes{
                 parts.add(new ShapePart(){{
                     hollow=true;
                     x = 0f;
-                    rotateSpeed = -2-i2;
+                    rotateSpeed = -3-i2;
                     color = Liquids.ozone.color.cpy().a(0.5f);
                     rotation=30;
                     strokeTo = stroke = 6;
@@ -253,8 +256,8 @@ public class NGUnitTypes{
                 shoot = new ShootMulti
                         (
                                 new ShootSpread(){{
-                                    shots = 6;
-                                    spread= 30;
+                                    shots = 8;
+                                    spread= 22.5f;
                                 }},new ShootPattern()
                         );
                 bullet = new BombBulletType(0f, 0f){{
@@ -267,16 +270,19 @@ public class NGUnitTypes{
                     collides=false;
                     absorbable=false;
                     lifetime=70;
+                    hitColor = Liquids.cryofluid.color;
                     bulletInterval=1;
                     intervalRandomSpread=360;
                     collidesAir=collidesGround=collidesTiles=collideFloor=false;
                     intervalBullet = ex;
                     fragVelocityMin=2f;
                     fragVelocityMax=2f;
+                    fragLifeMax = fragLifeMin = 1.2f;
                     fragBullet=ex;
                     fragBullets=72;
                     fragSpread=5;
                     fragRandomSpread=0;
+                    despawnEffect = NGFx.massiveSmoke;
                 }};
             }});
             abilities.add(new RegenAbility(){{
