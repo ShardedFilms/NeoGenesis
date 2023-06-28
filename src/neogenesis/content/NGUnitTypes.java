@@ -179,7 +179,7 @@ public class NGUnitTypes{
                 shoot = new ShootMulti
                         (
                                 new ShootPattern(){{
-                                    shots = 9;
+                                    shots = 10;
                                     shotDelay =1;
                                 }},new ShootBarrel(){{
                     barrels = new float[]{
@@ -225,7 +225,7 @@ public class NGUnitTypes{
                         bullet = new LaserBulletType(){{
                             length = 1000f;
                             damage = 2625f;
-                            width = 160f;
+                            width = 180f;
                             layer = 109;
 
                             lifetime = 70f;
@@ -235,7 +235,7 @@ public class NGUnitTypes{
                             lightningDelay = 0.1f;
                             lightningLengthRand = 0;
                             lightningDamage = 33;
-                            lightningType = new ExplosionBulletType(2625f, 80f){{
+                            lightningType = new ExplosionBulletType(4*2625f, 80f){{
                                 collidesAir = true;
                                 shootEffect = Fx.blastExplosion;
                             }};
@@ -329,9 +329,11 @@ public class NGUnitTypes{
                     splashDamageRadius= 400;
                     collides=false;
                     absorbable=false;
+                    hittable=false;
                     lifetime=240;
                     hitColor = Liquids.cryofluid.color;
-                    bulletInterval=1;
+                    bulletInterval=3;
+                    intervalBullets =3;
                     intervalRandomSpread=360;
                     collidesAir=collidesGround=collidesTiles=collideFloor=false;
                     intervalBullet = ex;
@@ -345,8 +347,71 @@ public class NGUnitTypes{
                     despawnEffect = NGFx.massiveSmoke;
                 }};
             }});
+            // Secondary with ,for, loop
+            for(float posX : new float[]{-80f,-40f,0f,40f,80f}){
+                for(float posY : new float[]{0f,-40f,-60f,-40f,0f}){
+
+                    weapons.add(new Weapon("turret-large"){{
+                        reload = 9f;
+                        rotateSpeed = 0.2f;
+                        rotationLimit = 20f;
+                        x = posX;
+                        y = posY;
+                        top = false;
+                        mirror=false;
+                        alternate=false;
+                        shootSound= (Sounds.none);
+                        aimDst=99999;
+                        shoot = new ShootMulti
+                                (
+                                        new ShootPattern(){{
+                                            shots = 10;
+                                            shotDelay =1;
+                                        }},new ShootBarrel(){{
+                                    barrels = new float[]{
+                                            0f, 16f, 0f,
+                                            4f, 12f, 0f,
+                                            -4f, 12f, 0f,
+                                    };
+                                    shots=3;
+                                }}
+                                );
+                        for(int j2 = 0; j2 < 2; j2++){
+                            int i2 = j2;
+                            parts.add(new ShapePart(){{
+                                hollow=true;
+                                x = 0f;
+                                rotateSpeed = -3-i2;
+                                color = Liquids.cryofluid.color.cpy().a(0.5f);
+                                rotation=30;
+                                strokeTo = stroke = 6;
+                                radius=radiusTo=36;
+                                layer = 110;
+                                circle=false;
+                                sides=6;
+                            }});
+                        }
+                        bullet = new BasicBulletType(16f, 1000){{
+                            width = 10f;
+                            height = 24f;
+                            lifetime = 50f;
+                            shootEffect = NGFx.end;
+                            smokeEffect= NGFx.end;
+                            hitColor = backColor = trailColor = Liquids.cryofluid.color;
+                            frontColor=Color.white;
+                            trailWidth = 1f;
+                            despawnEffect = Fx.hitBulletColor;
+                            hitEffect = Fx.hitSquaresColor;
+                            sprite = "bullet";
+                            shrinkY=0;
+                        }};
+
+                    }});
+
+                }
+            }
             abilities.add(new RegenAbility(){{
-                percentAmount=3600;
+                percentAmount=6000;
 
             }});
         }};
