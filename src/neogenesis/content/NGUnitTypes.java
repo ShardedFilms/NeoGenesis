@@ -25,6 +25,7 @@ import mindustry.type.ammo.*;
 import mindustry.type.unit.*;
 import mindustry.type.weapons.*;
 import mindustry.world.meta.*;
+import neogenesis.types.template.*;
 
 import static arc.graphics.g2d.Draw.*;
 import static arc.graphics.g2d.Lines.*;
@@ -348,68 +349,33 @@ public class NGUnitTypes{
                 }};
             }});
             // Secondary with ,for, loop
-            for(float posX : new float[]{-80f,-40f,0f,40f,80f}){
-                for(float posY : new float[]{0f,-40f,-60f,-40f,0f}){
 
-                    weapons.add(new Weapon("turret-large"){{
-                        reload = 9f;
-                        rotateSpeed = 0.2f;
-                        rotationLimit = 20f;
-                        x = posX;
-                        y = posY;
-                        top = false;
-                        mirror=false;
-                        alternate=false;
-                        shootSound= (Sounds.none);
-                        aimDst=99999;
-                        shoot = new ShootMulti
-                                (
-                                        new ShootPattern(){{
-                                            shots = 10;
-                                            shotDelay =1;
-                                        }},new ShootBarrel(){{
-                                    barrels = new float[]{
-                                            0f, 16f, 0f,
-                                            4f, 12f, 0f,
-                                            -4f, 12f, 0f,
-                                    };
-                                    shots=3;
-                                }}
-                                );
-                        for(int j2 = 0; j2 < 2; j2++){
-                            int i2 = j2;
-                            parts.add(new ShapePart(){{
-                                hollow=true;
-                                x = 0f;
-                                rotateSpeed = -3-i2;
-                                color = Liquids.cryofluid.color.cpy().a(0.5f);
-                                rotation=30;
-                                strokeTo = stroke = 6;
-                                radius=radiusTo=36;
-                                layer = 110;
-                                circle=false;
-                                sides=6;
-                            }});
-                        }
-                        bullet = new BasicBulletType(16f, 1000){{
-                            width = 10f;
-                            height = 24f;
-                            lifetime = 50f;
-                            shootEffect = NGFx.end;
-                            smokeEffect= NGFx.end;
-                            hitColor = backColor = trailColor = Liquids.cryofluid.color;
-                            frontColor=Color.white;
-                            trailWidth = 1f;
-                            despawnEffect = Fx.hitBulletColor;
-                            hitEffect = Fx.hitSquaresColor;
-                            sprite = "bullet";
-                            shrinkY=0;
-                        }};
+                    weapons.add(new TurretLarge("turret-large"){{
 
-                    }});
+                        aimDst = 99999;
+                        x= -80f;
+                        y= 0f;
+                                    mirror = true;
 
-                }
-            }
+                    }},
+                            new TurretLarge("turret-large"){{
+
+                                aimDst = 99999;
+                                x= -40f;
+                                y= -40f;
+                                mirror = true;
+
+                            }},new TurretLarge("turret-large"){{
+
+                                aimDst = 99999;
+                                x= -0f;
+                                y= -60f;
+
+                            }}
+
+
+                    );
+
             abilities.add(new RegenAbility(){{
                 percentAmount=6000;
 

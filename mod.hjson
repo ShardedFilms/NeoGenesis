@@ -3,5 +3,5 @@ displayName : "Neogenesis"
 main : "neogenesis.NeoGenesis"
 author : "[accent]Sharded[][] With Multi-Corprations"
 description : "Currently WIP"
-version : "WIP-32"
+version : "WIP-40"
 minGameVersion : 140
