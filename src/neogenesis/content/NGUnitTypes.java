@@ -124,7 +124,8 @@ public class NGUnitTypes{
 
             envDisabled = Env.none;
             createScorch = false;
-            fogRadius *=2;
+            fogRadius *=1000;
+            fallSpeed /=2;
 
             speed = 10f;
             hitSize = 24f;
