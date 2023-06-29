@@ -45,7 +45,8 @@ public class TurretLarge extends Weapon{
         rotateSpeed = 0.2f;
         rotationLimit = 20f;
         rotate = true;
-        top = false;
+        recoil = 0;
+        top = true;
         mirror=false;
         alternate=false;
         shootSound= (Sounds.none);
@@ -78,7 +79,7 @@ public class TurretLarge extends Weapon{
             }});
         }
         bullet = new BasicBulletType(16f, 1000){{
-            width = 14f;
+            width = 18f;
             height = 28f;
             lifetime = 50f;
             shootEffect = NGFx.end;
