@@ -44,6 +44,7 @@ public class TurretLarge extends Weapon{
         shootY = 24;
         rotateSpeed = 0.2f;
         rotationLimit = 20f;
+        rotate = true;
         top = false;
         mirror=false;
         alternate=false;
@@ -63,13 +64,12 @@ public class TurretLarge extends Weapon{
                 }}
                 );
         for(int j2 = 0; j2 < 2; j2++){
-            int i2 = j2;
+            int i2 = j2*30;
             parts.add(new ShapePart(){{
                 hollow=true;
                 x = 0f;
-                rotateSpeed = -3-i2;
                 color = Liquids.cryofluid.color.cpy().a(0.5f);
-                rotation=30;
+                rotation=i2;
                 strokeTo = stroke = 6;
                 radius=radiusTo=36;
                 layer = 110;
