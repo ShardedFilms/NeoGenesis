@@ -350,7 +350,7 @@ public class NGUnitTypes{
             }});
             // Secondary with ,for, loop
 
-                    weapons.add(new TurretLarge("personal-turret"){{
+                    weapons.add(new TurretLarge("personal-mount"){{
 
                         aimDst = 99999;
                         x= -100f;
@@ -359,7 +359,7 @@ public class NGUnitTypes{
                                     reload/=2;
 
                     }},
-                            new TurretLarge("personal-turret"){{
+                            new TurretLarge("personal-mount"){{
 
                                 aimDst = 99999;
                                 x= -60f;
@@ -367,7 +367,7 @@ public class NGUnitTypes{
                                 mirror = true;
                                 reload/=2;
 
-                            }},new TurretLarge("personal-turret"){{
+                            }},new TurretLarge("personal-mount"){{
 
                                 aimDst = 99999;
                                 x= -0f;

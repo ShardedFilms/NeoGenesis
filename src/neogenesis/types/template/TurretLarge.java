@@ -41,7 +41,7 @@ public class TurretLarge extends Weapon{
 
     {
         reload = 9f;
-        shootY = 24;
+        shootY = 20;
         rotateSpeed = 0.2f;
         rotationLimit = 20f;
         rotate = true;
@@ -57,8 +57,8 @@ public class TurretLarge extends Weapon{
                         }},new ShootBarrel(){{
                     barrels = new float[]{
                             0f, 16f, 0f,
-                            4f, 12f, 0f,
-                            -4f, 12f, 0f,
+                            6f, 12f, 0f,
+                            -6f, 12f, 0f,
                     };
                     shots=3;
                 }}
@@ -78,8 +78,8 @@ public class TurretLarge extends Weapon{
             }});
         }
         bullet = new BasicBulletType(16f, 1000){{
-            width = 10f;
-            height = 24f;
+            width = 14f;
+            height = 28f;
             lifetime = 50f;
             shootEffect = NGFx.end;
             smokeEffect= NGFx.end;
