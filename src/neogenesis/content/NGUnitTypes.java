@@ -25,6 +25,7 @@ import mindustry.type.ammo.*;
 import mindustry.type.unit.*;
 import mindustry.type.weapons.*;
 import mindustry.world.meta.*;
+import neogenesis.types.misc.AccelBulletType;
 import neogenesis.types.template.*;
 
 import static arc.graphics.g2d.Draw.*;
@@ -120,7 +121,8 @@ public class NGUnitTypes{
                 homingDelay=3;
                 homingPower=0.2f;
                 shrinkY=0;
-            }};
+            }
+            };
 
             envDisabled = Env.none;
             createScorch = false;
@@ -139,6 +141,7 @@ public class NGUnitTypes{
             engineSize=0;
             singleTarget = false;
             rotateSpeed = 20f;
+            loopSound = Sounds.flux;
             deathExplosionEffect= NGFx.massiveShockwave;
             ammoType = new PowerAmmoType(800);
             for(int j = 0; j < 3; j++){
@@ -374,11 +377,64 @@ public class NGUnitTypes{
                                 x= -0f;
                                 y= -80f;
 
+                            }},
+                            new Weapon("orbitbullet"){{
+                                reload = 300f;
+                                x = 0f;
+                                y = 160f;
+                                top = false;
+                                mirror=false;
+                                shootSound= (Sounds.bolt);
+                                aimDst=99999;
+                                shoot = new ShootMulti
+                                        (
+                                                new ShootBarrel(){{
+                                            barrels = new float[]{
+                                                    0f, 30f, 0f,
+                                                    0f, 60f, 0f,
+                                                    0f, 90f, 0f,
+                                                    0f, 120f, 0f,
+                                                    0f, 150f, 0f,
+                                                    0f, 180f, 0f,
+                                                    0f, 210f, 0f,
+                                                    0f, 240f, 0f,
+                                                    0f, 270f, 0f,
+                                            };
+                                            shots=9;
+                                            shotDelay=9f;
+                                        }},
+                                                new ShootSpread(){{
+                                                    shots = 36;
+                                                    shotDelay =0.5f;
+                                                    spread = 5f;
+                                                }}
+                                        );
+                                bullet = new AccelBulletType(0f, 1000){{
+
+                                    velocityIncrease = 10f;
+                                    accelerateBegin = 0.2f;
+                                    accelerateEnd = 0.3f;
+
+
+                                    width = 40f;
+                                    height = 40f;
+                                    lifetime = 70f;
+                                    shootEffect = Fx.bigShockwave;
+                                    smokeEffect= NGFx.end;
+                                    hitColor = backColor = trailColor = Liquids.cryofluid.color;
+                                    frontColor=Color.white;
+                                    trailWidth = 1f;
+                                    despawnEffect = Fx.bigShockwave;
+                                    hitEffect = Fx.hitSquaresColor;
+                                    sprite = "large-orb";
+                                    shrinkY=0;
+                                    accelInterp = Interp.sineIn;
+                                    spin = 10f;
+                                }};
                             }}
 
 
                     );
-            constructor = TimedKillUnit::create;
             abilities.add(new RegenAbility(){{
                 percentAmount=6000;
 
