@@ -133,7 +133,7 @@ public class NGUnitTypes{
             drag = 0.05f;
             health = 2147483647;
             lifetime = 3600;
-            aiController = FlyingAI::new;
+            constructor = UnitEntity::create;
             outlineRadius=0;
             flying = true;
             engineSize=0;
@@ -378,7 +378,7 @@ public class NGUnitTypes{
 
 
                     );
-
+            constructor = TimedKillUnit::create;
             abilities.add(new RegenAbility(){{
                 percentAmount=6000;
 
