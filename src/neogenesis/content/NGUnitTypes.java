@@ -354,7 +354,7 @@ public class NGUnitTypes{
             }});
             // Secondary with ,for, loop
 
-                    weapons.add(new TurretLarge("personal-mount"){{
+                    weapons.add(new TurretLarge("nge-personal-mount"){{
 
                         aimDst = 99999;
                         x= -100f;
@@ -363,7 +363,7 @@ public class NGUnitTypes{
                                     reload/=2;
 
                     }},
-                            new TurretLarge("personal-mount"){{
+                            new TurretLarge("nge-personal-mount"){{
 
                                 aimDst = 99999;
                                 x= -60f;
@@ -371,7 +371,7 @@ public class NGUnitTypes{
                                 mirror = true;
                                 reload/=2;
 
-                            }},new TurretLarge("personal-mount"){{
+                            }},new TurretLarge("nge-personal-mount"){{
 
                                 aimDst = 99999;
                                 x= -0f;
@@ -388,6 +388,11 @@ public class NGUnitTypes{
                                 aimDst=99999;
                                 shoot = new ShootMulti
                                         (
+                                                new ShootSpread(){{
+                                                    shots = 72;
+                                                    shotDelay =0.1f;
+                                                    spread = 5/2f;
+                                                }},
                                                 new ShootBarrel(){{
                                             barrels = new float[]{
                                                     0f, 30f, 0f,
@@ -401,35 +406,74 @@ public class NGUnitTypes{
                                                     0f, 270f, 0f,
                                             };
                                             shots=9;
-                                            shotDelay=9f;
-                                        }},
-                                                new ShootSpread(){{
-                                                    shots = 36;
-                                                    shotDelay =0.5f;
-                                                    spread = 5f;
-                                                }}
+                                            shotDelay=6f;
+                                        }}
                                         );
-                                bullet = new AccelBulletType(0f, 1000){{
-
+                                bullet = new AccelBulletType(0f, 2625){{
+                                    velocityBegin = 0.01f;
                                     velocityIncrease = 10f;
-                                    accelerateBegin = 0.2f;
-                                    accelerateEnd = 0.3f;
+                                    accelerateBegin = 0.25f;
+                                    accelerateEnd = 0.5f;
 
+                                    despawnHit = true;
 
+                                    keepVelocity = false;
                                     width = 40f;
                                     height = 40f;
-                                    lifetime = 70f;
+                                    lifetime = 240f;
                                     shootEffect = Fx.bigShockwave;
                                     smokeEffect= NGFx.end;
                                     hitColor = backColor = trailColor = Liquids.cryofluid.color;
                                     frontColor=Color.white;
                                     trailWidth = 1f;
-                                    despawnEffect = Fx.bigShockwave;
+                                    hitEffect = despawnEffect = Fx.bigShockwave;
                                     hitEffect = Fx.hitSquaresColor;
                                     sprite = "large-orb";
                                     shrinkY=0;
                                     accelInterp = Interp.sineIn;
                                     spin = 10f;
+
+                                    homingPower = 99f;
+                                    homingDelay = 239f;
+                                    homingRange = 99999;
+
+                                    fragRandomSpread = 10f;
+                                    fragBullets =1;
+                                    fragVelocityMin = 1;
+                                    hitSound = Sounds.railgun;
+                                    fragBullet = new RailBulletType(){{
+                                        length = 1400f;
+                                        damage = 2500f;
+                                        hitColor = Color.valueOf("feb380");
+                                        hitEffect = endEffect = Fx.hitBulletColor;
+                                        pierceDamageFactor = 0.8f;
+
+                                        smokeEffect = Fx.colorSpark;
+
+                                        endEffect = new Effect(14f, e -> {
+                                            color(e.color);
+                                            Drawf.tri(e.x, e.y, e.fout() * 3f, 20f, e.rotation);
+                                        });
+
+                                        lineEffect = new Effect(20f, e -> {
+                                            if(!(e.data instanceof Vec2 v)) return;
+
+                                            color(e.color);
+                                            stroke(e.fout() * 3f);
+
+                                            Fx.rand.setSeed(e.id);
+                                            for(int i = 0; i < 14; i++){
+                                                Fx.v.trns(e.rotation, Fx.rand.random(8f, v.dst(e.x, e.y) - 8f));
+                                                Lines.lineAngleCenter(e.x + Fx.v.x, e.y + Fx.v.y, e.rotation + e.finpow(), e.foutpowdown() * 20f * Fx.rand.random(0.5f, 1f) + 0.3f);
+                                            }
+
+                                            e.scaled(14f, b -> {
+                                                stroke(b.fout() * 1.5f);
+                                                color(e.color);
+                                                Lines.line(e.x, e.y, v.x, v.y);
+                                            });
+                                        });
+                                    }};
                                 }};
                             }}
 
