@@ -44,7 +44,7 @@ public class TurretLarge extends Weapon{
         shootY = 20;
         rotateSpeed = 0.2f;
         rotationLimit = 20f;
-        rotate = true;
+        rotate = false;
         recoil = 0;
         top = true;
         mirror=false;

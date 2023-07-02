@@ -193,7 +193,7 @@ public class NGFx{
                     });
                 }
             }),
-            massiveShockwave = new Effect(30f, 80f, e -> {
+            massiveShockwave = new Effect(30f, 100f, e -> {
                 for(int i = 0; i < 10; i++){
                     float radi = i*20;
                     color(Color.white, Color.lightGray, e.fin());
@@ -201,6 +201,24 @@ public class NGFx{
                     Lines.circle(e.x, e.y, e.fin() * 500f+radi);
                 }
             }),
+            deathCharge = new Effect(60f, 100f, e -> {
+                color(Liquids.cryofluid.color);
+                stroke(e.fin() * 2f);
+
+
+                randLenVectors(e.id, 30, 120f * e.fout(), (x, y) -> {
+                    Fill.square(e.x + x, e.y + y, e.fin() * 10f);
+                    Drawf.light(e.x + x, e.y + y, e.fin() * 15f, Liquids.cryofluid.color, 0.7f);
+                });
+
+                color();
+
+            }).followParent(true).rotWithParent(true),
+            deathCharge2 = new Effect(40f, 100f, e -> {
+                color(Color.white);
+                stroke(e.fin() * 2f);
+                Lines.circle(e.x, e.y, e.fout() * 80f);
+            }).followParent(true).rotWithParent(true),
     end = new Effect(0, 0f, e -> {});
 
 

@@ -135,7 +135,6 @@ public class NGUnitTypes{
             drag = 0.05f;
             health = 2147483647;
             lifetime = 3600;
-            constructor = UnitEntity::create;
             outlineRadius=0;
             flying = true;
             engineSize=0;
@@ -143,6 +142,7 @@ public class NGUnitTypes{
             rotateSpeed = 20f;
             loopSound = Sounds.flux;
             deathExplosionEffect= NGFx.massiveShockwave;
+            fallEffect = fallEngineEffect = new MultiEffect(NGFx.deathCharge,NGFx.deathCharge2);
             ammoType = new PowerAmmoType(800);
             for(int j = 0; j < 3; j++){
                 int i = j;
@@ -393,18 +393,7 @@ public class NGUnitTypes{
                                                     shotDelay =0.1f;
                                                     spread = 5/2f;
                                                 }},
-                                                new ShootBarrel(){{
-                                            barrels = new float[]{
-                                                    0f, 30f, 0f,
-                                                    0f, 60f, 0f,
-                                                    0f, 90f, 0f,
-                                                    0f, 120f, 0f,
-                                                    0f, 150f, 0f,
-                                                    0f, 180f, 0f,
-                                                    0f, 210f, 0f,
-                                                    0f, 240f, 0f,
-                                                    0f, 270f, 0f,
-                                            };
+                                                new ShootPattern(){{
                                             shots=9;
                                             shotDelay=6f;
                                         }}
@@ -432,9 +421,10 @@ public class NGUnitTypes{
                                     shrinkY=0;
                                     accelInterp = Interp.sineIn;
                                     spin = 10f;
+                                    hittable=collidesAir=collidesGround=collidesTiles=collideFloor=false;
 
                                     homingPower = 99f;
-                                    homingDelay = 239f;
+                                    homingDelay = 237f;
                                     homingRange = 99999;
 
                                     fragRandomSpread = 10f;
@@ -451,7 +441,7 @@ public class NGUnitTypes{
                                         smokeEffect = Fx.colorSpark;
 
                                         endEffect = new Effect(14f, e -> {
-                                            color(e.color);
+                                            color(Liquids.cryofluid.color);
                                             Drawf.tri(e.x, e.y, e.fout() * 3f, 20f, e.rotation);
                                         });
 
@@ -459,7 +449,7 @@ public class NGUnitTypes{
                                             if(!(e.data instanceof Vec2 v)) return;
 
                                             color(e.color);
-                                            stroke(e.fout() * 3f);
+                                            stroke(e.fout() * 16f);
 
                                             Fx.rand.setSeed(e.id);
                                             for(int i = 0; i < 14; i++){
@@ -479,6 +469,7 @@ public class NGUnitTypes{
 
 
                     );
+                    constructor = TimedKillUnit::create;
             abilities.add(new RegenAbility(){{
                 percentAmount=6000;
 
