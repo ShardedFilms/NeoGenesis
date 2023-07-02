@@ -142,7 +142,7 @@ public class NGUnitTypes{
             rotateSpeed = 20f;
             loopSound = Sounds.flux;
             deathExplosionEffect= NGFx.massiveShockwave;
-            fallEffect = fallEngineEffect = new MultiEffect(NGFx.deathCharge,NGFx.deathCharge2);
+            fallEffect = fallEngineEffect = new MultiEffect(NGFx.deathCharge,NGFx.deathCharge2,NGFx.deathCharge3);
             ammoType = new PowerAmmoType(800);
             for(int j = 0; j < 3; j++){
                 int i = j;
@@ -421,7 +421,8 @@ public class NGUnitTypes{
                                     shrinkY=0;
                                     accelInterp = Interp.sineIn;
                                     spin = 10f;
-                                    hittable=collidesAir=collidesGround=collidesTiles=collideFloor=false;
+                                    hittable=false;
+                                    collides = false;
 
                                     homingPower = 99f;
                                     homingDelay = 237f;
@@ -448,8 +449,8 @@ public class NGUnitTypes{
                                         lineEffect = new Effect(20f, e -> {
                                             if(!(e.data instanceof Vec2 v)) return;
 
-                                            color(e.color);
-                                            stroke(e.fout() * 16f);
+                                            color(Liquids.cryofluid.color);
+                                            stroke(e.fout() * 8f);
 
                                             Fx.rand.setSeed(e.id);
                                             for(int i = 0; i < 14; i++){
@@ -458,8 +459,8 @@ public class NGUnitTypes{
                                             }
 
                                             e.scaled(14f, b -> {
-                                                stroke(b.fout() * 1.5f);
-                                                color(e.color);
+                                                stroke(b.fout() * 16f);
+                                                color(Liquids.cryofluid.color);
                                                 Lines.line(e.x, e.y, v.x, v.y);
                                             });
                                         });

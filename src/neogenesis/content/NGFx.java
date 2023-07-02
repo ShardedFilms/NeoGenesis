@@ -202,11 +202,11 @@ public class NGFx{
                 }
             }),
             deathCharge = new Effect(60f, 100f, e -> {
-                color(Liquids.cryofluid.color);
+                color(Liquids.cryofluid.color.cpy().a(0.5f));
                 stroke(e.fin() * 2f);
 
 
-                randLenVectors(e.id, 30, 120f * e.fout(), (x, y) -> {
+                randLenVectors(e.id, 30, 240f * e.fout(), (x, y) -> {
                     Fill.square(e.x + x, e.y + y, e.fin() * 10f);
                     Drawf.light(e.x + x, e.y + y, e.fin() * 15f, Liquids.cryofluid.color, 0.7f);
                 });
@@ -217,8 +217,21 @@ public class NGFx{
             deathCharge2 = new Effect(40f, 100f, e -> {
                 color(Color.white);
                 stroke(e.fin() * 2f);
-                Lines.circle(e.x, e.y, e.fout() * 80f);
+                Lines.circle(e.x, e.y, e.fout() * 160f);
             }).followParent(true).rotWithParent(true),
+            deathCharge3 = new Effect(30f, 160f, e -> {
+                color(e.color);
+                stroke(e.fout() * 3f);
+                float circleRad = 6f + e.finpow() * 60f;
+                Lines.circle(e.x, e.y, circleRad);
+
+                rand.setSeed(e.id);
+                for(int i = 0; i < 16; i++){
+                    float angle = rand.random(360f);
+                    float lenRand = rand.random(0.5f, 1f);
+                    Lines.lineAngle(e.x, e.y, angle, e.foutpow() * 50f * rand.random(1f, 0.6f) + 2f, e.finpow() * 70f * lenRand + 6f);
+                }
+            }),
     end = new Effect(0, 0f, e -> {});
 
 
