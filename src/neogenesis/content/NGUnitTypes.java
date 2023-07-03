@@ -107,17 +107,17 @@ public class NGUnitTypes{
                 shootEffect = Fx.mineImpactWave;
                 smokeEffect= Fx.mineImpactWave;
                 frontColor=Color.white;
-                damage = 2625*3f;
+                damage *=100f; // Hard Shells = Increased Hit Damage
                 hitColor = backColor = trailColor = Liquids.cryofluid.color;
                 despawnEffect = NGFx.hlaserxplosion;
                 hitEffect= Fx.none;
                 sprite = "missile-large";
                 despawnHit=true;
-                splashDamage=2625;
+                splashDamage=2625*12;
                 splashDamageRadius=120;
                 trailWidth=6;
                 trailLength=6;
-                homingRange=1600;
+                homingRange=2000;
                 homingDelay=3;
                 homingPower=0.2f;
                 shrinkY=0;
@@ -133,7 +133,7 @@ public class NGUnitTypes{
             hitSize = 24f;
             accel = 0.1f;
             drag = 0.05f;
-            health = 2147483647;
+            health =1f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f; // high
             lifetime = 3600;
             outlineRadius=0;
             flying = true;
@@ -195,7 +195,7 @@ public class NGUnitTypes{
                     shots=3;
                 }}
                 );
-                bullet = new BasicBulletType(16f, 1000){{
+                bullet = new BasicBulletType(16f, 2000){{
                     width = 14f;
                     height = 36f;
                     lifetime = 50f;
@@ -240,7 +240,7 @@ public class NGUnitTypes{
                             lightningDelay = 0.1f;
                             lightningLengthRand = 0;
                             lightningDamage = 33;
-                            lightningType = new ExplosionBulletType(4*2625f, 80f){{
+                            lightningType = new ExplosionBulletType(10*2625f, 80f){{
                                 collidesAir = true;
                                 shootEffect = Fx.blastExplosion;
                             }};
@@ -273,7 +273,7 @@ public class NGUnitTypes{
                                         }},new ShootPattern()
                                 );
                         bullet = new ContinuousLaserBulletType(){{
-                            damage = 675f;
+                            damage = 17150f;
                             damageInterval =1;
                             width = 36;
                             length = 1000f;
@@ -303,7 +303,7 @@ public class NGUnitTypes{
                             public void update(Bullet b) {
                                 super.update(b);
                                 if(b.timer.get(1)){
-                                    Lightning.create(b.team, Pal.redLight, damage*2, b.x, b.y, b.rotation() + (6 - Mathf.range(12)), (int)(length/10));};
+                                    Lightning.create(b.team, Pal.redLight, damage*3, b.x, b.y, b.rotation() + (6 - Mathf.range(12)), (int)(length/10));};
                         }};
                     }},
             new Weapon("shootdeath"){{
@@ -330,7 +330,7 @@ public class NGUnitTypes{
                     hitEffect = Fx.mineImpactWave;
                     shootEffect = Fx.none;
                     smokeEffect = Fx.none;
-                    splashDamage = 2625*1000000;
+                    splashDamage = 2625f*1000000f;
                     splashDamageRadius= 400;
                     collides=false;
                     absorbable=false;
@@ -338,7 +338,7 @@ public class NGUnitTypes{
                     lifetime=240;
                     hitColor = Liquids.cryofluid.color;
                     bulletInterval=3;
-                    intervalBullets =3;
+                    intervalBullets =6;
                     intervalRandomSpread=360;
                     collidesAir=collidesGround=collidesTiles=collideFloor=false;
                     intervalBullet = ex;
@@ -433,7 +433,7 @@ public class NGUnitTypes{
                                     fragVelocityMin = 1;
                                     hitSound = Sounds.railgun;
                                     fragBullet = new RailBulletType(){{
-                                        length = 1400f;
+                                        length = 4000f;
                                         damage = 2500f;
                                         hitColor = Color.valueOf("feb380");
                                         hitEffect = endEffect = Fx.hitBulletColor;
@@ -471,10 +471,40 @@ public class NGUnitTypes{
 
                     );
                     constructor = TimedKillUnit::create;
-            abilities.add(new RegenAbility(){{
-                percentAmount=6000;
+            abilities.add(new RegenAbility() {{
+                percentAmount = 6000;
 
-            }});
+            }}, new Ability() {
+
+                              @Override
+                              public String localized() {
+                                  return "Ability";
+                              }
+
+                              @Override
+                              public void update(Unit unit) {
+                                  Groups.bullet.intersect(unit.x - 200, unit.y - 200, 200 * 2, 200 * 2, b -> {
+                                      if (b.team != unit.team && unit.within(b, 200)){
+                                          @Nullable Unit owner = null;
+                                          if(b.owner instanceof Unit) owner = (Unit)b.owner;
+                                          if(b.type.damage > unit.maxHealth/2f || b.type.splashDamage > unit.maxHealth/2f){
+                                              if(owner != null) owner.kill();
+                                              b.remove();
+                                          }
+                                          if(owner != null && (owner.maxHealth > unit.maxHealth * 2 || owner.type.armor >= unit.type.armor * 2)) owner.kill();
+
+                                          Building building = null;
+                                          if(b.owner instanceof Building) building = (Building) b.owner;
+                                          if(b.type.damage > unit.maxHealth/2f || b.type.splashDamage > unit.maxHealth/2f){
+                                              if(building != null) building.kill();
+                                              b.remove();
+                                          }
+                                          if(building != null && building.health > unit.maxHealth * 2) building.kill();
+                                      }
+                                  });
+                              }
+                          }
+            );
         }};
 
     }
