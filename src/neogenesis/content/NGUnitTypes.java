@@ -26,6 +26,7 @@ import mindustry.type.unit.*;
 import mindustry.type.weapons.*;
 import mindustry.world.meta.*;
 import neogenesis.types.misc.AccelBulletType;
+import neogenesis.types.misc.ShootVertical;
 import neogenesis.types.template.*;
 
 import static arc.graphics.g2d.Draw.*;
@@ -198,7 +199,7 @@ public class NGUnitTypes{
                 bullet = new BasicBulletType(16f, 2000){{
                     width = 14f;
                     height = 36f;
-                    lifetime = 50f;
+                    lifetime = 70f;
                     shootEffect = NGFx.end;
                     smokeEffect= NGFx.end;
                     hitColor = backColor = trailColor = Liquids.cryofluid.color;
@@ -393,10 +394,12 @@ public class NGUnitTypes{
                                                     shotDelay =0.1f;
                                                     spread = 5/2f;
                                                 }},
-                                                new ShootPattern(){{
-                                            shots=9;
-                                            shotDelay=6f;
-                                        }}
+                                                new ShootVertical(){{
+                                                    shots = 10;
+                                                    shotDelay =1;
+                                                    barrels = 10;
+                                                    height = 36;
+                                                }}
                                         );
                                 bullet = new AccelBulletType(0f, 2625){{
                                     velocityBegin = 0.01f;
@@ -410,7 +413,7 @@ public class NGUnitTypes{
                                     width = 40f;
                                     height = 40f;
                                     lifetime = 240f;
-                                    shootEffect = Fx.bigShockwave;
+                                    shootEffect = NGFx.orbitbullet;
                                     smokeEffect= NGFx.end;
                                     hitColor = backColor = trailColor = Liquids.cryofluid.color;
                                     frontColor=Color.white;
@@ -428,13 +431,13 @@ public class NGUnitTypes{
                                     homingDelay = 237f;
                                     homingRange = 99999;
 
-                                    fragRandomSpread = 10f;
+                                    fragRandomSpread = 0f;
                                     fragBullets =1;
                                     fragVelocityMin = 1;
                                     hitSound = Sounds.railgun;
                                     fragBullet = new RailBulletType(){{
                                         length = 4000f;
-                                        damage = 2500f;
+                                        damage = 900f*33f;
                                         hitColor = Color.valueOf("feb380");
                                         hitEffect = endEffect = Fx.hitBulletColor;
                                         pierceDamageFactor = 0.8f;

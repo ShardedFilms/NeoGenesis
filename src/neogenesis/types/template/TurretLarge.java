@@ -81,7 +81,7 @@ public class TurretLarge extends Weapon{
         bullet = new BasicBulletType(16f, 1000){{
             width = 18f;
             height = 28f;
-            lifetime = 50f;
+            lifetime = 70f;
             shootEffect = NGFx.end;
             smokeEffect= NGFx.end;
             hitColor = backColor = trailColor = Liquids.cryofluid.color;

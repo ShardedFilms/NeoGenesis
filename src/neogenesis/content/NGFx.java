@@ -153,7 +153,12 @@ public class NGFx{
     }),
 
 
-
+    orbitbullet = new Effect(10, e -> {
+        color(Liquids.cryofluid.gasColor,Liquids.cryofluid.color,e.fin());
+        float w = 1f + 20 * e.fout();
+        Drawf.tri(e.x, e.y, w, 80f * e.fout(), e.rotation);
+        Drawf.tri(e.x, e.y, w, 10f * e.fout(), e.rotation + 180f);
+    }),
     hlaserxplosion = new Effect(30f, 160f, e -> {
         color(e.color);
         stroke(e.fout() * 5f);
@@ -204,7 +209,7 @@ public class NGFx{
             deathCharge = new Effect(60f, 100f, e -> {
                 color(Liquids.cryofluid.color.cpy().a(0.5f));
                 stroke(e.fin() * 2f);
-                float sqrRot = rand.random(0, 360f);
+                float sqrRot = rand.random(30f,60f);
 
                 randLenVectors(e.id, 30, 240f * e.fout(), (x, y) -> {
                     Fill.square(e.x + x, e.y + y, e.fin() * 10f,sqrRot);
