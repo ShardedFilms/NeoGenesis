@@ -14,6 +14,7 @@ import mindustry.graphics.*;
 import mindustry.type.*;
 import mindustry.world.*;
 import mindustry.world.blocks.units.UnitAssembler.*;
+import neogenesis.graphics.g2d.AdFill;
 
 import static arc.graphics.g2d.Draw.rect;
 import static arc.graphics.g2d.Draw.*;
@@ -152,6 +153,20 @@ public class NGFx{
         });
     }),
 
+    andrius1 = new Effect(10f, 160f, e -> {
+        float circleRad = 6f + e.finpow() * 4f;
+
+        color(Pal.accent, e.foutpow());
+        Fill.circle(e.x, e.y, circleRad);
+    }).layer(Layer.bullet + 2f),
+            andrius2 = new Effect(10, e -> {
+                color(Pal.accent, Pal.accentBack, e.fin());
+                float w = 1f + 4 * e.fout();
+                Drawf.tri(e.x, e.y, w, 12f * e.fout(), e.rotation);
+                Drawf.tri(e.x, e.y, w, 6f * e.fout(), e.rotation + 180f);
+            }),
+
+
 
     orbitbullet = new Effect(10, e -> {
         color(Liquids.cryofluid.gasColor,Liquids.cryofluid.color,e.fin());
@@ -166,13 +181,14 @@ public class NGFx{
         Lines.circle(e.x, e.y, circleRad);
 
         color(e.color, e.foutpow());
+        AdFill.shockwave(e.x, e.y, circleRad*2);
         Fill.circle(e.x, e.y, circleRad);
 
         rand.setSeed(e.id);
         for(int i = 0; i < 32; i++){
             float angle = rand.random(360f);
             float lenRand = rand.random(0.5f, 3f);
-            Tmp.v1.trns(angle, circleRad);
+            Tmp.v1.trns(angle, circleRad*0.2f);
 
             for(int s : Mathf.signs){
                 Drawf.tri(e.x + Tmp.v1.x, e.y + Tmp.v1.y, e.foutpow() * 40f, e.fout() * 30f * lenRand + 6f, angle + 90f + s * 90f);

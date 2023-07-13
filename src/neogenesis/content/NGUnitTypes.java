@@ -41,6 +41,7 @@ public class NGUnitTypes{
     public static UnitType decade,
     //mech, legacy
 
+    andrius ,
     //endregion
     personal;
     public static void load(
@@ -93,6 +94,45 @@ public class NGUnitTypes{
                     shootEffect = NGFx.decade1;
                     smokeEffect= NGFx.decade1sm;
                     hitColor = backColor = trailColor = NGColor.purtuxe2;
+                    trailLength = 6;
+                    trailWidth = 1f;
+                    despawnEffect = Fx.hitBulletColor;
+                    hitEffect = Fx.hitSquaresColor;
+                }};
+            }});
+        }};
+        andrius = new UnitType("b2-a-01-andrius"){{
+            speed = 5f;
+            hitSize = 14f;
+            health = 700;
+            armor = 20;
+            constructor = UnitEntity::create;
+            singleTarget = false;
+            rotateSpeed = 10f;
+            ammoType = new PowerAmmoType(2000);
+
+            flying = true;
+            engineSize = 8;
+            engineOffset = 6;
+            trailLength = 6;
+            weapons.add(new Weapon("blaster"){{
+                reload = 18f;
+                alternate = true;
+                x = 6f;
+                y = 4f;
+                top = true;
+                mirror=true;
+                shootSound= (Sounds.blaster);
+                shootStatus = StatusEffects.slow;
+                shootStatusDuration= 20;
+                bullet = new BasicBulletType(10f, 27){{
+                    width = 7f;
+                    height = 9f;
+                    lifetime = 15f;
+                    shootEffect = NGFx.andrius1;
+                    smokeEffect= NGFx.andrius2;
+                    hitColor = backColor = trailColor = Pal.accent;
+                    frontColor = Color.white;
                     trailLength = 6;
                     trailWidth = 1f;
                     despawnEffect = Fx.hitBulletColor;

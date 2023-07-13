@@ -10,14 +10,14 @@ import arc.struct.*;
 import static arc.Core.atlas;
 
 public class AdFill{
-    private static TextureRegion circleRegion;
-    public static void circle(float x, float y, float radius , TextureRegion circle){
+    private static TextureRegion circle;
+    public static void shockwave(float x, float y, float radius){
 
 
 
-//        if(circleRegion == null || circleRegion.texture.isDisposed()){
-//            circleRegion = atlas.find(circle);
-//        }
+        if(circle == null || circle.texture.isDisposed()){
+            circle = atlas.find("particle-shockwave");
+        }
 
         Draw.rect(circle, x, y, radius * 2, radius * 2);
     }
