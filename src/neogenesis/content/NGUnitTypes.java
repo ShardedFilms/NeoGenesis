@@ -102,21 +102,25 @@ public class NGUnitTypes{
             }});
         }};
         andrius = new UnitType("b2-a-01-andrius"){{
+
+            accel = 0.15f;
+            drag = 0.07f;
             speed = 5f;
             hitSize = 14f;
             health = 700;
             armor = 20;
             constructor = UnitEntity::create;
             singleTarget = false;
-            rotateSpeed = 10f;
+            rotateSpeed = 20f;
             ammoType = new PowerAmmoType(2000);
 
             flying = true;
-            engineSize = 8;
-            engineOffset = 6;
+            engineSize = 3;
+            engineOffset = 7;
             trailLength = 6;
+            outlineColor = Pal.darkOutline;
             weapons.add(new Weapon("blaster"){{
-                reload = 18f;
+                reload = 9f;
                 alternate = true;
                 x = 6f;
                 y = 4f;
@@ -124,11 +128,11 @@ public class NGUnitTypes{
                 mirror=true;
                 shootSound= (Sounds.blaster);
                 shootStatus = StatusEffects.slow;
-                shootStatusDuration= 20;
+                shootStatusDuration= 12;
                 bullet = new BasicBulletType(10f, 27){{
                     width = 7f;
                     height = 9f;
-                    lifetime = 15f;
+                    lifetime = 16f;
                     shootEffect = NGFx.andrius1;
                     smokeEffect= NGFx.andrius2;
                     hitColor = backColor = trailColor = Pal.accent;
@@ -431,12 +435,12 @@ public class NGUnitTypes{
                                         (
                                                 new ShootSpread(){{
                                                     shots = 72;
-                                                    shotDelay =0.1f;
+                                                    shotDelay =0.2f;
                                                     spread = 5/2f;
                                                 }},
                                                 new ShootVertical(){{
                                                     shots = 10;
-                                                    shotDelay =1;
+                                                    shotDelay =9;
                                                     barrels = 10;
                                                     height = 36;
                                                 }}

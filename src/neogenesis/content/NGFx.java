@@ -181,7 +181,7 @@ public class NGFx{
         Lines.circle(e.x, e.y, circleRad);
 
         color(e.color, e.foutpow());
-        AdFill.shockwave(e.x, e.y, circleRad*2);
+        AdFill.circle(e.x, e.y, circleRad*2, "nge-particle-shockwave");
         Fill.circle(e.x, e.y, circleRad);
 
         rand.setSeed(e.id);
