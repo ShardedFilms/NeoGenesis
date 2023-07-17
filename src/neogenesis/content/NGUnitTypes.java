@@ -41,7 +41,7 @@ public class NGUnitTypes{
     public static UnitType decade,
     //mech, legacy
 
-    andrius ,
+    andrius ,matther,
     //endregion
     personal;
     public static void load(
@@ -122,8 +122,8 @@ public class NGUnitTypes{
             weapons.add(new Weapon("blaster"){{
                 reload = 9f;
                 alternate = true;
-                x = 6f;
-                y = 4f;
+                x = 4f;
+                y = 3f;
                 top = true;
                 mirror=true;
                 shootSound= (Sounds.blaster);
@@ -141,6 +141,65 @@ public class NGUnitTypes{
                     trailWidth = 1f;
                     despawnEffect = Fx.hitBulletColor;
                     hitEffect = Fx.hitSquaresColor;
+                }};
+            }});
+        }};
+        matther = new UnitType("b2-a-02-matther"){{
+
+            accel = 0.12f;
+            drag = 0.09f;
+            speed = 3f;
+            hitSize = 22f;
+            health = 2100;
+            armor = 36;
+            constructor = UnitEntity::create;
+            singleTarget = false;
+            rotateSpeed = 6f;
+            ammoType = new PowerAmmoType(2000);
+
+            flying = true;
+            engineSize = 3;
+            engineOffset = 7;
+            trailLength = 6;
+            outlineColor = Pal.darkOutline;
+            weapons.add(new Weapon(name + "-launcher"){{
+                reload = 90f;
+                y = 4f;
+                top = false;
+                recoil = 3f;
+                shootSound= (Sounds.missileSmall);
+                shoot = new ShootMulti(
+                        new ShootBarrel(){{
+                            barrels = new float[]{
+                                    -1.5f, 0f, -15f,
+                                    0f, 0f, 0f,
+                                    1.5f, 0f, 15f,
+                            };
+                            shots=3;
+                        }},new ShootPattern(){{
+                            shots = 3;
+                            shotDelay = 18;
+                }}
+
+                );
+                bullet = new MissileBulletType(6f, 72){{
+                    width = 10f;
+                    height = 15f;
+                    shrinkY = 0f;
+                    homingRange = 80f;
+                    keepVelocity = false;
+                    splashDamageRadius = 30f;
+                    shootEffect = Fx.shootSmokeSquareBig;
+                    smokeEffect = Fx.shootTitan;
+                    splashDamage = 28f;
+                    lifetime = 40f;
+                    trailLength = 9;
+                    trailWidth = 1f;
+                    trailColor = Pal.accent;
+                    backColor = Pal.accent;
+                    frontColor = Color.white;
+                    hitEffect = Fx.blastExplosion;
+                    despawnEffect = Fx.blastExplosion;
                 }};
             }});
         }};

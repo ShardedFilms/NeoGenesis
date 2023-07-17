@@ -154,7 +154,7 @@ public class NGFx{
     }),
 
     andrius1 = new Effect(10f, 160f, e -> {
-        float circleRad = 6f + e.finpow() * 4f;
+        float circleRad = 3f + e.finpow() * 4f;
 
         color(Pal.accent, e.foutpow());
         Fill.circle(e.x, e.y, circleRad);
