@@ -158,14 +158,17 @@ public class NGUnitTypes{
             ammoType = new PowerAmmoType(2000);
 
             flying = true;
+            lowAltitude = false;
             engineSize = 3;
             engineOffset = 7;
             trailLength = 6;
             outlineColor = Pal.darkOutline;
             weapons.add(new Weapon(name + "-launcher"){{
                 reload = 90f;
+                x=0f;
                 y = 4f;
                 top = false;
+                mirror = alternate =false;
                 recoil = 3f;
                 shootSound= (Sounds.missileSmall);
                 shoot = new ShootMulti(
