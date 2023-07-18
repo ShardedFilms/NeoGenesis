@@ -159,9 +159,9 @@ public class NGUnitTypes{
 
             flying = true;
             lowAltitude = false;
-            engineSize = 3;
-            engineOffset = 7;
-            trailLength = 6;
+            engineSize = 4;
+            engineOffset = 10;
+            trailLength = 10;
             outlineColor = Pal.darkOutline;
             weapons.add(new Weapon(name + "-launcher"){{
                 reload = 90f;
