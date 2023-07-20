@@ -38,7 +38,7 @@ public class NGUnitTypes{
     //region standard
 
     //mech
-    public static UnitType decade,
+    public static UnitType
     //mech, legacy
 
     andrius ,matther,
@@ -53,54 +53,6 @@ public class NGUnitTypes{
             * Remember!, Every Unit must have Constructor to make a type of unit! */
     ){
 
-        decade = new UnitType("5-a-01-decade"){{
-            speed = 0.4f;
-            hitSize = 10f;
-            health = 250;
-            constructor = MechUnit::create;
-            canDrown = true;
-            mechStepParticles = false;
-            stepShake = 0;
-            mechFrontSway = 0.2f;
-            mechSideSway = 0.1f;
-            singleTarget = false;
-            rotateSpeed = 4f;
-            ammoType = new PowerAmmoType(800);
-            parts.add(new ShapePart(){{
-                sides = 4;
-                progress = PartProgress.warmup;
-                radius = 0;
-                radiusTo = 2;
-                layer= Layer.bullet;
-                color=NGColor.purtuxe2;
-                y =-6;
-            }});
-            weapons.add(new Weapon("purp"){{
-                reload = 36f;
-                x = 0f;
-                y = 0f;
-                top = false;
-                mirror=false;
-                shootSound= (Sounds.blaster);
-                shoot= new ShootHelix(){{
-                    scl =2f;
-                    mag=1.5f;
-                    offset = Mathf.PI * 1.25f;
-                }};
-                bullet = new BasicBulletType(8f, 18){{
-                    width = 7f;
-                    height = 9f;
-                    lifetime = 20f;
-                    shootEffect = NGFx.decade1;
-                    smokeEffect= NGFx.decade1sm;
-                    hitColor = backColor = trailColor = NGColor.purtuxe2;
-                    trailLength = 6;
-                    trailWidth = 1f;
-                    despawnEffect = Fx.hitBulletColor;
-                    hitEffect = Fx.hitSquaresColor;
-                }};
-            }});
-        }};
         andrius = new UnitType("b2-a-01-andrius"){{
 
             accel = 0.15f;
@@ -229,6 +181,22 @@ public class NGUnitTypes{
                 homingPower=0.2f;
                 shrinkY=0;
             }
+            /**        hitEntity(Bullet ex , Unit, Healthc) {
+                    if (other && other.kill) {
+                        Call.unitDestroy(u.id)
+                    }
+                },
+                    hitTile(b, tile, x, y, health, direct)  {
+                    this.super$hitTile(b, tile, x, y, health, direct) ;
+                    if (tile) {
+                        tile.killed()
+                    }
+                }
+                );*/
+/**
+            @Override
+            public void hitEntity(Bullet b, Unit other, float initialHealth) {
+                if (unit != null && kill)}**/
             };
 
             envDisabled = Env.none;
