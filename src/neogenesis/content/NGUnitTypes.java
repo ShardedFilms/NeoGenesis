@@ -119,6 +119,7 @@ public class NGUnitTypes{
                 reload = 90f;
                 x=0f;
                 y = 4f;
+                layerOffset = -0.01f;
                 top = false;
                 mirror = alternate =false;
                 recoil = 3f;
@@ -126,18 +127,19 @@ public class NGUnitTypes{
                 shoot = new ShootMulti(
                         new ShootBarrel(){{
                             barrels = new float[]{
-                                    -1.5f, 0f, -15f,
+                                    -1.5f, 0f, -10f,
                                     0f, 0f, 0f,
-                                    1.5f, 0f, 15f,
+                                    1.5f, 0f, 10f,
                             };
                             shots=3;
+                            shotDelay = 1;
                         }},new ShootPattern(){{
                             shots = 3;
                             shotDelay = 18;
                 }}
 
                 );
-                bullet = new MissileBulletType(6f, 72){{
+                bullet = new MissileBulletType(6f, 36){{
                     width = 10f;
                     height = 15f;
                     shrinkY = 0f;
@@ -147,11 +149,12 @@ public class NGUnitTypes{
                     shootEffect = Fx.shootSmokeSquareBig;
                     smokeEffect = Fx.shootTitan;
                     splashDamage = 28f;
-                    lifetime = 40f;
+                    lifetime = 45f;
                     trailLength = 9;
                     trailWidth = 1f;
                     trailColor = Pal.accent;
                     backColor = Pal.accent;
+                    hitColor = Pal.accent;
                     frontColor = Color.white;
                     hitEffect = Fx.blastExplosion;
                     despawnEffect = Fx.blastExplosion;
