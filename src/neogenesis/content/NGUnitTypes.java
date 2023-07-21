@@ -59,7 +59,7 @@ public class NGUnitTypes{
             drag = 0.07f;
             speed = 5f;
             hitSize = 14f;
-            health = 700;
+            health = 800;
             armor = 20;
             constructor = UnitEntity::create;
             singleTarget = false;
@@ -102,7 +102,7 @@ public class NGUnitTypes{
             drag = 0.09f;
             speed = 3f;
             hitSize = 22f;
-            health = 2100;
+            health = 2400;
             armor = 36;
             constructor = UnitEntity::create;
             singleTarget = false;
@@ -118,7 +118,7 @@ public class NGUnitTypes{
             weapons.add(new Weapon(name + "-launcher"){{
                 reload = 90f;
                 x=0f;
-                y = 4f;
+                y = 5f;
                 layerOffset = -0.01f;
                 top = false;
                 mirror = alternate =false;
