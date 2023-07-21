@@ -195,11 +195,27 @@ public class NGUnitTypes{
                         tile.killed()
                     }
                 }
-                );*/
-/**
+                );
+                @Override
+                public void hitEntity(Bullet b, Hitboxc entity, float health) {
+                    super.hitEntity(b, entity, health);
+                }
+
+                /**
             @Override
             public void hitEntity(Bullet b, Unit other, float initialHealth) {
                 if (unit != null && kill)}**/
+
+
+
+                public void hitEntity(Bullet b, Unit entity, float health) {
+                    super.hitEntity(b, entity, health);
+                    entity.kill();
+//                    if(b.type.damage > entity.maxHealth/2f || b.type.splashDamage > entity.maxHealth/2f){
+//                        if(entity != null) entity.kill();
+                        b.remove();
+//                    }
+                }
             };
 
             envDisabled = Env.none;
@@ -552,7 +568,7 @@ public class NGUnitTypes{
                     );
                     constructor = TimedKillUnit::create;
             abilities.add(new RegenAbility() {{
-                percentAmount = 6000;
+                percentAmount = 60000;
 
             }}, new Ability() {
 
