@@ -219,11 +219,12 @@ public class NGUnitTypes{
                 public void hitEntity(Bullet b, Unit entity, float health) {
                         super.hitEntity(b,entity,health);
                     //boolean wasDead = entity instanceof Unit u && u.dead;
-                    
+
                     //if (entity && entity)
                         if (impact){
 
                             entity.kill();
+                            //Call.unitDestroy(entity.id);
                     }
                 }
             };
