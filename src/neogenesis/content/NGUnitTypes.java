@@ -655,6 +655,18 @@ public class NGUnitTypes{
                     sides=6;
                 }});
             }
+            parts.add(new ShapePart(){{
+                hollow=false;
+                x = 0f;
+                rotateSpeed = -3;
+                color = Color.black;
+                rotation=30;
+                strokeTo = stroke = 6;
+                radius=radiusTo=72;
+                layer = 90;
+                circle=false;
+                sides=36;
+            }});
             /**weapons.add(new Weapon("type-laser"){{
                             reload = 9f;
                             x = 0f;
