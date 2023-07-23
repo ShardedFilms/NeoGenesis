@@ -27,6 +27,7 @@ import mindustry.type.unit.*;
 import mindustry.type.weapons.*;
 import mindustry.world.meta.*;
 import neogenesis.types.misc.AccelBulletType;
+import neogenesis.types.misc.AdvancedExplosionEffect;
 import neogenesis.types.misc.ShootVertical;
 import neogenesis.types.template.*;
 
@@ -44,7 +45,7 @@ public class NGUnitTypes{
 
     andrius ,matther,
     //endregion
-    personal;
+    personal,swagLikeOhio;
     public static void load(
             /* Used to be my personality as my own use. awe.
             * With The power of code and intelligence to perform creation.
@@ -185,47 +186,6 @@ public class NGUnitTypes{
                 homingPower=0.2f;
                 shrinkY=0;
             }
-
-                /**
-
-                 Copied : abomb4/super-cheat
-                hitEntity(Bullet ex , Unit, Healthc) {
-                    if (other && other.kill) {
-                        Call.unitDestroy(u.id)
-                    }
-                },
-                    hitTile(b, tile, x, y, health, direct)  {
-                    this.super$hitTile(b, tile, x, y, health, direct) ;
-                    if (tile) {
-                        tile.killed()
-                    }
-                }
-                );
-             Superclass : hitEntity
-                @Override
-                public void hitEntity(Bullet b, Hitboxc entity, float health) {
-                    super.hitEntity(b, entity, health);
-                }
-
-                /**
-
-             Test convert ???
-            @Override
-            public void hitEntity(Bullet b, Unit other, float initialHealth) {
-                if (unit != null && kill)}**/
-
-
-
-                public void hitEntity(Bullet b, Hitboxc entity, float health) {
-                        super.hitEntity(b,entity,health);
-                    //boolean wasDead = entity instanceof Unit u && u.dead;
-
-                    if(entity instanceof Unit unit){
-                        if(impact) unit.kill();
-                        
-                        Call.unitDestroy(unit.id);
-                    };
-                }
             };
 
             envDisabled = Env.none;
@@ -580,7 +540,345 @@ public class NGUnitTypes{
             abilities.add(new RegenAbility() {{
                 percentAmount = 60000;
 
-            }}, new Ability() {
+            }}
+            );
+        }};
+        swagLikeOhio = new UnitType("y-a-02-personal"){{
+            BulletType exe = new BasicBulletType(40f, 120000){{
+                width = 21f;
+                height = 72f;
+                lifetime = 100;
+                shootEffect = Fx.mineImpactWave;
+                smokeEffect= Fx.mineImpactWave;
+                frontColor=Color.white;
+                damage *=100f; // Hard Shells = Increased Hit Damage
+                hitColor = backColor = trailColor = Liquids.cryofluid.color;
+                despawnEffect = NGFx.hlaserxplosion;
+                hitEffect= Fx.none;
+                sprite = "missile-large";
+                despawnHit=true;
+                splashDamage=2625*16384;
+                splashDamageRadius=160;
+                trailWidth=6;
+                trailLength=6;
+                homingRange=2000;
+                homingDelay=3;
+                homingPower=0.2f;
+                shrinkY=0;
+            }
+
+                /**
+
+                 Copied : abomb4/super-cheat
+                 hitEntity(Bullet ex , Unit, Healthc) {
+                 if (other && other.kill) {
+                 Call.unitDestroy(u.id)
+                 }
+                 },
+                 hitTile(b, tile, x, y, health, direct)  {
+                 this.super$hitTile(b, tile, x, y, health, direct) ;
+                 if (tile) {
+                 tile.killed()
+                 }
+                 }
+                 );
+                 Superclass : hitEntity
+                 @Override
+                 public void hitEntity(Bullet b, Hitboxc entity, float health) {
+                 super.hitEntity(b, entity, health);
+                 }
+
+                 /**
+
+                 Test convert ???
+                 @Override
+                 public void hitEntity(Bullet b, Unit other, float initialHealth) {
+                 if (unit != null && kill)}**/
+
+
+
+                public void hitEntity(Bullet b, Hitboxc entity, float health) {
+                    super.hitEntity(b,entity,health);
+
+                    if(entity instanceof Unit unit){
+                        if(impact) unit.kill();
+                        Call.unitDestroy(unit.id);
+                    };
+                }
+            };
+
+            envDisabled = Env.none;
+            createScorch = false;
+            fogRadius *=1000;
+            fallSpeed /=2;
+
+            speed = 12f;
+            hitSize = 24f;
+            accel = 0.1f;
+            drag = 0.05f;
+            health =1f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f; // high
+            lifetime = 3600;
+            outlineRadius=0;
+            flying = true;
+            engineSize=0;
+            singleTarget = false;
+            rotateSpeed = 20f;
+            loopSound = Sounds.flux;
+            deathExplosionEffect= NGFx.massiveShockwave;
+            ammoType = new PowerAmmoType(800);
+            for(int j = 0; j < 3; j++){
+                int i = j;
+                parts.add(new ShapePart(){{
+                    hollow=true;
+                    x = 0f;
+                    rotateSpeed = -4-i*0.9f;
+                    color = Liquids.ozone.color.cpy().a(0.4f);
+                    strokeTo = stroke = 5;
+                    radius=radiusTo=72;
+                    layer = 110;
+                    circle=false;
+                    sides=6;
+                }});
+            };
+            for(int j2 = 0; j2 < 2; j2++){
+                int i2 = j2;
+                parts.add(new ShapePart(){{
+                    hollow=true;
+                    x = 0f;
+                    rotateSpeed = -3-i2;
+                    color = Color.white.cpy().a(0.5f);
+                    rotation=30;
+                    strokeTo = stroke = 6;
+                    radius=radiusTo=72;
+                    layer = 110;
+                    circle=false;
+                    sides=6;
+                }});
+            }
+            /**weapons.add(new Weapon("type-laser"){{
+                            reload = 9f;
+                            x = 0f;
+                            y = 0f;
+                            top = false;
+                            mirror=false;
+                            shootSound= (Sounds.none);
+                            aimDst=99999;
+                            shoot = new ShootMulti
+                                    (
+                                            new ShootPattern(){{
+                                                shots = 10;
+                                                shotDelay =1;
+                                            }},new ShootBarrel(){{
+                                        barrels = new float[]{
+                                                0f, 32f, 0f,
+                                        };
+                                        shots=3;
+                                    }}
+                                    );
+                            bullet = new BasicBulletType(32f, 2000){{
+                                width = 35f;
+                                height = 72f;
+                                lifetime = 70f;
+                                shootEffect = NGFx.end;
+                                smokeEffect= NGFx.end;
+                                hitColor = backColor = trailColor = Liquids.ozone.color;
+                                frontColor=Color.white;
+                                trailWidth = 1f;
+                                despawnEffect = Fx.hitBulletColor;
+                                hitEffect = Fx.hitSquaresColor;
+                                sprite = "missile-large";
+                                shrinkY=0;
+                            }};
+                        }},
+                    new Weapon("shootdeath"){{
+                        reload = 100f;
+                        x = 0f;
+                        y = 0f;
+                        top = false;
+                        mirror=false;
+                        controllable=false;
+                        shootOnDeath=true;
+                        shootCone=360;
+                        shootSound= (Sounds.laserbig);
+                        shoot = new ShootMulti
+                                (
+                                        new ShootSpread(){{
+                                            shots = 8;
+                                            spread= 22.5f;
+                                        }},new ShootPattern()
+                                );
+                        bullet = new LaserBulletType(){{
+                            length = 1000f;
+                            damage = 2625f;
+                            width = 180f;
+                            layer = 109;
+
+                            lifetime = 70f;
+
+                            lightningSpacing = 12f;
+                            lightningLength = 2;
+                            lightningDelay = 0.1f;
+                            lightningLengthRand = 0;
+                            lightningDamage = 33;
+                            lightningType = new ExplosionBulletType(10*2625f, 80f){{
+                                collidesAir = true;
+                                shootEffect = Fx.blastExplosion;
+                            }
+                                public void createSplashDamage(Bullet b, float x, float y){
+                                    if(splashDamageRadius > 0 && !b.absorbed){
+
+                                    }
+                                }};
+                            lightningAngleRand = 0f;
+                            largeHit = true;
+                            lightColor = lightningColor = Pal.redLight;
+                            splashDamage = 2625;
+                            splashDamageRadius=80;
+                            sideAngle = 15f;
+                            sideWidth = 0f;
+                            sideLength = 0f;
+                            colors = new Color[]{Pal.redLight.cpy().a(0.4f), Pal.redLight, Color.white};
+                        }};
+                    }},
+                    new Weapon("shootdeath"){{
+                        reload = 100f;
+                        x = 0f;
+                        y = 0f;
+                        top = false;
+                        mirror=false;
+                        controllable=false;
+                        shootOnDeath=true;
+                        shootCone=360;
+                        shootSound= (Sounds.laserbig);
+                        shoot = new ShootMulti
+                                (
+                                        new ShootSpread(){{
+                                            shots = 18;
+                                            spread= 10f;
+                                        }},new ShootPattern()
+                                );
+                        bullet = new ContinuousLaserBulletType(){{
+                            damage = 17150f;
+                            damageInterval =1;
+                            width = 36;
+                            length = 1000f;
+                            layer = 110;
+                            hitEffect = Fx.scatheSlash;
+                            drawSize = 420f;
+                            lifetime = 240f;
+                            fadeTime = 20f;
+                            shake = 4f;
+                            despawnEffect = Fx.none;
+                            smokeEffect = Fx.none;
+
+                            chargeEffect = Fx.none;
+                            hitColor = Pal.redLight;
+
+                            incendChance = 0f;
+                            incendSpread = 0f;
+                            incendAmount = 0;
+                            colors = new Color[]{Liquids.cyanogen.color.cpy().a(0.4f),Liquids.cyanogen.color.cpy().a(0.8f), Liquids.cyanogen.color, Color.white};
+                            oscScl=0.6f;
+                            oscMag=3f;
+
+
+                        }
+                            public void hitEntity(Bullet b, Hitboxc entity, float health) {
+                                super.hitEntity(b,entity,health);
+
+                                if(entity instanceof Unit unit){
+                                    if(impact) unit.kill();
+                                    Call.unitDestroy(unit.id);
+                                };
+                            }
+                            // Creates Lightning during its fire.
+                            @Override
+                            public void update(Bullet b) {
+                                super.update(b);
+                                if(b.timer.get(1)){
+                                    Lightning.create(b.team, Liquids.cyanogen.color, damage*3, b.x, b.y, b.rotation() + (6 - Mathf.range(12)), (int)(length/10));};
+                            }};
+                    }},
+                    new Weapon("shootdeath"){{
+                        reload = 100f;
+                        x = 0f;
+                        y = 0f;
+                        top = false;
+                        mirror=false;
+                        controllable=false;
+                        shootOnDeath=true;
+                        shootCone=360;
+                        shootSound= (Sounds.laserbig);
+                        shoot = new ShootMulti
+                                (
+                                        new ShootSpread(){{
+                                            shots = 8;
+                                            spread= 22.5f;
+                                        }},new ShootPattern()
+                                );
+                        bullet = new BombBulletType(0f, 0f){{
+                            width = 10f;
+                            height = 14f;
+                            speed = 0.4f;
+                            hitEffect = Fx.mineImpactWave;
+                            shootEffect = Fx.none;
+                            smokeEffect = Fx.none;
+                            splashDamage = 2625f*1000000f;
+                            splashDamageRadius= 400;
+                            collides=false;
+                            absorbable=false;
+                            hittable=false;
+                            lifetime=240;
+                            hitColor = Liquids.cryofluid.color;
+                            bulletInterval=3;
+                            intervalBullets =6;
+                            intervalRandomSpread=360;
+                            collidesAir=collidesGround=collidesTiles=collideFloor=false;
+                            intervalBullet = exe;
+                            fragVelocityMin=1.2f;
+                            fragVelocityMax=1.2f;
+                            fragLifeMax = fragLifeMin = 2f;
+                            fragBullet=exe;
+                            fragBullets=72;
+                            fragSpread=5;
+                            fragRandomSpread=0;
+                            despawnEffect = NGFx.massiveSmoke;
+                        }};
+                    }});
+            // Secondary with ,for, loop
+
+            weapons.add(new TurretLarge("nge-personal-mount"){{
+
+                            aimDst = 99999;
+                            x= -100f;
+                            y= 0f;
+                            mirror = true;
+                            reload/=2;
+
+                        }},
+                    new TurretLarge("nge-personal-mount"){{
+
+                        aimDst = 99999;
+                        x= -60f;
+                        y= -50f;
+                        mirror = true;
+                        reload/=2;
+
+                    }},new TurretLarge("nge-personal-mount"){{
+
+                        aimDst = 99999;
+                        x= -0f;
+                        y= -80f;
+
+                    }}
+
+
+            /);**/
+            constructor = TimedKillUnit::create;
+            abilities.add(new RegenAbility() {{
+                              percentAmount = 60000;
+
+                          }}, new Ability() {
 
                               @Override
                               public String localized() {
@@ -609,7 +907,30 @@ public class NGUnitTypes{
                                       }
                                   });
                               }
-                          }
+                          },
+                    new MoveEffectAbility(){{
+                        effect = new AdvancedExplosionEffect(){{
+                            lifetime = 30f;
+                            sparkColor = Liquids.ozone.color;
+                            waveRad = 0f;
+                            sparks = 3;
+                            sparkMinRad = 68f;
+                            sparkRad = 80f;
+                            sparkLen = 10f;
+                            sparkStroke = 8f;
+                        }};
+                        rotation = 180f;
+                        y = 0;
+                        interval = 1f;
+
+                        ;;      ;;;;;;  ;;      ;;
+                        ;;      ;;  ;;  ;;      ;;
+                        ;;      ;;  ;;  ;;      ;;
+                        ;;      ;;  ;;  ;;
+                        ;;;;;;  ;;;;;;  ;;;;;;  ;;
+                    }}
+
+
             );
         }};
 

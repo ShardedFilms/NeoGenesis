@@ -40,6 +40,7 @@ public class TurretLarge extends Weapon{
     }
 
     {
+        shadow = 40;
         reload = 9f;
         shootY = 20;
         rotateSpeed = 0.2f;
