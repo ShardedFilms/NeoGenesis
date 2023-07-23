@@ -1,5 +1,6 @@
 package neogenesis.content;
 
+import arc.Events;
 import arc.graphics.*;
 import arc.graphics.g2d.*;
 import arc.math.*;
@@ -184,7 +185,11 @@ public class NGUnitTypes{
                 homingPower=0.2f;
                 shrinkY=0;
             }
-            /**        hitEntity(Bullet ex , Unit, Healthc) {
+
+                /**
+
+                 Copied : abomb4/super-cheat
+                hitEntity(Bullet ex , Unit, Healthc) {
                     if (other && other.kill) {
                         Call.unitDestroy(u.id)
                     }
@@ -196,12 +201,15 @@ public class NGUnitTypes{
                     }
                 }
                 );
+             Superclass : hitEntity
                 @Override
                 public void hitEntity(Bullet b, Hitboxc entity, float health) {
                     super.hitEntity(b, entity, health);
                 }
 
                 /**
+
+             Test convert ???
             @Override
             public void hitEntity(Bullet b, Unit other, float initialHealth) {
                 if (unit != null && kill)}**/
@@ -209,12 +217,14 @@ public class NGUnitTypes{
 
 
                 public void hitEntity(Bullet b, Unit entity, float health) {
-                    super.hitEntity(b, entity, health);
-                    entity.kill();
-//                    if(b.type.damage > entity.maxHealth/2f || b.type.splashDamage > entity.maxHealth/2f){
-//                        if(entity != null) entity.kill();
-                        b.remove();
-//                    }
+                        super.hitEntity(b,entity,health);
+                    //boolean wasDead = entity instanceof Unit u && u.dead;
+                    
+                    //if (entity && entity)
+                        if (impact){
+
+                            entity.kill();
+                    }
                 }
             };
 
