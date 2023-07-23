@@ -216,16 +216,15 @@ public class NGUnitTypes{
 
 
 
-                public void hitEntity(Bullet b, Unit entity, float health) {
+                public void hitEntity(Bullet b, Hitboxc entity, float health) {
                         super.hitEntity(b,entity,health);
                     //boolean wasDead = entity instanceof Unit u && u.dead;
 
-                    //if (entity && entity)
-                        if (impact){
-
-                            entity.kill();
-                            //Call.unitDestroy(entity.id);
-                    }
+                    if(entity instanceof Unit unit){
+                        if(impact) unit.kill();
+                        
+                        Call.unitDestroy(unit.id);
+                    };
                 }
             };
 
