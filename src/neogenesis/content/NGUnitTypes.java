@@ -725,8 +725,8 @@ public class NGUnitTypes{
                         shoot = new ShootMulti
                                 (
                                         new ShootSpread(){{
-                                            shots = 8;
-                                            spread= 22.5f;
+                                            shots = 18;
+                                            spread= 10f;
                                         }},new ShootPattern()
                                 );
                         bullet = new LaserBulletType(){{
@@ -830,7 +830,7 @@ public class NGUnitTypes{
                                 if(b.timer.get(1)){
                                     Lightning.create(b.team, Liquids.cyanogen.color, damage*3, b.x, b.y, b.rotation() + (6 - Mathf.range(12)), (int)(length/10));};
                             }};
-                    }},
+                    }}/**,
                     new Weapon("shootdeath"){{
                         reload = 100f;
                         x = 0f;
@@ -876,7 +876,8 @@ public class NGUnitTypes{
                             fragRandomSpread=0;
                             despawnEffect = NGFx.massiveSmoke;
                         }};
-                    }});
+                    }}
+                     **/);
             // Secondary with ,for, loop
 
             /**weapons.add(new TurretLarge("nge-personal-mount"){{
