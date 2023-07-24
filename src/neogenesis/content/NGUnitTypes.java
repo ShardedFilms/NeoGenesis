@@ -613,18 +613,18 @@ public class NGUnitTypes{
             fallSpeed /=2;
 
             speed = 12f;
-            hitSize = 24f;
+            hitSize = 48f;
             accel = 0.1f;
             drag = 0.05f;
             health =1f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f*16f; // high
-            lifetime = 3600;
+            lifetime = 3600*3;
             outlineRadius=0;
             flying = true;
             engineSize=0;
             singleTarget = false;
             rotateSpeed = 20f;
             loopSound = Sounds.flux;
-            deathExplosionEffect= NGFx.massiveShockwave;
+            deathExplosionEffect= NGFx.deathBomb;
             ammoType = new PowerAmmoType(800);
             for(int j = 0; j < 3; j++){
                 int i = j;
@@ -633,7 +633,7 @@ public class NGUnitTypes{
                     x = 0f;
                     rotateSpeed = -4-i*0.9f;
                     color = Liquids.ozone.color.cpy().a(0.4f);
-                    strokeTo = stroke = 5;
+                    strokeTo = stroke = 8  ;
                     radius=radiusTo=72;
                     layer = 110;
                     circle=false;
@@ -648,7 +648,7 @@ public class NGUnitTypes{
                     rotateSpeed = -3-i2;
                     color = Color.white.cpy().a(0.5f);
                     rotation=30;
-                    strokeTo = stroke = 6;
+                    strokeTo = stroke = 10;
                     radius=radiusTo=72;
                     layer = 110;
                     circle=false;
@@ -662,13 +662,13 @@ public class NGUnitTypes{
                 color = Color.black;
                 rotation=30;
                 strokeTo = stroke = 6;
-                radius=radiusTo=72;
+                radius=radiusTo=64;
                 layer = 90;
                 circle=false;
                 sides=36;
             }});
-            /**weapons.add(new Weapon("type-laser"){{
-                            reload = 9f;
+            weapons.add(new Weapon("type-laser"){{
+                            reload = 100f;
                             x = 0f;
                             y = 0f;
                             top = false;
@@ -677,14 +677,13 @@ public class NGUnitTypes{
                             aimDst=99999;
                             shoot = new ShootMulti
                                     (
-                                            new ShootPattern(){{
-                                                shots = 10;
-                                                shotDelay =1;
-                                            }},new ShootBarrel(){{
-                                        barrels = new float[]{
-                                                0f, 32f, 0f,
-                                        };
-                                        shots=3;
+                                            new ShootSpread(){{
+                                                shots = 36;
+                                                shotDelay =0;
+                                                spread =5f;
+                                            }},new ShootSpread(){{
+                                        shots=5;
+                                        spread =1f;
                                     }}
                                     );
                             bullet = new BasicBulletType(32f, 2000){{
@@ -700,7 +699,17 @@ public class NGUnitTypes{
                                 hitEffect = Fx.hitSquaresColor;
                                 sprite = "missile-large";
                                 shrinkY=0;
-                            }};
+
+                            }
+                                public void hitEntity(Bullet b, Hitboxc entity, float health) {
+                                    super.hitEntity(b,entity,health);
+
+                                    if(entity instanceof Unit unit){
+                                        if(impact) unit.kill();
+                                        Call.unitDestroy(unit.id);
+                                    };
+                                }
+                            };
                         }},
                     new Weapon("shootdeath"){{
                         reload = 100f;
@@ -720,7 +729,7 @@ public class NGUnitTypes{
                                         }},new ShootPattern()
                                 );
                         bullet = new LaserBulletType(){{
-                            length = 1000f;
+                            length = 4500f;
                             damage = 2625f;
                             width = 180f;
                             layer = 109;
@@ -739,8 +748,10 @@ public class NGUnitTypes{
                                 public void createSplashDamage(Bullet b, float x, float y){
                                     if(splashDamageRadius > 0 && !b.absorbed){
 
+
                                     }
                                 }};
+
                             lightningAngleRand = 0f;
                             largeHit = true;
                             lightColor = lightningColor = Pal.redLight;
@@ -749,8 +760,16 @@ public class NGUnitTypes{
                             sideAngle = 15f;
                             sideWidth = 0f;
                             sideLength = 0f;
-                            colors = new Color[]{Pal.redLight.cpy().a(0.4f), Pal.redLight, Color.white};
-                        }};
+                            colors = new Color[]{Liquids.cyanogen.color.cpy().a(0.4f), Liquids.cyanogen.color, Color.white};
+                        }
+                            public void hitEntity(Bullet b, Hitboxc entity, float health) {
+                                super.hitEntity(b,entity,health);
+
+                                if(entity instanceof Unit unit){
+                                    if(impact) unit.kill();
+                                    Call.unitDestroy(unit.id);
+                                };
+                            }};
                     }},
                     new Weapon("shootdeath"){{
                         reload = 100f;
@@ -772,8 +791,8 @@ public class NGUnitTypes{
                         bullet = new ContinuousLaserBulletType(){{
                             damage = 17150f;
                             damageInterval =1;
-                            width = 36;
-                            length = 1000f;
+                            width = 60;
+                            length = 4000f;
                             layer = 110;
                             hitEffect = Fx.scatheSlash;
                             drawSize = 420f;
@@ -859,10 +878,10 @@ public class NGUnitTypes{
                     }});
             // Secondary with ,for, loop
 
-            weapons.add(new TurretLarge("nge-personal-mount"){{
+            /**weapons.add(new TurretLarge("nge-personal-mount"){{
 
-                            aimDst = 99999;
-                            x= -100f;
+                            aimDst = 400;
+                            x= -200f;
                             y= 0f;
                             mirror = true;
                             reload/=2;
@@ -870,22 +889,22 @@ public class NGUnitTypes{
                         }},
                     new TurretLarge("nge-personal-mount"){{
 
-                        aimDst = 99999;
-                        x= -60f;
-                        y= -50f;
+                        aimDst = 400;
+                        x= -120f;
+                        y= -100f;
                         mirror = true;
                         reload/=2;
 
                     }},new TurretLarge("nge-personal-mount"){{
 
-                        aimDst = 99999;
+                        aimDst = 400;
                         x= -0f;
-                        y= -80f;
+                        y= -160f;
 
                     }}
 
 
-            /);**/
+            )**/;
             constructor = TimedKillUnit::create;
             abilities.add(new RegenAbility() {{
                               percentAmount = 60000;
@@ -922,18 +941,20 @@ public class NGUnitTypes{
                           },
                     new MoveEffectAbility(){{
                         effect = new AdvancedExplosionEffect(){{
-                            lifetime = 30f;
+                            lifetime = 20f;
                             sparkColor = Liquids.ozone.color;
                             waveRad = 0f;
-                            sparks = 3;
-                            sparkMinRad = 68f;
-                            sparkRad = 80f;
-                            sparkLen = 10f;
+                            smokes =0;
+                            sparks = 10;
+                            sparkMinRad = 64f;
+                            sparkRad = 10f;
+                            sparkLen = 0f;
                             sparkStroke = 8f;
                         }};
                         rotation = 180f;
                         y = 0;
                         interval = 1f;
+                        minVelocity=0;
 
                         ;;      ;;;;;;  ;;      ;;
                         ;;      ;;  ;;  ;;      ;;

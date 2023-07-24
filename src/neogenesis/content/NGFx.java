@@ -23,6 +23,7 @@ import static arc.math.Angles.*;
 import static mindustry.Vars.*;
 
 public class NGFx{
+
     public static final Rand rand = new Rand();
     public static final Vec2 v = new Vec2();
 
@@ -222,6 +223,12 @@ public class NGFx{
                     Lines.circle(e.x, e.y, e.fin() * 500f+radi);
                 }
             }),
+            deathBomb = new Effect(120f, 160f, e -> {
+                float circleRad = 6f + e.finpow() * 800f;
+
+                color(e.color, e.foutpow());
+                AdFill.circle(e.x, e.y, circleRad,"nge-pink-supernova");
+            }).layer(Layer.bullet + 2f),
             deathCharge = new Effect(60f, 100f, e -> {
                 color(Liquids.cryofluid.color.cpy().a(0.5f));
                 stroke(e.fin() * 2f);
