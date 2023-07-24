@@ -682,6 +682,7 @@ public class NGUnitTypes{
                                                 shotDelay =0;
                                                 spread =5f;
                                             }},new ShootSpread(){{
+                                                shotDelay = 9;
                                         shots=5;
                                         spread =1f;
                                     }}
