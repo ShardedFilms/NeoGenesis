@@ -946,12 +946,14 @@ public class NGUnitTypes{
                             lifetime = 20f;
                             sparkColor = Liquids.ozone.color;
                             waveRad = 0f;
+                            waveStroke = 0f;
                             smokes =0;
                             sparks = 10;
                             sparkMinRad = 64f;
                             sparkRad = 10f;
                             sparkLen = 0f;
-                            sparkStroke = 8f;
+                            sparkStroke = 16f;
+                            
                         }};
                         rotation = 180f;
                         y = 0;
