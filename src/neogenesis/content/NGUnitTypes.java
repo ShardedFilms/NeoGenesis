@@ -732,10 +732,10 @@ public class NGUnitTypes{
                         bullet = new LaserBulletType(){{
                             length = 4500f;
                             damage = 2625f;
-                            width = 180f;
+                            width = 200f;
                             layer = 109;
 
-                            lifetime = 70f;
+                            lifetime = 80f;
 
                             lightningSpacing = 12f;
                             lightningLength = 2;
@@ -792,7 +792,7 @@ public class NGUnitTypes{
                         bullet = new ContinuousLaserBulletType(){{
                             damage = 17150f;
                             damageInterval =1;
-                            width = 60;
+                            width = 72;
                             length = 4000f;
                             layer = 110;
                             hitEffect = Fx.scatheSlash;
@@ -828,7 +828,7 @@ public class NGUnitTypes{
                             public void update(Bullet b) {
                                 super.update(b);
                                 if(b.timer.get(1)){
-                                    Lightning.create(b.team, Liquids.cyanogen.color, damage*3, b.x, b.y, b.rotation() + (6 - Mathf.range(12)), (int)(length/10));};
+                                    Lightning.create(b.team, Liquids.cyanogen.color, damage*3, b.x, b.y, b.rotation() + (6 - Mathf.range(12)), (int)(length/20));};
                             }};
                     }}/**,
                     new Weapon("shootdeath"){{
@@ -943,17 +943,17 @@ public class NGUnitTypes{
                           },
                     new MoveEffectAbility(){{
                         effect = new AdvancedExplosionEffect(){{
-                            lifetime = 20f;
+                            lifetime = 30f;
                             sparkColor = Liquids.ozone.color;
                             waveRad = 0f;
                             waveStroke = 0f;
                             smokes =0;
-                            sparks = 10;
+                            sparks = 16;
                             sparkMinRad = 64f;
-                            sparkRad = 10f;
+                            sparkRad = 20f;
                             sparkLen = 0f;
-                            sparkStroke = 16f;
-                            
+                            sparkStroke = 20f;
+
                         }};
                         rotation = 180f;
                         y = 0;
