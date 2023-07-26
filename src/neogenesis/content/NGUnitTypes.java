@@ -28,6 +28,7 @@ import mindustry.type.weapons.*;
 import mindustry.world.meta.*;
 import neogenesis.types.misc.AccelBulletType;
 import neogenesis.types.misc.AdvancedExplosionEffect;
+import neogenesis.types.misc.AttractorLaser;
 import neogenesis.types.misc.ShootVertical;
 import neogenesis.types.template.*;
 
@@ -500,7 +501,7 @@ public class NGUnitTypes{
                                     hitSound = Sounds.railgun;
                                     fragBullet = new RailBulletType(){{
                                         length = 4000f;
-                                        damage = 900f*33f;
+                                        damage = 900f*3.3f;
                                         hitColor = Color.valueOf("feb380");
                                         hitEffect = endEffect = Fx.hitBulletColor;
                                         pierceDamageFactor = 0.8f;
@@ -789,7 +790,7 @@ public class NGUnitTypes{
                                             spread= 10f;
                                         }},new ShootPattern()
                                 );
-                        bullet = new ContinuousLaserBulletType(){{
+                        bullet = new AttractorLaser(){{
                             damage = 17150f;
                             damageInterval =1;
                             width = 72;
@@ -797,7 +798,7 @@ public class NGUnitTypes{
                             layer = 110;
                             hitEffect = Fx.scatheSlash;
                             drawSize = 420f;
-                            lifetime = 240f;
+                            lifetime = 480f;
                             fadeTime = 20f;
                             shake = 4f;
                             despawnEffect = Fx.none;
@@ -812,6 +813,8 @@ public class NGUnitTypes{
                             colors = new Color[]{Liquids.cyanogen.color.cpy().a(0.4f),Liquids.cyanogen.color.cpy().a(0.8f), Liquids.cyanogen.color, Color.white};
                             oscScl=0.6f;
                             oscMag=3f;
+
+
 
 
                         }
@@ -949,7 +952,7 @@ public class NGUnitTypes{
                             waveStroke = 0f;
                             smokes =0;
                             sparks = 16;
-                            sparkMinRad = 64f;
+                            sparkMinRad = 60f;
                             sparkRad = 20f;
                             sparkLen = 0f;
                             sparkStroke = 20f;
