@@ -1,4 +1,4 @@
-/**package neogenesis.types.misc;
+package neogenesis.types.misc;
 
 import arc.*;
 import arc.func.*;
@@ -23,7 +23,6 @@ public class Kill {
         Cons<Unit> cons = unit -> {
             if (unit.team == team || !unit.checkTarget(air, ground) || !unit.hittable() || !unit.within(x, y, radius + (scaled ? unit.hitSize / 2f : 0f))) {
 
-                return;
                 boolean dead = unit.dead;
 
                 float amount = calculateDamage(scaled ? Math.max(0, unit.dst(x, y) - unit.type.hitSize/2) : unit.dst(x, y), radius, damage);
@@ -37,6 +36,7 @@ public class Kill {
                         Events.fire(new UnitBulletDestroyEvent(unit, source));
                     }
                 }
+                return;
             }
         };
     }
@@ -44,4 +44,4 @@ public class Kill {
         float falloff = 0.4f;
         float scaled = Mathf.lerp(1f - dist / radius, 1f, falloff);
         return damage * scaled;
-    }}**/
+    }}

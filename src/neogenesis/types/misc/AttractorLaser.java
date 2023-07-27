@@ -26,10 +26,15 @@ public class AttractorLaser extends ContinuousLaserBulletType {
 
     public float dragRadius = 11 * 8;
     public float dragPower = 200F;
-    public float lightningSpacing;
+
+
+    /**
+     * This is unnessarary.
+     * Because we already have.
+     * public float lightningSpacing;
     public float lightningDelay;
     public float lightningAngleRand;
-    public Color lightningColor;
+    public Color lightningColor;**/
     public StatusEffect attractedStatus = StatusEffects.melting;
 
     public AttractorLaser() {
@@ -85,7 +90,7 @@ public class AttractorLaser extends ContinuousLaserBulletType {
             Damage.collideLine(b, b.team, this.hitEffect, b.x, b.y, b.rotation(), this.length, this.largeHit);
         }
 
-        if (this.lightningSpacing > 0 && b.timer.get(3, 59)) {
+        /** if (this.lightningSpacing > 0 && b.timer.get(3, 59)) {
             var idx = 0;
             var rot = b.rotation();
             // lightningSound.at(b.x + Angles.trnsx(rot, length / 2), b.y + Angles.trnsy(rot, length / 2));
@@ -106,7 +111,7 @@ public class AttractorLaser extends ContinuousLaserBulletType {
                     }));
                 }
             }
-        }
+        }**/
 
         if (this.shake > 0) {
             Effect.shake(this.shake, this.shake, b);

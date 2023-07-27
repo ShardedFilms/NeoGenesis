@@ -26,10 +26,7 @@ import mindustry.type.ammo.*;
 import mindustry.type.unit.*;
 import mindustry.type.weapons.*;
 import mindustry.world.meta.*;
-import neogenesis.types.misc.AccelBulletType;
-import neogenesis.types.misc.AdvancedExplosionEffect;
-import neogenesis.types.misc.AttractorLaser;
-import neogenesis.types.misc.ShootVertical;
+import neogenesis.types.misc.*;
 import neogenesis.types.template.*;
 
 import static arc.graphics.g2d.Draw.*;
@@ -743,13 +740,13 @@ public class NGUnitTypes{
                             lightningDelay = 0.1f;
                             lightningLengthRand = 0;
                             lightningDamage = 33;
-                            lightningType = new ExplosionBulletType(10*2625f, 80f){{
+                            lightningType = new ExplosionBulletType(10*2625f, 160f){{
                                 collidesAir = true;
                                 shootEffect = Fx.blastExplosion;
                             }
                                 public void createSplashDamage(Bullet b, float x, float y){
                                     if(splashDamageRadius > 0 && !b.absorbed){
-
+                                        Kill.absorb(b.team, x, y, splashDamageRadius, splashDamage * b.damageMultiplier(), splashDamagePierce, collidesAir, collidesGround, scaledSplashDamage, b);
 
                                     }
                                 }};
@@ -814,7 +811,8 @@ public class NGUnitTypes{
                             oscScl=0.6f;
                             oscMag=3f;
 
-
+                            dragRadius = 100f*8f;
+                            dragPower = 1000f;
 
 
                         }
