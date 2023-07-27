@@ -33,7 +33,7 @@ public class Kill {
 
                 if(source != null){
                     unit.controller().hit(source);
-
+                    unit.kill();
                     if(!dead && unit.dead){
                         Events.fire(new UnitBulletDestroyEvent(unit, source));
                     }
@@ -111,7 +111,8 @@ public class Kill {
                         //register as hit
                         dealt += build.health;
 
-                        if(next - dealt <= 0){
+                        if(next - dealt >= 0){build.kill();
+
                             break;
                         }
                     }
