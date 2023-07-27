@@ -25,6 +25,7 @@ import mindustry.type.*;
 import mindustry.type.ammo.*;
 import mindustry.type.unit.*;
 import mindustry.type.weapons.*;
+import mindustry.world.blocks.ConstructBlock;
 import mindustry.world.meta.*;
 import neogenesis.types.misc.*;
 import neogenesis.types.template.*;
@@ -740,16 +741,26 @@ public class NGUnitTypes{
                             lightningDelay = 0.1f;
                             lightningLengthRand = 0;
                             lightningDamage = 33;
-                            lightningType = new ExplosionBulletType(10*2625f, 160f){{
+                            lightningType = new ExplosionBulletType(10*2625f, 320f){{
                                 collidesAir = true;
                                 shootEffect = Fx.blastExplosion;
                             }
                                 public void createSplashDamage(Bullet b, float x, float y){
+                                super.createSplashDamage(b,x,y);
                                     if(splashDamageRadius > 0 && !b.absorbed){
                                         Kill.absorb(b.team, x, y, splashDamageRadius, splashDamage * b.damageMultiplier(), splashDamagePierce, collidesAir, collidesGround, scaledSplashDamage, b);
 
+
                                     }
-                                }};
+                                }
+                                public void hitTile(Bullet b, Building build, float x, float y, float initialHealth, boolean direct){
+
+                                    super.hitTile(b,build,x,y,initialHealth,direct);
+                                    if(makeFire && build.team != b.team){
+                                        Fires.create(build.tile);
+                                        build.kill();
+                                    }}
+                            };
 
                             lightningAngleRand = 0f;
                             largeHit = true;
@@ -768,7 +779,17 @@ public class NGUnitTypes{
                                     if(impact) unit.kill();
                                     Call.unitDestroy(unit.id);
                                 };
-                            }};
+                            }
+                            public void hitTile(Bullet b, Building build, float x, float y, float initialHealth, boolean direct){
+
+                                super.hitTile(b,build,x,y,initialHealth,direct);
+                                if(makeFire && build.team != b.team){
+                                    Fires.create(build.tile);
+                                    build.kill();
+                                }
+                            }
+                        };
+
                     }},
                     new Weapon("shootdeath"){{
                         reload = 100f;
@@ -812,7 +833,7 @@ public class NGUnitTypes{
                             oscMag=3f;
 
                             dragRadius = 100f*8f;
-                            dragPower = 1000f;
+                            dragPower = 10000f;
 
 
                         }
