@@ -36,6 +36,7 @@ import mindustry.world.consumers.*;
 import mindustry.world.draw.*;
 import mindustry.world.meta.*;
 import mindustry.content.*;
+import neogenesis.types.misc.Kill;
 
 import static mindustry.Vars.*;
 import static mindustry.type.ItemStack.*;
@@ -132,16 +133,39 @@ public class NGBlocks{
 						splashDamage = 44f;
 						hitEffect= new MultiEffect(NGFx.cosmosBlast, NGFx.cosmosSpark);
 					}},
-					NGItems.tensor,  new BasicBulletType(16f, 20){{
+					NGItems.tensor,  new ArtilleryBulletType(6f, 200, "shell"){{
+						rangeChange = 280;
+						hitEffect = Fx.blastExplosion;
 						knockback = 0.8f;
-						lifetime = 20f;
-						width = 10f;
-						height = 15f;
-						splashDamageRadius = 3 * 8;
-						splashDamage = 66f;
-						hitEffect= Fx.blastExplosion;
+						lifetime = 80f;
+						width = height = 21f;
+						collidesTiles = false;
+						ammoMultiplier = 4f;
+						splashDamageRadius = 10f*8f;
+						splashDamagePierce = true;
+						splashDamage = 55f;
+						backColor = Pal.missileYellowBack;
+						frontColor = Pal.missileYellow;
+
+						status = StatusEffects.blasted;
 						reloadMultiplier =2f;
-					}}
+					}
+						public void createSplashDamage(Bullet b, float x, float y){
+							super.createSplashDamage(b,x,y);
+							if(splashDamageRadius > 0 && !b.absorbed){
+								Kill.absorb(b.team, x, y, splashDamageRadius, splashDamage * b.damageMultiplier(), splashDamagePierce, collidesAir, collidesGround, scaledSplashDamage, b);
+
+
+							}
+						}
+						public void hitTile(Bullet b, Building build, float x, float y, float initialHealth, boolean direct){
+
+							super.hitTile(b,build,x,y,initialHealth,direct);
+							if(makeFire && build.team != b.team){
+								Fires.create(build.tile);
+								build.kill();
+							}}
+					}
 			);
 
 			shootY = 3f;
