@@ -46,6 +46,7 @@ public class Kill {
                 tAbsorb(team, World.toTile(x), World.toTile(y), radius / tilesize, damage * (source == null ? 1f : source.type.buildingDamageMultiplier), source);
             }else{
                 completeDamage(team, x, y, radius, damage);
+
             }
         };
     }
@@ -75,6 +76,7 @@ public class Kill {
             if(in != null && in.team != team && in.block.size > 1 && in.health > damage){
                 //deal the damage of an entire side, to be equivalent with maximum 'standard' damage
                 in.damage(team, damage * Math.min((in.block.size), baseRadius * 0.4f));
+
                 //no need to continue with the explosion
                 return;
             }

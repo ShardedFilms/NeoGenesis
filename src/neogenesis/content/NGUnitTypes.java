@@ -708,6 +708,13 @@ public class NGUnitTypes{
                                         if(impact) unit.kill();
                                         Call.unitDestroy(unit.id);
                                     };
+                                };
+                                public void hitTile(Bullet b, Building build, float x, float y, float initialHealth, boolean direct){
+
+                                    super.hitTile(b,build,x,y,initialHealth,direct);
+
+                                    if(impact)build.kill();
+
                                 }
                             };
                         }},
@@ -756,6 +763,8 @@ public class NGUnitTypes{
                                 public void hitTile(Bullet b, Building build, float x, float y, float initialHealth, boolean direct){
 
                                     super.hitTile(b,build,x,y,initialHealth,direct);
+
+
                                     if(makeFire && build.team != b.team){
                                         Fires.create(build.tile);
                                         build.kill();
@@ -780,13 +789,13 @@ public class NGUnitTypes{
                                     Call.unitDestroy(unit.id);
                                 };
                             }
+
                             public void hitTile(Bullet b, Building build, float x, float y, float initialHealth, boolean direct){
 
                                 super.hitTile(b,build,x,y,initialHealth,direct);
-                                if(makeFire && build.team != b.team){
-                                    Fires.create(build.tile);
-                                    build.kill();
-                                }
+
+                                    if(impact)build.kill();
+
                             }
                         };
 
