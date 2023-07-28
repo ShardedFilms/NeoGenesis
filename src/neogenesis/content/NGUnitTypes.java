@@ -765,7 +765,7 @@ public class NGUnitTypes{
                                     super.hitTile(b,build,x,y,initialHealth,direct);
 
 
-                                    if(makeFire && build.team != b.team){
+                                    if(b.team != build.team){
                                         Fires.create(build.tile);
                                         build.kill();
                                     }}
@@ -859,7 +859,7 @@ public class NGUnitTypes{
                             public void update(Bullet b) {
                                 super.update(b);
                                 if(b.timer.get(1)){
-                                    Lightning.create(b.team, Liquids.cyanogen.color, damage*3, b.x, b.y, b.rotation() + (6 - Mathf.range(12)), (int)(length/20));};
+                                    Lightning.create(b.team, Liquids.cyanogen.color, damage*3, b.x, b.y, b.rotation() + (6 - Mathf.range(12)), 200);};
                             }};
                     }}/**,
                     new Weapon("shootdeath"){{
