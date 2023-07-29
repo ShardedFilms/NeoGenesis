@@ -32,7 +32,7 @@ dependencies{
     compileOnly "com.github.Anuken.MindustryJitpack:core:$mindustryVersion"
     annotationProcessor "com.github.Anuken:jabel:$jabelVersion"
     implementation "com.github.Anuken.MindustryJitpack:core:$mindustryVersion"
-    implementation "com.github.Anuken.Arc:arc-core:v145"
+    implementation "com.github.Anuken.Arc:arc-core:$mindustryVersion"
 }
 
 //force arc version

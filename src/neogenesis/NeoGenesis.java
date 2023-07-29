@@ -116,6 +116,8 @@ public class NeoGenesis extends Mod{
         NGColor.load();
         NGFx.load();
 
+
+
         // Second
     	NGBlocks.load();
         NGPlanets.load();
