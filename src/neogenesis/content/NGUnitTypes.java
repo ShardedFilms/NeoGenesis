@@ -969,7 +969,10 @@ public class NGUnitTypes{
                                           }
                                           if(building != null && building.health > unit.maxHealth * 2) building.kill();
                                       }
-                                  });
+                                  }
+
+                                  );
+                                  
                               }
                           },
                     new MoveEffectAbility(){{
