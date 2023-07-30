@@ -3,6 +3,9 @@ package neogenesis.types.misc;
 import mindustry.entities.pattern.*;
 import arc.util.*;
 
+/**
+ * ShootAlternate but spacing with y
+ */
 public class ShootVertical extends ShootPattern{
     /** number of barrels used for shooting. */
     public int barrels = 2;

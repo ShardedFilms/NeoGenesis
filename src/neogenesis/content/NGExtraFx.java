@@ -7,7 +7,8 @@ import mindustry.entities.*;
 import mindustry.graphics.*;
 
 import static arc.graphics.g2d.Draw.*;
-public class ExtraEffects{
+import static mindustry.Vars.*;
+public class NGExtraFx{
     public static final Effect
 
             coloredRailgunTrail = new Effect(30f, e -> {
@@ -35,7 +36,8 @@ public class ExtraEffects{
         }
     });
 
-    private ExtraEffects(){
-        throw new AssertionError();
-    }
+    //private NGExtraFx(){
+    //    throw new AssertionError();
+    //}
+
 }

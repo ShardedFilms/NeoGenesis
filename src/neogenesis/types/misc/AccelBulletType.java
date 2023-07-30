@@ -7,7 +7,8 @@ import mindustry.entities.bullet.BasicBulletType;
 import mindustry.gen.Bullet;
 
 /**
- * The Bullet That Accelerates Speed.
+ * The Bullet that increases speed.
+ *
  * @author Yuria-Shikibe/New Horizon
  * */
 public class AccelBulletType extends BasicBulletType{
