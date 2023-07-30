@@ -37,6 +37,7 @@ import mindustry.world.draw.*;
 import mindustry.world.meta.*;
 import mindustry.content.*;
 import neogenesis.types.misc.Kill;
+import neogenesis.types.misc.VectorBulletType;
 
 import static mindustry.Vars.*;
 import static mindustry.type.ItemStack.*;
@@ -133,7 +134,7 @@ public class NGBlocks{
 						splashDamage = 44f;
 						hitEffect= new MultiEffect(NGFx.cosmosBlast, NGFx.cosmosSpark);
 					}},
-					NGItems.tensor,  new ArtilleryBulletType(6f, 200, "shell"){{
+					NGItems.tensor,  new ArtilleryBulletType(6f, 800, "shell"){{
 						rangeChange = 280;
 						hitEffect = Fx.blastExplosion;
 						knockback = 0.8f;
@@ -165,6 +166,25 @@ public class NGBlocks{
 								Fires.create(build.tile);
 								build.kill();
 							}}
+					},
+					NGItems.matrix,  new VectorBulletType(10f, 200){{
+						rangeChange = 360;
+						hitEffect = Fx.shootSmokeTitan;
+						knockback = 0f;
+						lifetime = 40f;
+						width = height = 8f;
+						collidesTiles = true;
+						ammoMultiplier = 4f;
+						splashDamageRadius = 10f*8f;
+						splashDamagePierce = true;
+						splashDamage = 55f;
+						backColor = Pal.sapBullet;
+						frontColor = Color.white;
+						hitColor = Pal.sapBullet;
+						trailLength = 15;
+						trailWidth =2f;
+						reloadMultiplier =4f;
+					}
 					}
 			);
 
