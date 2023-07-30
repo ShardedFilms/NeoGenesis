@@ -1,8 +1,10 @@
 package neogenesis.content;
 
 import arc.graphics.*;
+import arc.graphics.g2d.*;
 import arc.math.*;
 import arc.struct.*;
+import arc.util.Tmp;
 import mindustry.*;
 import mindustry.entities.*;
 import mindustry.entities.abilities.*;
@@ -185,6 +187,18 @@ public class NGBlocks{
 						trailWidth =2f;
 						reloadMultiplier =4f;
 					}
+						@Override
+						public void draw(Bullet b){
+							drawTrail(b);
+							Tmp.v1.trns(b.rotation(), height / 2f);
+							for(int s : Mathf.signs){
+								Tmp.v2.trns(b.rotation() - 90f, width * s, -height);
+								Draw.color(backColor);
+								Fill.tri(Tmp.v1.x + b.x, Tmp.v1.y + b.y, -Tmp.v1.x + b.x, -Tmp.v1.y + b.y, Tmp.v2.x + b.x, Tmp.v2.y + b.y);
+								Draw.color(frontColor);
+								Fill.tri(Tmp.v1.x / 2f + b.x, Tmp.v1.y / 2f + b.y, -Tmp.v1.x / 2f + b.x, -Tmp.v1.y / 2f + b.y, Tmp.v2.x / 2f + b.x, -Tmp.v2.y / 2f + b.y);
+							}
+						}
 					}
 			);
 

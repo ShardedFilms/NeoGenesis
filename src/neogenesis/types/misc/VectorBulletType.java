@@ -13,7 +13,7 @@ public class VectorBulletType extends BasicBulletType{
     float fy2=-1;
     float fx3=0;
     float fy3=-2;
-    float bx1=0;
+    float bx1=0f;
     float by1=-0.5f;
     float bx2=2;
     float by2=-2;
@@ -30,9 +30,9 @@ public class VectorBulletType extends BasicBulletType{
         for(int s : Mathf.signs){
             Tmp.v2.trns(b.rotation() - 90f, width * s, -height);
             Draw.color(backColor);
-            Fill.tri(bx1 + b.x, by1 + b.y, bx2 + b.x, by2 + b.y, bx3 + b.x, by3 + b.y);
+            Fill.tri(Tmp.v1.x + b.x, Tmp.v1.y + b.y, -Tmp.v1.x + b.x, -Tmp.v1.y + b.y, Tmp.v2.x + b.x, Tmp.v2.y + b.y);
             Draw.color(frontColor);
-            Fill.tri(fx1 + b.x, fy1 + b.y, fx2 + b.x, fy2 + b.y, fx3 + b.x, fy3 + b.y);
+            Fill.tri(Tmp.v1.x / 2f + b.x, Tmp.v1.y / 2f + b.y, -Tmp.v1.x / 2f + b.x, -Tmp.v1.y / 2f + b.y, Tmp.v2.x / 2f + b.x, Tmp.v2.y / 2f + b.y);
         }
     }
 }
