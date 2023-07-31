@@ -196,7 +196,7 @@ public class NGBlocks{
 								Draw.color(backColor);
 								Fill.tri(Tmp.v1.x + b.x, Tmp.v1.y + b.y, -Tmp.v1.x + b.x, -Tmp.v1.y + b.y, Tmp.v2.x + b.x, Tmp.v2.y + b.y);
 								Draw.color(frontColor);
-								Fill.tri(Tmp.v1.x / 2f + b.x, Tmp.v1.y / 2f + b.y, -Tmp.v1.x / 2f + b.x, -Tmp.v1.y / 2f + b.y, Tmp.v2.x / 2f + b.x, -Tmp.v2.y / 2f + b.y);
+								Fill.tri(Tmp.v1.x / 2f + b.x, Tmp.v1.y / 2f + b.y, -Tmp.v1.x / 2f + b.x, -Tmp.v1.y * 2f + b.y, Tmp.v2.x / 2f + b.x,  Tmp.v2.y / 2f + b.y);
 							}
 						}
 					}
