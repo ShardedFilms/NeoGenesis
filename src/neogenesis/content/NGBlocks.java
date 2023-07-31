@@ -169,7 +169,7 @@ public class NGBlocks{
 								build.kill();
 							}}
 					},
-					NGItems.matrix,  new VectorBulletType(10f, 200){{
+					NGItems.matrix,  new BasicBulletType(10f, 200){{
 						rangeChange = 360;
 						hitEffect = Fx.shootSmokeTitan;
 						knockback = 0f;
