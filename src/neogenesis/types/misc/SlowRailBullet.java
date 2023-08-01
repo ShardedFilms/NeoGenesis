@@ -18,6 +18,14 @@ public class SlowRailBullet extends BasicBulletType{
     public float collisionWidth = 3f;
     public float pierceDamageFactor = 0f;
 
+    // Bullet Special Functions
+    @Nullable public Bullet trailBullet = null;
+    public float bulletTrailRandomSpread = 361;
+    public float bulletTrailAngle = 0;
+    public int trailBulets =0;
+    public float bulletTrailSpread =0;
+    public float bulletSpacing =80;
+
     private static boolean hit = false;
 
     public SlowRailBullet(float speed, float damage){
@@ -74,6 +82,7 @@ public class SlowRailBullet extends BasicBulletType{
             }
             hit(b, x, y);
         }, true);
+        /** Spawn Effects */
         if(b.data instanceof RailData data){
             data.lastLen += Mathf.dst(b.lastX, b.lastY, b.x, b.y);
             while(data.len < data.lastLen){
@@ -82,10 +91,20 @@ public class SlowRailBullet extends BasicBulletType{
                 data.len += trailSpacing;
             }
         }
+        /** Spawn Bullets **/
+        if(b.data instanceof RailData data){
+            data.lastLen += Mathf.dst(b.lastX, b.lastY, b.x, b.y);
+            while(data.len < data.lastLen){
+                Tmp.v1.trns(b.rotation(), data.len).add(data.x, data.y);
+                intervalBullet.create(b, b.x, b.y, b.rotation() + Mathf.range(bulletTrailRandomSpread) + bulletTrailAngle + (((trailBulets - 1f)/2f) * bulletTrailSpread));
+                data.len += bulletSpacing;
+
+            }
+        }
     }
 
-
-    public void drawVec(Bullet b){
+    /**@Override
+    public void draw(Bullet b){
         drawTrail(b);
         float height = this.height * ((1f - shrinkY) + shrinkY * b.fout());
         float width = this.width * ((1f - shrinkX) + shrinkX * b.fout()) / 1.5f;
@@ -98,7 +117,7 @@ public class SlowRailBullet extends BasicBulletType{
             Draw.color(frontColor);
             Fill.tri(Tmp.v1.x / 2f + b.x, Tmp.v1.y / 2f + b.y, -Tmp.v1.x / 2f + b.x, -Tmp.v1.y / 2f + b.y, Tmp.v2.x / 2f + b.x, Tmp.v2.y / 2f + b.y);
         }
-    }
+    }**/
 
     static class RailData{
         float x, y, len, lastLen;
