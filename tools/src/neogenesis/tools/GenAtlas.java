@@ -5,7 +5,7 @@ import arc.graphics.*;
 import arc.graphics.g2d.*;
 import arc.struct.*;
 
-import static unity.tools.Tools.*;
+import static neogenesis.tools.Tools.*;
 
 /**
  * A specialized thread-safe texture atlas for generated texture regions. No {@link Texture}s are instantiated; use
