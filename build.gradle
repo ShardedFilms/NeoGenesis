@@ -1,5 +1,4 @@
-
-/** apply plugin: "java"
+apply plugin: "java"
 
 version '1.0'
 
@@ -92,10 +91,10 @@ task deploy(type: Jar){
     }
 }**/
 // ${project.archivesBaseName}
-
-buildscript{
+/**buildscript{
     dependencies{
-        classpath "com.github.Anuken.MindustryJitpack:core:$mindustryVersion"
+        classpath "com.github.Anuken.MindustryJitpack:core:v145"
+        classpath "com.github.Anuken.Arc:arc-core:145"
         classpath "com.squareup:javapoet:$javapoetVersion"
         classpath "com.github.Anuken:jabel:$jabelVersion"
     }
@@ -184,4 +183,4 @@ allprojects{
         options.addStringOption('Xdoclint:none', '-quiet')
         options.addStringOption('-release', '16')
     }
-}
+}**/

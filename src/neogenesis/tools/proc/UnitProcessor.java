@@ -11,9 +11,9 @@ import mindustry.gen.*;
 import neogenesis.gen.*;
 import neogenesis.tools.*;
 import neogenesis.tools.GenAtlas.*;
-import neogenesis.type.*;
-import neogenesis.type.weapons.*;
-import neogenesis.util.*;
+import neogenesis.types.*;
+import neogenesis.types.weapons.*;
+import neogenesis.utils.*;
 
 import java.util.concurrent.*;
 
