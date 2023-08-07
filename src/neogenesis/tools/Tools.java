@@ -26,7 +26,7 @@ import static mindustry.Vars.*;
  * @author GlennFolker
  */
 public final class Tools{
-    public static Neogenesis neogenesis;
+    public static NeoGenesis neogenesis;
     public static LoadedMod mod;
     public static ModMeta meta;
 
@@ -74,16 +74,16 @@ public final class Tools{
         content = new ContentLoader();
         content.createBaseContent();
 
-        unity = new Unity(true);
+        neogenesis = new NeoGenesis();
 
         meta = new ModMeta(){{ name = "neogenesis"; }};
-        mod = new LoadedMod(null, null, unity, Tools.class.getClassLoader(), meta);
+        mod = new LoadedMod(null, null, neogenesis, Tools.class.getClassLoader(), meta);
 
         Reflect.<Seq<LoadedMod>>get(Mods.class, mods, "mods").add(mod);
-        Reflect.<ObjectMap<Class<?>, ModMeta>>get(Mods.class, mods, "metas").put(Unity.class, meta);
+        Reflect.<ObjectMap<Class<?>, ModMeta>>get(Mods.class, mods, "metas").put(NeoGenesis.class, meta);
 
         content.setCurrentMod(mod);
-        unity.loadContent();
+        neogenesis.loadContent();
         content.setCurrentMod(null);
 
         Log.logger = new DefaultLogHandler();
