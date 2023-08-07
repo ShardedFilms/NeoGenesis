@@ -1,6 +1,6 @@
-![Title](assets/title.png)
+![Title](core/title.png)
 
 ---
 # NeoGenesis
 
-The all well reworking project.
+Another Project Unity.

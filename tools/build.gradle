@@ -21,7 +21,7 @@ dependencies{
                     taskNames.contains('main:deploy') || taskNames.contains('main:dex')
     ){
         implementation project(':main')
-        if(taskNames.contains('tools:proc')) println 'Compiling :main project before processing assets...'
+        if(taskNames.contains('tools:proc')) println 'Compiling : base repository before processing assets...'
     }else{
         implementation files(usedClasspath)
     }
