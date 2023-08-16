@@ -1,94 +1,92 @@
+buildscript{
+    dependencies{
+        classpath "com.github.Anuken.MindustryJitpack:core:$mindustryVersion"
+        classpath "com.squareup:javapoet:$javapoetVersion"
+        classpath "com.github.Anuken:jabel:$jabelVersion"
+    }
 
-apply plugin: "java"
-
-version '1.0'
-
-targetCompatibility = 8
-sourceCompatibility = JavaVersion.VERSION_16
-
-sourceSets.main.java.srcDirs = ["src"]
-
-repositories{
-    mavenCentral()
-    maven{ url 'https://www.jitpack.io' }
+    repositories{
+        mavenCentral()
+        maven{ url 'https://jitpack.io' }
+    }
 }
 
-ext{
-    //the build number that this mod is made for
-    mindustryVersion = 'v145'
-    jabelVersion = "93fde537c7"
-    sdkRoot = System.getenv("ANDROID_HOME") ?: System.getenv("ANDROID_SDK_ROOT")
-}
-
-//java 8 backwards compatibility flag
 allprojects{
+    apply plugin: 'java'
+    apply plugin: 'maven-publish'
+
+    group = 'com.github.AvantTeam'
+    version = modVersion
+
+    ext{
+        sdkRoot = System.getenv('ANDROID_HOME') ?: System.getenv('ANDROID_SDK_ROOT')
+        windows = System.getProperty('os.name').toLowerCase(Locale.ROOT).contains('windows')
+        taskNames = gradle.startParameter.taskNames
+
+        assetsDir = new File(project(':main').projectDir, 'assets/')
+        assetsRawDir = new File(project(':main').projectDir, 'assets-raw/')
+        spritesDir = new File(assetsDir, 'sprites/')
+        spritesRawDir = new File(assetsRawDir, 'sprites/')
+
+        // `-Pmain.dev` will initiate a development build. Default is `false`.
+        devBuild = project.hasProperty('main.dev') && Boolean.parseBoolean(project.property('main.dev') as String)
+
+        // `-Ptools.recompile` will force the :main project to recompile. Default is `false`.
+        toolRecompile = project.hasProperty('tools.recompile') && Boolean.parseBoolean(project.property('tools.recompile') as String)
+
+        // `-Ptools.rearch` will make the .jar file resulted from :main:deploy and/or :main:deployDex also include the generated
+        // assets, without recompiling. Default is `true`.
+        // See also :tools:rearchive
+        toolRearchive = !project.hasProperty('tools.rearch') || Boolean.parseBoolean(project.property('tools.rearch') as String)
+    }
+
+    repositories{
+        mavenCentral()
+        maven{ url "https://jitpack.io" }
+    }
+
+    task sourcesJar(type: Jar, dependsOn: classes){
+        archiveClassifier.set 'sources'
+        from sourceSets.main.allSource
+    }
+
+    artifacts{
+        archives sourcesJar
+    }
+
+    java{
+        withJavadocJar()
+        withSourcesJar()
+    }
+
+    publishing{
+        publications{
+            maven(MavenPublication){
+                from components.java
+            }
+        }
+    }
+
     tasks.withType(JavaCompile){
-        options.compilerArgs.addAll(['--release', '8'])
+        options.incremental = true
+        options.encoding = 'UTF-8'
+        options.compilerArgs += '-Xlint:deprecation'
+
+        options.fork = true
+        options.forkOptions.jvmArgs += [
+            '--add-opens=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED',
+            '--add-opens=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED',
+            '--add-opens=jdk.compiler/com.sun.tools.javac.model=ALL-UNNAMED',
+            '--add-opens=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED',
+            '--add-opens=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED',
+            '--add-opens=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED',
+            '--add-opens=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED',
+            '--add-opens=java.base/sun.reflect.annotation=ALL-UNNAMED'
+        ]
+    }
+
+    tasks.withType(Javadoc){
+        options.addStringOption('Xdoclint:none', '-quiet')
+        options.addStringOption('-release', '16')
     }
 }
-
-dependencies{
-    compileOnly "com.github.Anuken.Arc:arc-core:$mindustryVersion"
-    compileOnly "com.github.Anuken.MindustryJitpack:core:$mindustryVersion"
-    annotationProcessor "com.github.Anuken:jabel:$jabelVersion"
-}
-
-//force arc version
-configurations.all{
-    resolutionStrategy.eachDependency { details ->
-        if(details.requested.group == 'com.github.Anuken.Arc'){
-            details.useVersion "$mindustryVersion"
-        }
-    }
-}
-
-task jarAndroid{
-    dependsOn "jar"
-
-    doLast{
-        if(!sdkRoot || !new File(sdkRoot).exists()) throw new GradleException("No valid Android SDK found. Ensure that ANDROID_HOME is set to your Android SDK directory.");
-
-        def platformRoot = new File("$sdkRoot/platforms/").listFiles().sort().reverse().find{ f -> new File(f, "android.jar").exists()}
-
-        if(!platformRoot) throw new GradleException("No android.jar found. Ensure that you have an Android platform installed.")
-
-        //collect dependencies needed for desugaring
-        def dependencies = (configurations.compileClasspath.asList() + configurations.runtimeClasspath.asList() + [new File(platformRoot, "android.jar")]).collect{ "--classpath $it.path" }.join(" ")
-
-        //dex and desugar files - this requires d8 in your PATH
-        "d8 $dependencies --min-api 14 --output ${project.archivesBaseName}Android.jar ${project.archivesBaseName}Desktop.jar"
-            .execute(null, new File("$buildDir/libs")).waitForProcessOutput(System.out, System.err)
-    }
-}
-
-jar{
-    archiveFileName = "${project.archivesBaseName}Desktop.jar"
-
-    from{
-        configurations.runtimeClasspath.collect{ it.isDirectory() ? it : zipTree(it) }
-    }
-
-    from(rootDir){
-        include "mod.hjson"
-    }
-
-    from("assets/"){
-        include "**"
-    }
-}
-
-task deploy(type: Jar){
-    dependsOn jarAndroid
-    dependsOn jar
-    archiveFileName = "${project.archivesBaseName}.jar"
-
-    from{ [zipTree("$buildDir/libs/${project.archivesBaseName}Desktop.jar"), zipTree("$buildDir/libs/${project.archivesBaseName}Android.jar")] }
-
-    doLast{
-        delete{
-            delete "$buildDir/libs/${project.archivesBaseName}Desktop.jar"
-            delete "$buildDir/libs/${project.archivesBaseName}Android.jar"
-        }
-    }
-}
-// ${project.archivesBaseName}

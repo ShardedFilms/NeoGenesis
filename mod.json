@@ -1,0 +1,10 @@
+{
+    "name": "nge",
+    "displayName": "Neogenesis",
+    "author": "[accent]Sharded[][] With Multi-Corprations",
+    "description": "Currently WIP",
+    "version": "0.2-youngcha.3.3",
+    "minGameVersion": 145.1,
+    "main": "unity.Unity",
+    "java": true
+}
